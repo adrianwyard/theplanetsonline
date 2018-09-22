@@ -724,6 +724,10 @@ $(document).ready(function(){
 
 	function onPlayerProgress(){
 		var time = parseInt(activePlayer.getCurrentTime());
+//AW On iOS this console output shows the time is 1 second prior to what's expected when a tref link is clicked.		
+		console.log(time);
+
+
 		var $commentary;
 		// var $commentary = $($commentaries.filter(':not(.hidden)').filter('[data-time-sec=' + time + ']'));
 
@@ -1276,11 +1280,10 @@ $(document).ready(function(){
 			// tref
 			if($this.attr('tref') != undefined){
 				var timeSeconds = getTimeStringToSeconds($this.attr('tref'));
-
 				if(timeSeconds === false)
 					timeSeconds = $this.attr('tref');
-
-
+			//AW Added +1 to following as temp fix to iOS issue
+				timeSeconds++;
 				playerSeekTo(timeSeconds, true);
 			}
 
