@@ -768,10 +768,14 @@ body{
 
 #cndce-container .cndce-browser-option.cndce-update{
 	margin-right: 25px;
-    margin-bottom: 8px;
-	
+    margin-bottom: 8px;	
 }
 
+/* AW */
+#cndce-container .cndce-browser-option.cndce-update:hover{
+	color: #999999;
+	text-decoration: underline;
+}
 
 
 #cndce-container .cndce-browser-option.cndce-update label{
@@ -802,6 +806,11 @@ body{
 	margin-top: 2px;
 }
 
+/* AW */
+#cndce-container .cndce-browser-option.cndce-icon:hover span{
+	color: #999999;
+	text-decoration: underline;
+}
 
 #cndce-container #cndce-browser-container iframe{
 	width: 100%;
