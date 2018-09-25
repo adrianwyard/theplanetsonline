@@ -1,4 +1,7 @@
-$(document).ready(function(){
+$(document).ready(function () {
+	if(window.localStorage.getItem('cndceUpdateAutomatically') == null) {
+		window.localStorage.setItem('cndceUpdateAutomatically', true);
+	}
 	// Constants
 	var HR_TO_SEC = 3600;
 	var MIN_TO_SEC = 60;
@@ -79,39 +82,39 @@ $(document).ready(function(){
 	var getParamConfig;
 
 
-	function isLayoutMobile(){
+	function isLayoutMobile() {
 		return $body.width() <= 768;
 	}
 
-	function isLayoutPortrait(){
+	function isLayoutPortrait() {
 		return $body.width() < $body.height();
 	}
 
-	function isLayoutRelayout(){
+	function isLayoutRelayout() {
 		return $cndceContainer.hasClass('cndce-relayout');
 	}
 
-	function isVideoWithinMinWidth(){
+	function isVideoWithinMinWidth() {
 		return $videoSection.width() > cndceSettings.minSizes.video.width;
 	}
 
-	function isCommentaryIframeWithinMinWidth(){
+	function isCommentaryIframeWithinMinWidth() {
 		return $commentariesSection.width() > cndceSettings.minSizes.commentIframe.width;
 	}
 
-	function isCommentaryIframeWithinMinHeight(){
+	function isCommentaryIframeWithinMinHeight() {
 		return $commentariesSection.height() > cndceSettings.minSizes.commentIframe.height;
 	}
 
-	function isBrowserIframeWithinMinWidth(){
+	function isBrowserIframeWithinMinWidth() {
 		return $iframeSection.width() > cndceSettings.minSizes.browserIframe.width;
 	}
 
-	function isBrowserIframeWithinMinHeight(){
+	function isBrowserIframeWithinMinHeight() {
 		return $iframeSection.height() > cndceSettings.minSizes.browserIframe.height;
 	}
 
-	function isSizeWithinMinimumsX(){
+	function isSizeWithinMinimumsX() {
 		return isCommentaryIframeWithinMinWidth()
 			// && isCommentaryIframeWithinMinHeight()
 			// && isBrowserIframeWithinMinWidth()
@@ -119,12 +122,12 @@ $(document).ready(function(){
 			&& isVideoWithinMinWidth();
 	}
 
-	function isSizeWithinMinimumsY(){
+	function isSizeWithinMinimumsY() {
 		return isSizeWithinMinimumsX();
 	}
 
 
-	function isVideoWithinSmartRelayoutAspect(){
+	function isVideoWithinSmartRelayoutAspect() {
 		var videoWidth = $commentariesSection.width();
 		var videoHeight = $commentariesSection.height();
 		var videoAspect = videoWidth / videoHeight;
@@ -133,7 +136,7 @@ $(document).ready(function(){
 		return videoAspect >= cndceSettings.smartRelayout.minVideoAspectRatio && videoAspect <= cndceSettings.smartRelayout.maxVideoAspectRatio;
 	}
 
-	function isVideoWithinSmartRelayoutBounds(){
+	function isVideoWithinSmartRelayoutBounds() {
 		// var boundary = cndceSettings.smartRelayoutBoundary;
 		var boundary = cndceSettings.minSizes.browserIframe.width;
 		// var videoWidth = $videoSection.width();
@@ -147,22 +150,22 @@ $(document).ready(function(){
 	}
 
 
-	function playerSeekTo(sec, forcePlay){
+	function playerSeekTo(sec, forcePlay) {
 		// activePlayer.playVideo();
 		// activePlayer.pauseVideo();
 		activePlayer.seekTo(sec, true);
 		// activePlayer.pauseVideo();
 
-		if(forcePlay != undefined && forcePlay)
+		if (forcePlay != undefined && forcePlay)
 			activePlayer.playVideo();
 
 
 	}
 
-	function getTimeStringToSeconds(timeString){
+	function getTimeStringToSeconds(timeString) {
 		var time = timeString.split(':');
 
-		if(time.length != 3)
+		if (time.length != 3)
 			return false;
 
 		var timeSeconds = (parseInt(time[0]) * HR_TO_SEC) + (parseInt(time[1]) * MIN_TO_SEC) + parseInt(time[2]);
@@ -171,37 +174,37 @@ $(document).ready(function(){
 	}
 
 	function getCookie(cname) {
-	    var name = cname + "=";
-	    var decodedCookie = decodeURIComponent(document.cookie);
-	    var ca = decodedCookie.split(';');
-	    for(var i = 0; i <ca.length; i++) {
-	        var c = ca[i];
-	        while (c.charAt(0) == ' ') {
-	            c = c.substring(1);
-	        }
-	        if (c.indexOf(name) == 0) {
-	            return c.substring(name.length, c.length);
-	        }
-	    }
-	    return "";
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
 	}
 
 	function getParameter(parameterName) {
-	    var result = undefined,
-	        tmp = [];
-	    var items = location.search.substr(1).split("&");
-	    for (var index = 0; index < items.length; index++) {
-	        tmp = items[index].split("=");
-	        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-	    }
+		var result = undefined,
+			tmp = [];
+		var items = location.search.substr(1).split("&");
+		for (var index = 0; index < items.length; index++) {
+			tmp = items[index].split("=");
+			if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+		}
 
-	    return result;
+		return result;
 	}
 
-	function getCommentaryScrollable(){
+	function getCommentaryScrollable() {
 		var $scrollable = $commentariesHtml.find('body, html');
 
-		if($commentariesIframe.height() > $commentariesSection.height()){
+		if ($commentariesIframe.height() > $commentariesSection.height()) {
 			$scrollable = $commentariesScrollContainer;
 		}
 
@@ -209,21 +212,21 @@ $(document).ready(function(){
 	}
 
 
-	function findCommentarySettingByType(commentaryType){
-		for(var i=0; i < cndceSettings.commentaries.length; i++){
-			if(cndceSettings.commentaries[i].type == commentaryType)
+	function findCommentarySettingByType(commentaryType) {
+		for (var i = 0; i < cndceSettings.commentaries.length; i++) {
+			if (cndceSettings.commentaries[i].type == commentaryType)
 				return cndceSettings.commentaries[i];
 		}
 
 		return undefined;
 	}
 
-	function initGetParameters(){
+	function initGetParameters() {
 		getParamCommentaries = getParameter('commentary');
 
-		if(getParamCommentaries != undefined){
+		if (getParamCommentaries != undefined) {
 			getParamCommentaries = getParamCommentaries.split('+');
-		}else{
+		} else {
 			getParamCommentaries = [];
 		}
 
@@ -237,8 +240,8 @@ $(document).ready(function(){
 
 	}
 
-	function initVideos(){
-		for(var i=0; i < cndceSettings.videos.length; i++){
+	function initVideos() {
+		for (var i = 0; i < cndceSettings.videos.length; i++) {
 			var videoID = 'cndce-video-' + i;
 			var $videoDiv = $('<div id="' + videoID + '"></div>');
 
@@ -259,7 +262,7 @@ $(document).ready(function(){
 			};
 
 			// Add start time if get param exists
-			if(getParamStartTime != undefined && getParamStartTime != ''){
+			if (getParamStartTime != undefined && getParamStartTime != '') {
 				playerVars.start = getTimeStringToSeconds(getParamStartTime);
 				// playerVars.autoplay = 1;
 			}
@@ -287,20 +290,20 @@ $(document).ready(function(){
 		}
 	}
 
-	function initCommentaries(){
+	function initCommentaries() {
 
-		var commentaryCookie = getCookie('cndceCommentaries');
-		if(commentaryCookie == undefined || commentaryCookie == ''){
+		var commentaryCookie = window.localStorage.getItem('cndceCommentaries');
+		if (commentaryCookie == undefined || commentaryCookie == '') {
 			commentaryCookie = [];
-		}else{
+		} else {
 			commentaryCookie = commentaryCookie.split(',');
 		}
 
 
-		for(var i=1; i < cndceSettings.commentaries.length; i++){
+		for (var i = 1; i < cndceSettings.commentaries.length; i++) {
 
-			
-			if(!$('a', $commentariesTagsSpan).hasClass(cndceSettings.commentaries[i].type)){
+
+			if (!$('a', $commentariesTagsSpan).hasClass(cndceSettings.commentaries[i].type)) {
 				// Add commentary tags
 				// TODO: Organize style
 				var $tag = $(document.createElement('a'));
@@ -309,7 +312,7 @@ $(document).ready(function(){
 				$tag.addClass('hidden');
 				$tag.addClass('cndce-open-options');
 				$tag.text(cndceSettings.commentaries[i].name);
-				$tag.css({'margin-right': '3px'});
+				$tag.css({ 'margin-right': '3px' });
 
 				$commentariesTagsSpan.append($tag)
 
@@ -325,19 +328,20 @@ $(document).ready(function(){
 
 
 				$optionsCommentaries.append($commentaryOption);
+				console.log('option storage=======>', $optionsCommentaries);
 
 
 				cndceSettings.commentaries[i].$inputBox = $commentaryOption;
 
 				// Load Cookie and Get Parameter
-				if(getParamCommentaries.indexOf(cndceSettings.commentaries[i].type) != -1
+				if (getParamCommentaries.indexOf(cndceSettings.commentaries[i].type) != -1
 					|| (getParamCommentaries.length == 0 && commentaryCookie.indexOf(cndceSettings.commentaries[i].type) != -1)
-				){
+				) {
 					// loadCommentaries(cndceSettings.commentaries[i]);
 					$inputCommentaryOption.prop('checked', true);
 					;
 
-					$.when($inputCommentaryOption.trigger('change')).done(function(){
+					$.when($inputCommentaryOption.trigger('change')).done(function () {
 						// Reload commentary scrolltop
 						var $scrollable = getCommentaryScrollable();
 						var commentaryScrollCookie = getCookie('cndceCommentariesScroll');
@@ -351,7 +355,7 @@ $(document).ready(function(){
 					})
 
 				}
-			}	
+			}
 
 
 		}
@@ -361,28 +365,28 @@ $(document).ready(function(){
 
 
 
-		
+
 
 	}
 
 
-	function initCommentary($commentary, type){
+	function initCommentary($commentary, type) {
 		var timeSeconds = getTimeStringToSeconds($commentary.attr('time'));
 
 		$commentary.attr('data-time-sec', timeSeconds);
 
-		if(type != undefined)
+		if (type != undefined)
 			$commentary.attr('type', type);
 	}
 
 
-	function loadCommentaries(commentary){
-		if(commentary == undefined)
+	function loadCommentaries(commentary) {
+		if (commentary == undefined)
 			return false;
 
 
-		if(commentary.isLoaded != undefined && commentary.isLoaded){
-			return false;			
+		if (commentary.isLoaded != undefined && commentary.isLoaded) {
+			return false;
 		}
 
 
@@ -391,30 +395,30 @@ $(document).ready(function(){
 
 		commentary.isLoaded = true;
 
-		if(commentary.$inputBox != undefined)
+		if (commentary.$inputBox != undefined)
 			$('input', commentary.$inputBox).prop('checked', true);
 
 		// Load base commentary on iframe
-		if($commentariesIframe.attr('src') == undefined){
+		if ($commentariesIframe.attr('src') == undefined) {
 			$commentariesIframe.attr('src', commentaryUrl);
-		
 
-		// Add additional commentaries to base
-		}else{
+
+			// Add additional commentaries to base
+		} else {
 			$.ajax({
 				url: commentaryUrl,
 				dataType: 'html',
-				success: function(doc){
+				success: function (doc) {
 					var $newCommentaries = $(doc).filter('commentary');
 
 
-					$newCommentaries.each(function(){
+					$newCommentaries.each(function () {
 						var $newCommentary = $(this);
 						initCommentary($newCommentary, commentary.type);
 
 
 						// For first commentary
-						if($commentaries == undefined || $commentaries.length == 0){
+						if ($commentaries == undefined || $commentaries.length == 0) {
 							$('body', $commentariesHtml).append($newCommentary);
 
 							$commentaries = $('commentary', $commentariesHtml);
@@ -422,37 +426,37 @@ $(document).ready(function(){
 
 
 						// TODO: Clean implementation
-						 $commentaries.each(function(i){
-						 	$commentary = $(this);
+						$commentaries.each(function (i) {
+							$commentary = $(this);
 
-						 	if(parseInt($commentary.attr('data-time-sec')) > parseInt($newCommentary.attr('data-time-sec'))){
+							if (parseInt($commentary.attr('data-time-sec')) > parseInt($newCommentary.attr('data-time-sec'))) {
 
-						 		$commentary.before($newCommentary);
+								$commentary.before($newCommentary);
 
-						 		// $newCommentary.css('height', $newCommentary.height());
-			 			 		// console.log('FIST',$newCommentary.height());
+								// $newCommentary.css('height', $newCommentary.height());
+								// console.log('FIST',$newCommentary.height());
 
 
 								$commentaries = $('commentary', $commentariesHtml);
 
 
-						 		return false;
-						 	}
+								return false;
+							}
 
-						 	if(i == $commentaries.length-1){
-			 			 		$commentary.after($newCommentary);
+							if (i == $commentaries.length - 1) {
+								$commentary.after($newCommentary);
 
-			 			 		// $newCommentary.css('height', 'auto');
-			 			 		// console.log('SECOND',$newCommentary.height(), $newCommentary.outerHeight(), $newCommentary[0].outerHeight);
-			 			 		// $newCommentary.css('height', $newCommentary.height());
+								// $newCommentary.css('height', 'auto');
+								// console.log('SECOND',$newCommentary.height(), $newCommentary.outerHeight(), $newCommentary[0].outerHeight);
+								// $newCommentary.css('height', $newCommentary.height());
 
-			 					$commentaries = $('commentary', $commentariesHtml);
+								$commentaries = $('commentary', $commentariesHtml);
 
 
-			 			 		return false;
-						 	}
+								return false;
+							}
 
-						 })
+						})
 					})
 
 
@@ -465,16 +469,16 @@ $(document).ready(function(){
 
 	}
 
-	function loadYoutubeIframeAPI(){
+	function loadYoutubeIframeAPI() {
 		var script = document.createElement('script');
-		script.src="//www.youtube.com/iframe_api";
+		script.src = "//www.youtube.com/iframe_api";
 
 		var firstScriptTag = document.getElementsByTagName('script')[0];
-	    firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+		firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
 	}
 
-	function setPlayerProgressInterval(){
-		if(onPlayerProgressInterval != undefined){
+	function setPlayerProgressInterval() {
+		if (onPlayerProgressInterval != undefined) {
 			clearTimeout(onPlayerProgressInterval);
 		}
 
@@ -482,23 +486,23 @@ $(document).ready(function(){
 		onPlayerProgressInterval = setInterval(onPlayerProgress, 1000 / activePlayer.getPlaybackRate());
 	}
 
-	function setCommentaryOnProgress($commentary){
+	function setCommentaryOnProgress($commentary) {
 		$videoCommentary.text($commentary.text());
 
 		$commentaries.removeClass('active');
 		$commentary.addClass('active');
 
-		// $commentariesHtml.scrollTop($commentary.offset().top);
+		$commentariesHtml.scrollTop($commentary.offset().top);
 
 
 		var $scrollable = getCommentaryScrollable();
 
 		// alert($scrollable.attr('id'));
-		$scrollable.animate({scrollTop: $commentary.offset().top}, 300);
+		$scrollable.animate({ scrollTop: $commentary.offset().top }, 300);
 
 
-		if($commentary.attr('iframe') != undefined){
-			if($iframeUpdateAutomatically.prop('checked'))
+		if ($commentary.attr('iframe') != undefined) {
+			if ($iframeUpdateAutomatically.prop('checked'))
 				setBrowserPage($commentary.attr('iframe'), $commentary.attr('iframe-preview'), true);
 		}
 
@@ -506,7 +510,7 @@ $(document).ready(function(){
 		// Add highlight effect
 		$commentary.addClass('highlight');
 
-		setTimeout(function(){
+		setTimeout(function () {
 			$commentary.removeClass('highlight');
 		}, 750);
 
@@ -514,34 +518,34 @@ $(document).ready(function(){
 
 	}
 
-	function setBrowserPage(url, isPreview, setIframeSrc){
+	function setBrowserPage(url, isPreview, setIframeSrc) {
 		var urlText = url;
 
-		if(isPreview != undefined && isPreview){
+		if (isPreview != undefined && isPreview) {
 			url = './preview.php?' + url;
 		}
 
-		if(setIframeSrc){
+		if (setIframeSrc) {
 			$iframe[0].src = url;
 		}
 
-		if(urlText.indexOf('./pages/') != -1)
+		if (urlText.indexOf('./pages/') != -1)
 			urlText = '';
 
 		$iframeBrowserAddressInput.val(urlText);
 
-		$('.cndce-browser-tab-text',$iframeBrowserTab).text(urlText);
+		$('.cndce-browser-tab-text', $iframeBrowserTab).text(urlText);
 
 	}
 
 
-	function setActivePlayer(video){
-		if(activePlayer == video.player)
+	function setActivePlayer(video) {
+		if (activePlayer == video.player)
 			return;
 
 
 		// Make sure radio button is selected
-		$('input',video.$inputBox).prop('checked', true);
+		$('input', video.$inputBox).prop('checked', true);
 
 
 		$('.active', $videosContainer).removeClass('active');
@@ -550,7 +554,7 @@ $(document).ready(function(){
 		var currentPlaybackRate = 1;
 		var currentState = YT.PlayerState.UNSTARTED;
 
-		if(activePlayer != undefined){
+		if (activePlayer != undefined) {
 			console.log('active');
 			activePlayer.pauseVideo();
 			currentTime = activePlayer.getCurrentTime();
@@ -564,13 +568,13 @@ $(document).ready(function(){
 		activePlayer = video.player;
 		$(activePlayer.getIframe()).addClass('active');
 
-		if(currentTime != 0)
+		if (currentTime != 0)
 			activePlayer.seekTo(currentTime);
 
-		if(activePlayer.setPlaybackRate != undefined)
+		if (activePlayer.setPlaybackRate != undefined)
 			activePlayer.setPlaybackRate(currentPlaybackRate);
 
-		if(currentState == YT.PlayerState.PLAYING){
+		if (currentState == YT.PlayerState.PLAYING) {
 			activePlayer.playVideo();
 		}
 	}
@@ -578,7 +582,7 @@ $(document).ready(function(){
 
 
 	// Keep Video Aspect Ratio
-	function resizeVideoY(){
+	function resizeVideoY() {
 		var height = $videoSection.height();
 		var targetWidth = (height / cndceSettings.videoAspectRatio.height) * cndceSettings.videoAspectRatio.width;
 
@@ -589,7 +593,7 @@ $(document).ready(function(){
 
 	}
 
-	function resizeVideoX(){
+	function resizeVideoX() {
 
 		var width = $videoSection.width();
 		var targetHeight = (width / cndceSettings.videoAspectRatio.width) * cndceSettings.videoAspectRatio.height;
@@ -606,7 +610,7 @@ $(document).ready(function(){
 		})
 	}
 
-	function resizeVideoPortrait(){
+	function resizeVideoPortrait() {
 		var width = $videoSection.width();
 		var targetHeight = (width / cndceSettings.videoAspectRatio.width) * cndceSettings.videoAspectRatio.height;
 
@@ -621,13 +625,13 @@ $(document).ready(function(){
 
 
 	// Section Sizes Cookie
-	function loadSectionSizesFromCookie(){
+	function loadSectionSizesFromCookie() {
 		var cVideoWidth = getCookie('cndceVideoSectionWidth');
 		var cContainerWidth = getCookie('cndceContainerWidth');
 		var cContainerHeight = getCookie('cndceContainerHeight');
 
 
-		if($cndceContainer.width() == cContainerWidth && $cndceContainer.height() == cContainerHeight){
+		if ($cndceContainer.width() == cContainerWidth && $cndceContainer.height() == cContainerHeight) {
 
 
 
@@ -638,19 +642,19 @@ $(document).ready(function(){
 		}
 	}
 
-	function saveSectionSizesToCookie(){
+	function saveSectionSizesToCookie() {
 		document.cookie = "cndceVideoSectionWidth=" + $videoSection.width();
 		document.cookie = "cndceContainerWidth=" + $cndceContainer.width();
 		document.cookie = "cndceContainerHeight=" + $cndceContainer.height();
 	}
 
 
-	function doSmartRelayout(){
+	function doSmartRelayout() {
 
 		// Within Smart Relayout Bounds
-		if(isVideoWithinSmartRelayoutBounds()){
+		if (isVideoWithinSmartRelayoutBounds()) {
 
-			if(!$cndceContainer.hasClass('cndce-relayout')){
+			if (!$cndceContainer.hasClass('cndce-relayout')) {
 				$cndceContainer.addClass('cndce-relayout');
 
 				// WRONG RELAYOUT
@@ -679,9 +683,9 @@ $(document).ready(function(){
 			})
 
 
-		// Not Within Smart Relayout Bounds
-		}else{
-			if($cndceContainer.hasClass('cndce-relayout')){			
+			// Not Within Smart Relayout Bounds
+		} else {
+			if ($cndceContainer.hasClass('cndce-relayout')) {
 				$cndceContainer.removeClass('cndce-relayout');
 
 				// WRONG RELAYOUT
@@ -706,7 +710,7 @@ $(document).ready(function(){
 
 				resizeVideoX();
 			}
-			
+
 		}
 
 	}
@@ -715,45 +719,41 @@ $(document).ready(function(){
 
 
 
-	function onYouTubeIframeAPIReady(){
+	function onYouTubeIframeAPIReady() {
 		initVideos();
 
 		$commentariesIframe.attr('src', cndceSettings.commentariesBaseUrl);
 
 	}
 
-	function onPlayerProgress(){
+	function onPlayerProgress() {
 		var time = parseInt(activePlayer.getCurrentTime());
-//AW On iOS this console output shows the time is 1 second prior to what's expected when a tref link is clicked.		
-		console.log(time);
-
-
 		var $commentary;
 		// var $commentary = $($commentaries.filter(':not(.hidden)').filter('[data-time-sec=' + time + ']'));
 
 		var i;
 
-		for(i=0; i < $commentaries.length; i++){
+		for (i = 0; i < $commentaries.length; i++) {
 			var currTime = parseInt($($commentaries[i]).attr('data-time-sec'));
 
 
-			if(currTime >= time){
-				if(currTime == time)
+			if (currTime >= time) {
+				if (currTime == time)
 					i++;
 				break;
 			}
 		}
 
-		$commentary = $($commentaries[i-1]);
+		$commentary = $($commentaries[i - 1]);
 
-		if($commentary.hasClass('hidden'))
+		if ($commentary.hasClass('hidden'))
 			return;
 
 
-		if($commentary.length > 0 
+		if ($commentary.length > 0
 			&& ($commentaries.index($currentCommentary) != $commentaries.index($commentary)
 				|| $currentCommentary == undefined
-			)){
+			)) {
 
 			$currentCommentary = $commentary;
 			setCommentaryOnProgress($commentary);
@@ -762,74 +762,75 @@ $(document).ready(function(){
 
 	}
 
-	function onPlayerReady(){
+	function onPlayerReady() {
 		var iVideo = getCookie('cndceVideo');
 
-		if(iVideo == undefined || iVideo == '')
+		if (iVideo == undefined || iVideo == '')
 			iVideo = 0;
 
 		// Get parameters
-		if(getParamVideo != undefined && cndceSettings.videos[getParamVideo] != undefined)
+		if (getParamVideo != undefined && cndceSettings.videos[getParamVideo] != undefined)
 			iVideo = getParamVideo;
 
 		setActivePlayer(cndceSettings.videos[iVideo]);
 
-		if(getParamStartTime != undefined && getParamStartTime != ''
-			&& cndceSettings.videos[iVideo].player.playVideo != undefined){
+		if (getParamStartTime != undefined && getParamStartTime != ''
+			&& cndceSettings.videos[iVideo].player.playVideo != undefined) {
 
 			cndceSettings.videos[iVideo].player.playVideo();
 		}
 
 	}
 
-	function onPlayerStateChange(e){
-		if(onPlayerProgressInterval != undefined){
+	function onPlayerStateChange(e) {
+		if (onPlayerProgressInterval != undefined) {
 			clearTimeout(onPlayerProgressInterval);
 		}
 
-		if(e.data == YT.PlayerState.PLAYING){
+		if (e.data == YT.PlayerState.PLAYING) {
 			setPlayerProgressInterval();
 		}
 	}
 
-	function onPlayerPlaybackRateChange(){
-		if(activePlayer.getPlayerState() == YT.PlayerState.PLAYING)
+	function onPlayerPlaybackRateChange() {
+		if (activePlayer.getPlayerState() == YT.PlayerState.PLAYING)
 			setPlayerProgressInterval();
 	}
 
 	// Events
 
 
-	$iframeBrowserAddress.click(function(){
-		if($iframeBrowserAddressInput.val() != ''){
+	$iframeBrowserAddress.click(function () {
+		if ($iframeBrowserAddressInput.val() != '') {
 			window.open($iframeBrowserAddressInput.val())
 		}
 	})
 
-	$iframeBrowserOptionsButton.click(function(e){
+	$iframeBrowserOptionsButton.click(function (e) {
 		$cndceContainer.addClass('options-shown');
 		e.stopPropagation();
 	})
 
 
-	$iframe.on('load', function(e){
-		$('.cndce-browser-tab-text',$iframeBrowserTab).text(this.contentDocument.title);
+	$iframe.on('load', function (e) {
+		$('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
 
 	})
 
 
-	$iframeUpdateAutomatically.change(function(){
-		document.cookie = 'cndceUpdateAutomatically=' + $iframeUpdateAutomatically.prop('checked');
+	$iframeUpdateAutomatically.change(function () {
+		// document.cookie = 'cndceUpdateAutomatically=' + $iframeUpdateAutomatically.prop('checked');
+		window.localStorage.setItem('cndceUpdateAutomatically', $iframeUpdateAutomatically.prop('checked'));
 	})
 
 
 
 
-	$optionsContainer.click(function(e){
+	$optionsContainer.click(function (e) {
 		e.stopPropagation();
 	})
 
-	$optionsVideos.on('change', 'input', function(){
+	$optionsVideos.on('change', 'input', function () {
 		var $this = $(this);
 
 		var iVideo = $this.data('ivideo');
@@ -840,7 +841,7 @@ $(document).ready(function(){
 		document.cookie = 'cndceVideo=' + iVideo;
 	})
 
-	$optionsCommentaries.on('change', 'input', function(){
+	$optionsCommentaries.on('change', 'input', function () {
 
 		var $this = $(this);
 
@@ -851,38 +852,38 @@ $(document).ready(function(){
 		var $commentariesChange = $commentaries.filter('[type="' + $this.attr('data-commentary-type') + '"]');
 
 
-		var commentaryCookie = getCookie('cndceCommentaries');
-		if(commentaryCookie == undefined || commentaryCookie == ''){
+		var commentaryCookie = window.localStorage.getItem('cndceCommentaries');
+		if (commentaryCookie == undefined || commentaryCookie == '') {
 			commentaryCookie = [];
-		}else{
+		} else {
 			commentaryCookie = commentaryCookie.split(',');
 		}
-
+		console.log('data--->', commentaryCookie)
 
 
 		var commentaryType = $this.attr('data-commentary-type');
 
 
-		if($this.prop('checked')){
+		if ($this.prop('checked')) {
 			loadCommentaries(commentary);
 
 			$commentariesChange.removeClass('hidden');
 
-			$('.' + $this.attr('data-commentary-type'), $commentariesTagsSpan ).removeClass('hidden');
+			$('.' + $this.attr('data-commentary-type'), $commentariesTagsSpan).removeClass('hidden');
 
-			if(commentaryCookie.indexOf(commentaryType) == -1)
+			if (commentaryCookie.indexOf(commentaryType) == -1)
 				commentaryCookie.push(commentaryType);
 
-		}else{
+		} else {
 			// TODO: Animation doesn't appear the first time
-			$commentariesChange.each(function(){
+			$commentariesChange.each(function () {
 				var $commentaryChange = $(this);
 
-				$commentaryChange.css('height',$commentaryChange.height());
+				$commentaryChange.css('height', $commentaryChange.height());
 				$commentaryChange.addClass('hidden');
 			})
 
-			$('.' + $this.attr('data-commentary-type'), $commentariesTagsSpan ).addClass('hidden');
+			$('.' + $this.attr('data-commentary-type'), $commentariesTagsSpan).addClass('hidden');
 
 			commentaryCookie.splice(commentaryCookie.indexOf(commentaryType), 1);
 
@@ -892,29 +893,30 @@ $(document).ready(function(){
 		$commentariesActiveSpan.text($('input:checked', $optionsCommentaries).length);
 
 		// Cookies
-		document.cookie = 'cndceCommentaries=' + commentaryCookie.toString();
-		
+		// document.cookie = 'cndceCommentaries=' + commentaryCookie.toString();
+		window.localStorage.setItem('cndceCommentaries', commentaryCookie.toString());
+
 		// console.log('change triggered', commentary);
 
 	})
 
-	$('.ok', $optionsContainer).click(function(e){
+	$('.ok', $optionsContainer).click(function (e) {
 		$cndceContainer.removeClass('options-shown');
 
 	})
 
 
 	// Section Resize Events
-	$cndceContainer.on('mousemove touchmove', function(e){
-		if(!$cndceContainer.hasClass('resizing'))
+	$cndceContainer.on('mousemove touchmove', function (e) {
+		if (!$cndceContainer.hasClass('resizing'))
 			return;
 
 
 		var pageX, pageY;
-		if(e.touches == undefined){
+		if (e.touches == undefined) {
 			pageX = e.pageX;
 			pageY = e.pageY;
-		}else{
+		} else {
 			pageX = e.touches[0].pageX;
 			pageY = e.touches[0].pageY;
 		}
@@ -922,10 +924,10 @@ $(document).ready(function(){
 
 		var deltaX = (mouseX - pageX) / 1.5;
 		var deltaY = -(mouseY - pageY) / 2;
-		
 
 
-		if($cndceContainer.attr('data-resize') == 'x'){
+
+		if ($cndceContainer.attr('data-resize') == 'x') {
 			var targetWidth = $sectionResizeTarget.width();
 
 			$sectionResizeTarget.css({
@@ -936,7 +938,7 @@ $(document).ready(function(){
 			resizeVideoX();
 
 			// Reverse if not within minimum bounds
-			if(!isSizeWithinMinimumsX()){
+			if (!isSizeWithinMinimumsX()) {
 				$sectionResizeTarget.css({
 					'max-width': targetWidth + 'px',
 					'min-width': targetWidth + 'px'
@@ -944,14 +946,14 @@ $(document).ready(function(){
 
 				resizeVideoX();
 			}
-		}else if($cndceContainer.attr('data-resize') == 'y'){
+		} else if ($cndceContainer.attr('data-resize') == 'y') {
 
 			// Smart Relayout
-			if($cndceContainer.hasClass('cndce-relayout')){
-				$sectionResizeTarget = $videoSection;	
+			if ($cndceContainer.hasClass('cndce-relayout')) {
+				$sectionResizeTarget = $videoSection;
 
 				deltaY *= -1;
-			}else{
+			} else {
 				$sectionResizeTarget = $iframeSection;
 			}
 
@@ -968,7 +970,7 @@ $(document).ready(function(){
 
 
 			// Reverse if not within minimum bounds
-			if(!isSizeWithinMinimumsY()){
+			if (!isSizeWithinMinimumsY()) {
 				$sectionResizeTarget.css({
 					'max-height': targetHeight + 'px',
 					'min-height': targetHeight + 'px'
@@ -977,7 +979,7 @@ $(document).ready(function(){
 				resizeVideoY();
 			}
 
-			
+
 		}
 
 
@@ -985,7 +987,7 @@ $(document).ready(function(){
 		saveSectionSizesToCookie();
 
 
-		
+
 
 
 		e.preventDefault();
@@ -994,10 +996,10 @@ $(document).ready(function(){
 
 
 	// Smart Relayout
-	$cndceContainer.on('mousemove touchmove', function(e){
-		
+	$cndceContainer.on('mousemove touchmove', function (e) {
 
-		if(!$cndceContainer.hasClass('resizing'))
+
+		if (!$cndceContainer.hasClass('resizing'))
 			return;
 
 
@@ -1006,7 +1008,7 @@ $(document).ready(function(){
 
 
 
-	$sectionResizeDiv.on('mousedown touchstart',function(e){
+	$sectionResizeDiv.on('mousedown touchstart', function (e) {
 		var $this = $(this);
 
 		$sectionResizeTarget = $this.parent();
@@ -1016,34 +1018,34 @@ $(document).ready(function(){
 
 	})
 
-	$cndceContainer.on('mouseup touchend',function(e){
+	$cndceContainer.on('mouseup touchend', function (e) {
 		$cndceContainer.removeClass('resizing');
 		$cndceContainer.attr('data-resize', '');
 		$sectionResizeTarget = undefined;
 	})
 
 
-	$body.on('mouseleave', function(){
-		if( $cndceContainer.hasClass('resizing') ){
+	$body.on('mouseleave', function () {
+		if ($cndceContainer.hasClass('resizing')) {
 			$cndceContainer.trigger('mouseup');
 		}
 	})
 
 
 	// Window Resize Events
-	$(window).on('resize', function(){
+	$(window).on('resize', function () {
 
 
 		doSmartRelayout();
 
 
-		
+
 
 		// Keep Video Aspect Ratio
-		if(isLayoutRelayout()){
+		if (isLayoutRelayout()) {
 
 
-			if(!isCommentaryIframeWithinMinHeight()){
+			if (!isCommentaryIframeWithinMinHeight()) {
 				$commentariesSection.css({
 					'max-height': cndceSettings.minSizes.commentIframe.height + 'px'
 				});
@@ -1070,8 +1072,8 @@ $(document).ready(function(){
 			}
 
 		}
-		else if(!isLayoutMobile()){
-			
+		else if (!isLayoutMobile()) {
+
 
 			// Minimum Sizes
 			$commentariesSection.css({
@@ -1096,7 +1098,7 @@ $(document).ready(function(){
 
 
 			// Check minimum sizes
-			if(!isCommentaryIframeWithinMinWidth()){
+			if (!isCommentaryIframeWithinMinWidth()) {
 				$commentariesSection.css({
 					'max-width': cndceSettings.minSizes.commentIframe.width + 'px'
 				});
@@ -1123,7 +1125,7 @@ $(document).ready(function(){
 
 
 
-			if(!isBrowserIframeWithinMinHeight()){
+			if (!isBrowserIframeWithinMinHeight()) {
 				$iframeSection.css({
 					'max-height': cndceSettings.minSizes.browserIframe.height + 'px'
 				})
@@ -1148,12 +1150,12 @@ $(document).ready(function(){
 			// resizeVideoY();
 
 
-			
+
 
 
 		}
 
-		else{
+		else {
 			$videoSection.css({
 				'min-width': '',
 				'max-width': '',
@@ -1168,7 +1170,7 @@ $(document).ready(function(){
 			})
 
 
-			if(isLayoutPortrait()){
+			if (isLayoutPortrait()) {
 				resizeVideoPortrait();
 			}
 
@@ -1190,15 +1192,15 @@ $(document).ready(function(){
 
 	// Mouse Position Events
 
-	$cndceContainer.bind('touchmove mousemove',function(e){
-		if(e.touches == undefined){
+	$cndceContainer.bind('touchmove mousemove', function (e) {
+		if (e.touches == undefined) {
 			mouseX = e.pageX;
 			mouseY = e.pageY;
-		}else{
+		} else {
 			mouseX = e.touches[0].pageX;
 			mouseY = e.touches[0].pageY;
 		}
-		
+
 	})
 
 
@@ -1206,21 +1208,20 @@ $(document).ready(function(){
 
 
 	// Commentaries Iframe Load Event
-	$commentariesIframe.on('load', function(){
-
-		if(cndceSettings == undefined)
+	$commentariesIframe.on('load', function () {
+		if (cndceSettings == undefined)
 			return;
 
 
 
 
-		if(!$cndceContainer.hasClass('cndce-commentary-loaded')){
+		if (!$cndceContainer.hasClass('cndce-commentary-loaded')) {
 
 			$cndceContainer.addClass('cndce-commentary-loaded');
 
 			$commentariesHtml = $($commentariesIframe[0].contentWindow.document);
 
-		}else{
+		} else {
 			$newCommentariesHtml = $($commentariesIframe[0].contentWindow.document);
 
 			$('body', $newCommentariesHtml).html($('body', $commentariesHtml).children());
@@ -1233,7 +1234,7 @@ $(document).ready(function(){
 
 		$commentaries = $('commentary', $commentariesHtml);
 
-		$commentaries.each(function(e){
+		$commentaries.each(function (e) {
 			initCommentary($(this));
 		})
 
@@ -1253,37 +1254,39 @@ $(document).ready(function(){
 
 
 		// Commentary Events
-		$commentariesHtml.on('click', 'a', function(e){
+		$commentariesHtml.on('click', 'a', function (e) {
 			var $this = $(this);
 
 			// href
-			if($this.attr('href') != undefined){
-				if($this.attr('target') == undefined)
+			if ($this.attr('href') != undefined) {
+				if ($this.attr('target') == undefined)
 					$this.attr('target', 'tpo');
 
-				if($this.attr('target') == 'tpo'){
-					if($this.attr('iframe-preview') == 'true'){
+				if ($this.attr('target') == 'tpo') {
+					if ($this.attr('iframe-preview') == 'true') {
 						setBrowserPage($this.attr('href'), $this.attr('iframe-preview'), true);
 						e.preventDefault();
-					}else
+					} else
 						setBrowserPage($this.attr('href'), $this.attr('iframe-preview'), false);
 
 
 					// If on mobile, open on a new tab as well
-					if(isLayoutMobile()){
+					if (isLayoutMobile()) {
 						window.open($this.attr('href'));
 					}
 				}
-					
+
 			}
 
 			// tref
-			if($this.attr('tref') != undefined){
+			if ($this.attr('tref') != undefined) {
 				var timeSeconds = getTimeStringToSeconds($this.attr('tref'));
-				if(timeSeconds === false)
+				// console.log('original value===>', timeSeconds);
+				// console.log('value=====>', getTimeStringToSeconds($this.data("value")));
+				if (timeSeconds === false)
 					timeSeconds = $this.attr('tref');
-			//AW Added +1 to following as temp fix to iOS issue
-				timeSeconds++;
+
+
 				playerSeekTo(timeSeconds, true);
 			}
 
@@ -1293,13 +1296,13 @@ $(document).ready(function(){
 
 
 		// Open Options Box
-		$commentariesHtml.on('click', '.cndce-open-options', function(e){
+		$commentariesHtml.on('click', '.cndce-open-options', function (e) {
 			$iframeBrowserOptionsButton.click();
 		})
 
 
 		// Commentaries Scroll Event
-		$commentariesHtml.add($commentariesScrollContainer).scroll(function(e){
+		$commentariesHtml.add($commentariesScrollContainer).scroll(function (e) {
 			document.cookie = "cndceCommentariesScroll=" + $(this).scrollTop();
 			document.cookie = "cndceCommentariesScrollHeight=" + $(this)[0].scrollHeight;
 		})
@@ -1310,8 +1313,8 @@ $(document).ready(function(){
 
 
 	// End Event
-	$cndceContainer.click(function(){
-		if($cndceContainer.hasClass('options-shown')){
+	$cndceContainer.click(function () {
+		if ($cndceContainer.hasClass('options-shown')) {
 			$('.ok', $optionsContainer).trigger('click');
 		}
 	})
@@ -1321,7 +1324,7 @@ $(document).ready(function(){
 	loadSectionSizesFromCookie();
 	initGetParameters();
 
-	if(getParamConfig != undefined && getParamConfig != ''){
+	if (getParamConfig != undefined && getParamConfig != '') {
 		SETTINGS_URL = getParamConfig;
 	}
 
@@ -1329,24 +1332,25 @@ $(document).ready(function(){
 	$.ajax({
 		url: SETTINGS_URL,
 		dataType: 'json',
-		success: function(settings){
+		success: function (settings) {
 			console.log(settings);
 			cndceSettings = settings;
 
 			window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-			
+
 			loadYoutubeIframeAPI();
 
 			$body.trigger('resize');
 
 			// Update Automatically Session
-			var updateAutomatically = getCookie('cndceUpdateAutomatically');
-			$iframeUpdateAutomatically.prop('checked', updateAutomatically == 'true' || updateAutomatically == '' );
+			// var updateAutomatically = getCookie('cndceUpdateAutomatically');
+			var updateAutomatically = window.localStorage.getItem('cndceUpdateAutomatically');
+			$iframeUpdateAutomatically.prop('checked', updateAutomatically == 'true' || updateAutomatically == '');
 
 		}
 	})
 
 
-	
+
 
 })
