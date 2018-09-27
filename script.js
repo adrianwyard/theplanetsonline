@@ -50,6 +50,7 @@ $(document).ready(function () {
 	var $iframeBrowserTab = $('.cndce-browser-tab.active', $iframeSection)
 	var $iframeUpdateAutomatically = $('.cndce-browser-option.cndce-update input', $iframeSection);
 	var $iframeBrowserOptionsButton = $('.cndce-browser-option.cndce-icon', $iframeSection);
+	var $iframeHomeButton = $('.cndce-browser-icon', $iframeSection);
 
 	var $iframe = $('iframe', $iframeSection);
 
@@ -811,6 +812,9 @@ $(document).ready(function () {
 		e.stopPropagation();
 	})
 
+	$iframeHomeButton.click(function (e) {
+		$iframeBrowserAddressInput.val('');
+	})
 
 	$iframe.on('load', function (e) {
 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
