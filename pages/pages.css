@@ -1,15 +1,15 @@
 body {
 	font-family: 'Lato', sans-serif;
-	font-size: 10pt
+	font-size: 11pt
 }
 
 h2 {
-	margin-top: 5px;
+	margin-top: 6px;
 	margin-bottom: 4px
 }
 
 h3 {
-	margin-top: 5px;
+	margin-top: 6px;
 	margin-bottom: 4px
 }
 
@@ -40,4 +40,63 @@ a.invis:hover {
 	color: black;
 	cursor: text;
 	text-decoration: none
+}
+
+table {
+	padding: 1px;
+	margin: 0px
+}
+
+td {
+	font-family: 'Lato', sans-serif;
+	font-size: 11pt
+}
+
+tr.com0 {
+	font-weight: bold;
+	background:#E4E4E4
+}
+
+tr.com1 {
+	background:#DDDDDD;
+}
+
+tr.com2 {
+	background:#EFEFE0
+}
+
+tr.com3 {
+	background:#EFEFE0
+}
+
+tr.com4 {
+	background:#EFEFE0
+}
+
+tr.com5 {
+	background:#EFEFE0
+}
+
+tr.com6 {
+	background:#DDDDDD
+}
+
+tr.com7 {
+	background:#DDDDDD
+}
+
+tr.com8 {
+	background:#EFE6E0
+}
+
+tr.com9 {
+	background:#EFE6E0
+}
+
+tr.com10 {
+	background:#DDDEFF;
+}
+
+tr.com11 {
+	background:#E7FFFF
 }
