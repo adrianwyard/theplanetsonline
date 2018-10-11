@@ -8,8 +8,12 @@ h2 {
 	margin-bottom: 4px
 }
 
+h2.yt-embed {
+	margin-bottom: 10px
+}
+
 h3 {
-	margin-top: 6px;
+	margin-top: 9px;
 	margin-bottom: 4px
 }
 
@@ -47,7 +51,13 @@ table {
 	margin: 0px
 }
 
-td {
+td.keywordcelltitle {
+	font-family: 'Lato', sans-serif;
+	font-size: 11pt;
+	text-decoration: underline
+}
+
+td.keywordcell {
 	font-family: 'Lato', sans-serif;
 	font-size: 11pt
 }
