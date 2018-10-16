@@ -393,6 +393,11 @@ $(document).ready(function () {
 
 		var commentaryUrl = cndceSettings.commentariesBaseUrl + commentary.url;
 
+		// Check for cross domain URLS
+		if(commentary.url.indexOf('http://') != -1 || commentary.url.indexOf('https://') != -1){
+			commentaryUrl = commentary.url;
+		}
+
 		commentary.isLoaded = true;
 
 		if (commentary.$inputBox != undefined)
@@ -809,13 +814,14 @@ $(document).ready(function () {
 	})
 
 	$iframeBrowserOptionsButton.click(function (e) {
+		activePlayer.pauseVideo();
 		$cndceContainer.addClass('options-shown');
 		e.stopPropagation();
 	})
 
 
 	$iframe.on('load', function (e) {
-		$('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
+		// $('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
 
 	})
 
