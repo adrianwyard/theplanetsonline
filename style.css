@@ -813,7 +813,8 @@ body{
 }
 
 #cndce-container #cndce-browser-container iframe{
-	width: 100%;
+	width: 10px !important;
+	min-width: 100%;
 	min-height: 100%;
 	overflow: visible;
 	border: none;
