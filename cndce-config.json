@@ -42,62 +42,62 @@
 		{
 			"url": "/com-music.html",
 			"name": "About the Music",
-			"description": "About the music - the composer's background and his inspiration for The Planets",
+			"description": "the composer's background and his inspiration for The Planets",
 			"type": "music"
 		},
 		{
 			"url": "/com-science.html",
-			"name": "About the Planets",
-			"description": "About the (real) Planets - an introduction to the planets in our solar system",
+			"name": "About the(real) Planets",
+			"description": "an introduction to the planets in our solar system",
 			"type": "science"
 		},
 		{
 			"url": "/com-sources.html",
 			"name": "Science Sources",
-			"description": "Science Sources - links to NASA, ESA, etc. showing the original images",
+			"description": "links to NASA, ESA, etc. showing the original images",
 			"type": "science-sources"
 		},
 		{
 			"url": "/com-tech.html",
-			"name": "Space Missions",
-			"description": "Space Missions & Projects - about the spacecraft, telescopes, landers & rovers",
+			"name": "Space Missions & Project",
+			"description": "about the spacecraft, telescopes, landers & rovers",
 			"type": "tech"
 		},
 		{
 			"url": "/com-people.html",
-			"name": "Scientists",
-			"description": "Meet the Scientists - the astronomers and technicians who made the images",
+			"name": "Meet the Scientists",
+			"description": "the astronomers and technicians who made the images",
 			"type": "scientists"
 		},
 		{
 			"url": "/com-comp.html",
 			"name": "Music Composition",
-			"description": "Music Composition - learn about Holst's techniques and innovations",
+			"description": "learn about Holst's techniques and innovations",
 			"type": "musiccomp"
 		},
 		{
 			"url": "/com-perftech.html",
-			"name": "Performance Tech",
-			"description": "Performance Technology - how the visuals were performed live",
+			"name": "Performance Technology",
+			"description": "how the visuals were performed live",
 			"type": "perftech"
 		},
 		{
 			"url": "/com-visuals.html",
-			"name": "Visual story-telling",
-			"description": "Visual Story-telling - how the visuals were created and then choreographed",
+			"name": "Visual Story-telling",
+			"description": "how the visuals were created and then choreographed",
 			"type": "visuals"
 		},
 		{
 			"url": "/com-trivia.html",
-			"name": "Trivia",
-			"description": "Trivia and ‘What’s wrong with this picture?’ - see where 'artistic' images replaced real ones",
+			"name": "Trivia and ‘What’s wrong with this picture?",
+			"description": "see where 'artistic' images replaced real ones",
 			"type": "trivia"
 		},
 					
 		{
 			"url": "/com-kids.html",
 			"name": "Just for Kids",
-			"description": "Just for Kids",
+			"description": "",
 			"type": "kids"
 		}
 

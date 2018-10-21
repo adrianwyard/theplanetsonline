@@ -18,6 +18,9 @@
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
 
+	<!-- Templates -->
+	<link rel="stylesheet" type="text/css" href="./templates/welcome-home.css">
+
 	<!-- Self -->
 	<link rel="stylesheet" type="text/css" href="./style.css">
 
@@ -33,7 +36,7 @@
 					<div class="cndce-browser-top-button"></div>
 					<div class="cndce-browser-top-button"></div>
 				</div>
-				Options
+				The Planets Online
 			</div>
 
 			<div class="cndce-options-scrollable">
@@ -58,7 +61,7 @@
 							<div class="cndce-options-commentary template">
 								<label>
 									<input type="checkbox">
-									<span class="cndce-options-commentary-name"></span>
+									<span class="cndce-options-commentary-name"></span><span class="cndce-options-commentary-dash"> - </span><span class="cndce-options-commentary-description"></span>
 								</label>
 							</div>
 							
@@ -107,7 +110,10 @@
 
 			<div id="cndce-browser-container">
 				<div class="cndce-browser-top">
-					<img class="cndce-browser-icon" src="./img/globe-1.svg">
+					<a href="./pages/welcome.html" target="tpo">
+						<img class="cndce-browser-icon" src="./img/home-1.svg">
+						
+					</a>
 					<div class="cndce-browser-address"><input type="text" disabled></div>
 
 
@@ -148,7 +154,10 @@
 					</div>
 				</div>
 				<div id="cndce-browser-iframe-container" class="cndce-iframe-scroll-container">
-					<iframe name="tpo" src="./pages/welcome.html" scrolling="no"></iframe>
+					<div id="cndce-browser-options">
+						<?php include('./templates/welcome-home.php') ?>
+					</div>
+					<iframe id="cndce-browser-iframe" name="tpo" src="./pages/welcome.html"></iframe>
 					
 				</div>
 			</div>

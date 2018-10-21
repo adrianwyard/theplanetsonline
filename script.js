@@ -21,6 +21,8 @@ $(document).ready(function () {
 	var $currentCommentary;
 
 
+
+
 	var $body = $('body');
 	var $cndceContainer = $('#cndce-container');
 
@@ -51,7 +53,19 @@ $(document).ready(function () {
 	var $iframeUpdateAutomatically = $('.cndce-browser-option.cndce-update input', $iframeSection);
 	var $iframeBrowserOptionsButton = $('.cndce-browser-option.cndce-icon', $iframeSection);
 
-	var $iframe = $('iframe', $iframeSection);
+	var $iframe = $('#cndce-browser-iframe', $iframeSection);
+
+
+	var $iframeBrowserOptions = $('#cndce-browser-options', $iframeSection);
+
+	var $iframeBrowserOptionsVideos = $('.cndce-options-videos', $iframeBrowserOptions);
+	var $iframeBrowserOptionsCommentaries = $('.cndce-options-commentaries tbody', $iframeBrowserOptions);
+	var $iframeBrowserOptionsVideoTemplate = $('.cndce-options-video.template', $iframeBrowserOptionsVideos).clone(true);
+	var $iframeBrowserOptionsCommentaryTemplate = $('.cndce-options-commentary.template', $iframeBrowserOptionsCommentaries).clone(true);
+
+
+	$iframeBrowserOptionsVideoTemplate.removeClass('template');
+	$iframeBrowserOptionsCommentaryTemplate.removeClass('template');
 
 
 
@@ -274,7 +288,7 @@ $(document).ready(function () {
 			});
 
 
-			// Add video to options
+			// Add video to options - Options Window
 			var $videoOption = $optionsVideoTemplate.clone(true);
 			$('.cndce-options-video-name', $videoOption).text(cndceSettings.videos[i].name);
 
@@ -283,9 +297,18 @@ $(document).ready(function () {
 			$optionsVideos.append($videoOption);
 
 
+			// Add video to options - Options Browser Window
+			var $iframeBrowserVideoOption = $iframeBrowserOptionsVideoTemplate.clone(true);
+			$('.cndce-options-video-name', $iframeBrowserVideoOption).text(cndceSettings.videos[i].name);
+
+			$('input', $iframeBrowserVideoOption).data('ivideo', i);
+
+			$iframeBrowserOptionsVideos.append($iframeBrowserVideoOption);
+
+
 
 			cndceSettings.videos[i].player = videoPlayer;
-			cndceSettings.videos[i].$inputBox = $videoOption;
+			cndceSettings.videos[i].$inputBox = $videoOption.add($iframeBrowserVideoOption);
 
 		}
 	}
@@ -317,9 +340,21 @@ $(document).ready(function () {
 				$commentariesTagsSpan.append($tag)
 
 
-				// Add commentary to option
+
+				// Add commentary to option - Options Window
 				var $commentaryOption = $optionsCommentaryTemplate.clone(true);
-				$('.cndce-options-commentary-name', $commentaryOption).text(cndceSettings.commentaries[i].description);
+				$('.cndce-options-commentary-name', $commentaryOption).text(cndceSettings.commentaries[i].name);
+				$('.cndce-options-commentary-description', $commentaryOption).text(cndceSettings.commentaries[i].description);
+
+
+				if(cndceSettings.commentaries[i].description == ''){
+					$('.cndce-options-commentary-dash', $commentaryOption).css({
+						display: 'none'
+					})
+
+				}
+
+
 
 				var $inputCommentaryOption = $('input', $commentaryOption);
 
@@ -328,10 +363,32 @@ $(document).ready(function () {
 
 
 				$optionsCommentaries.append($commentaryOption);
-				console.log('option storage=======>', $optionsCommentaries);
 
 
-				cndceSettings.commentaries[i].$inputBox = $commentaryOption;
+				// Add commentary to option - Options Browser Window
+				var $iframeBrowserCommentaryOption = $iframeBrowserOptionsCommentaryTemplate.clone(true);
+				$('.cndce-options-commentary-name', $iframeBrowserCommentaryOption).text(cndceSettings.commentaries[i].name);
+				$('.cndce-options-commentary-description', $iframeBrowserCommentaryOption).text(cndceSettings.commentaries[i].description);
+
+				var $iframeBrowserInputCommentaryOption = $('input', $iframeBrowserCommentaryOption);
+
+				$iframeBrowserInputCommentaryOption.data('icommentary', i);
+				$iframeBrowserInputCommentaryOption.attr('data-commentary-type', cndceSettings.commentaries[i].type);
+
+
+				$iframeBrowserOptionsCommentaries.append($iframeBrowserCommentaryOption);
+
+
+
+				cndceSettings.commentaries[i].$inputBox = $commentaryOption.add($iframeBrowserCommentaryOption);
+
+
+
+
+
+				// console.log('option storage=======>', $optionsCommentaries);
+
+
 
 				// Load Cookie and Get Parameter
 				if (getParamCommentaries.indexOf(cndceSettings.commentaries[i].type) != -1
@@ -551,6 +608,7 @@ $(document).ready(function () {
 
 		// Make sure radio button is selected
 		$('input', video.$inputBox).prop('checked', true);
+
 
 
 		$('.active', $videosContainer).removeClass('active');
@@ -814,8 +872,10 @@ $(document).ready(function () {
 	})
 
 	$iframeBrowserOptionsButton.click(function (e) {
-		activePlayer.pauseVideo();
-		$cndceContainer.addClass('options-shown');
+		if(isLayoutMobile())
+			activePlayer.pauseVideo();
+
+		$cndceContainer.toggleClass('options-shown');
 		e.stopPropagation();
 	})
 
@@ -838,7 +898,7 @@ $(document).ready(function () {
 		e.stopPropagation();
 	})
 
-	$optionsVideos.on('change', 'input', function () {
+	$optionsVideos.add($iframeBrowserOptionsVideos).on('change', 'input', function () {
 		var $this = $(this);
 
 		var iVideo = $this.data('ivideo');
@@ -849,7 +909,7 @@ $(document).ready(function () {
 		document.cookie = 'cndceVideo=' + iVideo;
 	})
 
-	$optionsCommentaries.on('change', 'input', function () {
+	$optionsCommentaries.add($iframeBrowserOptionsCommentaries).on('change', 'input', function () {
 
 		var $this = $(this);
 
@@ -1319,12 +1379,17 @@ $(document).ready(function () {
 
 
 
-
 	// End Event
 	$cndceContainer.click(function () {
-		if ($cndceContainer.hasClass('options-shown')) {
+		if (isLayoutMobile() && $cndceContainer.hasClass('options-shown')) {
 			$('.ok', $optionsContainer).trigger('click');
 		}
+	})
+
+
+	// Link Event
+	$cndceContainer.on('click', 'a[target="tpo"]', function(){
+		$cndceContainer.removeClass('options-shown');
 	})
 
 

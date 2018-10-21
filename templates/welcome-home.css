@@ -1,0 +1,118 @@
+#cndce-browser-options body {
+	font-family: 'Lato', sans-serif;
+	font-size: 11pt
+}
+
+#cndce-browser-options h2 {
+	margin-top: 6px;
+	margin-bottom: 4px
+}
+
+#cndce-browser-options h2.yt-embed {
+	margin-bottom: 10px
+}
+
+#cndce-browser-options h3 {
+	margin-top: 9px;
+	margin-bottom: 4px
+}
+
+#cndce-browser-options p {
+	margin-top: 5px;
+	margin-bottom: 5px
+}
+
+#cndce-browser-options a:link {
+	cursor: pointer;
+	color:#777750;
+	text-decoration: none
+}
+
+#cndce-browser-options a:hover {
+	cursor: pointer;
+	color:#777750;
+	text-decoration: underline
+}
+
+#cndce-browser-options a:visited {
+	cursor: pointer;
+	color:#777750;
+	text-decoration: none
+}
+
+#cndce-browser-options a.invis:hover {
+	color: black;
+	cursor: text;
+	text-decoration: none
+}
+
+#cndce-browser-options table {
+	padding: 1px;
+	margin: 0px
+}
+
+
+#cndce-browser-options .cndce-options-commentary th{
+	text-align: left;
+}
+
+#cndce-browser-options td.keywordcelltitle {
+	font-family: 'Lato', sans-serif;
+	font-size: 11pt;
+	text-decoration: underline
+}
+
+#cndce-browser-options td.keywordcell {
+	font-family: 'Lato', sans-serif;
+	font-size: 11pt
+}
+
+#cndce-browser-options tr.com0 {
+	font-weight: bold;
+	background:#E4E4E4
+}
+
+#cndce-browser-options tr.com1 {
+	background:#DDDDDD;
+}
+
+#cndce-browser-options tr.com2 {
+	background:#EFEFE0
+}
+
+#cndce-browser-options tr.com3 {
+	background:#EFEFE0
+}
+
+#cndce-browser-options tr.com4 {
+	background:#EFEFE0
+}
+
+#cndce-browser-options tr.com5 {
+	background:#EFEFE0
+}
+
+#cndce-browser-options tr.com6 {
+	background:#DDDDDD
+}
+
+#cndce-browser-options tr.com7 {
+	background:#DDDDDD
+}
+
+#cndce-browser-options tr.com8 {
+	background:#EFE6E0
+}
+
+#cndce-browser-options tr.com9 {
+	background:#EFE6E0
+}
+
+#cndce-browser-options tr.com10 {
+	background:#DDDEFF;
+}
+
+#cndce-browser-options tr.com11 {
+	background:#E7FFFF
+}
+
