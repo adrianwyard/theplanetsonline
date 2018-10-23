@@ -28,7 +28,7 @@
 	<!-- <p>[VIDEO LIST ENUMERATED HERE]</p> -->
 	<div class="cndce-options-video template">
 		<label>
-			<input type="radio" name="cndce-browser-option-video">
+			<input type="radio" name="cndce-option-video">
 			<span class="cndce-options-video-name"></span>
 		</label>
 	</div>

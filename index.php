@@ -41,33 +41,7 @@
 
 			<div class="cndce-options-scrollable">
 				<div class="cndce-options-body">
-					<div class="cndce-options-videos-container">
-						<b>Videos</b><br>
-						<div class="cndce-options-videos">
-							<div class="cndce-options-video template">
-								<label>
-									<input type="radio" name="cndce-option-video">
-									<span class="cndce-options-video-name"></span>
-								</label>
-							</div>
-						</div>
-					</div>
-
-					<hr>
-
-					<div class="cndce-options-commentaries-container">
-						<b>Comment Channels</b><br>
-						<div class="cndce-options-commentaries">
-							<div class="cndce-options-commentary template">
-								<label>
-									<input type="checkbox">
-									<span class="cndce-options-commentary-name"></span><span class="cndce-options-commentary-dash"> - </span><span class="cndce-options-commentary-description"></span>
-								</label>
-							</div>
-							
-						</div>
-					</div>
-					<br>					
+					<?php include('./templates/welcome-home.php') ?>					
 				</div>
 
 			</div>

@@ -299,9 +299,13 @@ $(document).ready(function () {
 
 			// Add video to options - Options Browser Window
 			var $iframeBrowserVideoOption = $iframeBrowserOptionsVideoTemplate.clone(true);
+			var $iframeBrowserVideoInput = $('input', $iframeBrowserVideoOption);
+
 			$('.cndce-options-video-name', $iframeBrowserVideoOption).text(cndceSettings.videos[i].name);
 
-			$('input', $iframeBrowserVideoOption).data('ivideo', i);
+			$iframeBrowserVideoInput.data('ivideo', i);
+			$iframeBrowserVideoInput.attr('name', 'cndce-browser-option-video');
+
 
 			$iframeBrowserOptionsVideos.append($iframeBrowserVideoOption);
 
