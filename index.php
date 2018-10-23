@@ -84,10 +84,8 @@
 
 			<div id="cndce-browser-container">
 				<div class="cndce-browser-top">
-					<a href="./pages/welcome.html" target="tpo">
-						<img class="cndce-browser-icon" src="./img/home-1.svg">
+					<img class="cndce-browser-icon" src="./img/home-1.svg">
 						
-					</a>
 					<div class="cndce-browser-address"><input type="text" disabled></div>
 
 
