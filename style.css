@@ -802,7 +802,7 @@ body{
 }
 
 #cndce-container.options-shown .cndce-browser-option.cndce-icon::before{
-	content: '';
+	/*content: '';*/
 	position: absolute;
 	left: -13px;
 	top: -6px;
@@ -821,6 +821,10 @@ body{
 	-o-transition: background 0.3s ease-in-out;
 	-moz-transition: background 0.3s ease-in-out;
 	transition: background 0.3s ease-in-out;
+}
+
+#cndce-container.options-shown .cndce-browser-option.cndce-icon{
+	font-weight: bold;
 }
 
 #cndce-container.options-shown .cndce-browser-option.cndce-icon::before{
