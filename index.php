@@ -131,7 +131,7 @@
 					<div id="cndce-browser-options">
 						<?php include('./templates/welcome-home.php') ?>
 					</div>
-					<iframe id="cndce-browser-iframe" name="tpo" src="./pages/welcome.html"></iframe>
+					<iframe id="cndce-browser-iframe" name="tpo" src=""></iframe>
 					
 				</div>
 			</div>

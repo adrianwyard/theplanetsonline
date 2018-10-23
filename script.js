@@ -568,8 +568,15 @@ $(document).ready(function () {
 
 
 		if ($commentary.attr('iframe') != undefined) {
-			if ($iframeUpdateAutomatically.prop('checked'))
+			if ($iframeUpdateAutomatically.prop('checked')){
 				setBrowserPage($commentary.attr('iframe'), $commentary.attr('iframe-preview'), true);
+
+				// Remove options page
+				if(!isLayoutMobile()){
+					console.log('test remove');
+					$cndceContainer.removeClass('options-shown');
+				}
+			}
 		}
 
 
@@ -826,6 +833,8 @@ $(document).ready(function () {
 
 			$currentCommentary = $commentary;
 			setCommentaryOnProgress($commentary);
+
+
 		}
 
 
@@ -876,7 +885,7 @@ $(document).ready(function () {
 	})
 
 	$iframeBrowserOptionsButton.click(function (e) {
-		if(isLayoutMobile())
+		// if(isLayoutMobile())
 			activePlayer.pauseVideo();
 
 		$cndceContainer.toggleClass('options-shown');
@@ -1416,6 +1425,12 @@ $(document).ready(function () {
 			window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
 			loadYoutubeIframeAPI();
+
+
+			// Show options window
+			if(!isLayoutMobile()){
+				$cndceContainer.addClass('options-shown');
+			}
 
 			$body.trigger('resize');
 
