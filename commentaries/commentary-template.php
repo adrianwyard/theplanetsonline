@@ -17,7 +17,7 @@
 		
 	</commentary>
 
-	<?php include($_GET['commentary_file']) ?>
+	<?php if(!empty($_GET['commentary_file'])) include($_GET['commentary_file']) ?>
 
 </body>
 </html>
