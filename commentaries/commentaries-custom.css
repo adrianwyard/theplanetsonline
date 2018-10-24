@@ -5,6 +5,10 @@
 	}
 	
 
+.cndce-open-options {
+    color: #777750;
+}
+
 .cndce-template[data-template="commentary"] p {
 	margin: 3px 3px 5px 10px
 }
