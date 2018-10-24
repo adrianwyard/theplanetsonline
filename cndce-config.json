@@ -42,57 +42,57 @@
 		{
 			"url": "/com-music.html",
 			"name": "About the Music",
-			"description": "the composer's background and his inspiration for The Planets",
+			"description": "The composer's background and his inspiration",
 			"type": "music",
 			"defaultEnabled": true
 		},
 		{
 			"url": "/com-science.html",
-			"name": "About the(real) Planets",
-			"description": "an introduction to the planets in our solar system",
+			"name": "About the Planets",
+			"description": "An introduction to the (real) planets in our solar system",
 			"type": "science",
 			"defaultEnabled": true
 		},
 		{
 			"url": "/com-sources.html",
 			"name": "Science Sources",
-			"description": "links to NASA, ESA, etc. showing the original images",
+			"description": "Links to NASA, ESA, etc. showing the original images",
 			"type": "science-sources"
 		},
 		{
 			"url": "/com-tech.html",
-			"name": "Space Missions & Project",
-			"description": "about the spacecraft, telescopes, landers & rovers",
+			"name": "Space Missions",
+			"description": "About the spacecraft, telescopes, landers & rovers",
 			"type": "tech"
 		},
 		{
 			"url": "/com-people.html",
 			"name": "Meet the Scientists",
-			"description": "the astronomers and technicians who made the images",
+			"description": "Hear from the astronomers and technicians who made the images",
 			"type": "scientists"
 		},
 		{
 			"url": "/com-comp.html",
 			"name": "Music Composition",
-			"description": "learn about Holst's techniques and innovations",
+			"description": "Learn about Holst's techniques and innovations",
 			"type": "musiccomp"
 		},
 		{
 			"url": "/com-perftech.html",
 			"name": "Performance Technology",
-			"description": "how the visuals were performed live",
+			"description": "How the visuals were performed live",
 			"type": "perftech"
 		},
 		{
 			"url": "/com-visuals.html",
 			"name": "Visual Story-telling",
-			"description": "how the visuals were created and then choreographed",
+			"description": "How the visuals were created and then choreographed",
 			"type": "visuals"
 		},
 		{
 			"url": "/com-trivia.html",
-			"name": "Trivia and ‘What’s wrong with this picture?",
-			"description": "see where 'artistic' images replaced real ones",
+			"name": "Trivia",
+			"description": "Fun facts. Also learn where 'artistic' images replaced real ones",
 			"type": "trivia"
 		},
 					
