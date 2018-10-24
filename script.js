@@ -435,9 +435,6 @@ $(document).ready(function () {
 						var commentaryScrollCookie = getCookie('cndceCommentariesScroll');
 
 
-						console.log(commentaryScrollCookie, $scrollable);
-						console.log($scrollable[0].scrollHeight);
-
 						$scrollable.scrollTop(commentaryScrollCookie);
 
 					})
@@ -754,6 +751,9 @@ $(document).ready(function () {
 		// Within Smart Relayout Bounds
 		if (isVideoWithinSmartRelayoutBounds()) {
 
+			var videoHeight = ($videoSection.width() / cndceSettings.videoAspectRatio.width) * cndceSettings.videoAspectRatio.height;
+
+
 			if (!$cndceContainer.hasClass('cndce-relayout')) {
 				$cndceContainer.addClass('cndce-relayout');
 
@@ -763,12 +763,13 @@ $(document).ready(function () {
 
 			}
 
-			var videoHeight = ($videoSection.width() / cndceSettings.videoAspectRatio.width) * cndceSettings.videoAspectRatio.height;
-
 
 			$videoInformation.css({
 				'min-width': $videoSection.css('min-width'),
-				'max-width': $videoSection.css('max-width')
+				'max-width': $videoSection.css('max-width'),
+				'-webkit-flex-basis': $videoSection.css('-webkit-flex-basis'),
+				'-ms-flex-preferred-size': $videoSection.css('-ms-flex-preferred-size'),
+				'flex-basis': $videoSection.css('flex-basis')
 			});
 
 
@@ -783,6 +784,9 @@ $(document).ready(function () {
 			})
 
 
+			console.log('within relayout');
+
+
 			// Not Within Smart Relayout Bounds
 		} else {
 			if ($cndceContainer.hasClass('cndce-relayout')) {
@@ -794,7 +798,10 @@ $(document).ready(function () {
 
 				$videoInformation.css({
 					'min-width': '',
-					'max-width': ''
+					'max-width': '',
+					'-webkit-flex-basis': '',
+					'-ms-flex-preferred-size': '',
+					'flex-basis': ''
 				});
 
 
@@ -904,7 +911,6 @@ $(document).ready(function () {
 	// Events
 
 	$iframeBrowserIconButton.click(function(e){
-		console.log('test home');
 		$cndceContainer.addClass('options-shown');
 		e.stopPropagation();
 	})
@@ -920,7 +926,6 @@ $(document).ready(function () {
 		// if(isLayoutMobile())
 			activePlayer.pauseVideo();
 
-		console.log('test option');
 		$cndceContainer.toggleClass('options-shown');
 		e.stopPropagation();
 	})
@@ -1007,8 +1012,6 @@ $(document).ready(function () {
 		// Cookies
 		// document.cookie = 'cndceCommentaries=' + commentaryCookie.toString();
 		window.localStorage.setItem('cndceCommentaries', commentaryCookie.toString());
-
-		// console.log('change triggered', commentary);
 
 	})
 
@@ -1153,6 +1156,7 @@ $(document).ready(function () {
 
 
 
+
 		// Keep Video Aspect Ratio
 		if (isLayoutRelayout()) {
 
@@ -1233,6 +1237,7 @@ $(document).ready(function () {
 
 				resizeVideoX();
 
+
 			}
 
 
@@ -1292,7 +1297,7 @@ $(document).ready(function () {
 
 
 		// Save section sizes
-		saveSectionSizesToCookie();
+		// saveSectionSizesToCookie();
 
 
 
@@ -1340,7 +1345,6 @@ $(document).ready(function () {
 
 			$commentariesHtml = $newCommentariesHtml;
 
-			// console.log($commentariesIframe[0].contentWindow.document);
 		}
 
 
