@@ -20,6 +20,8 @@
 
 	<!-- Templates -->
 	<link rel="stylesheet" type="text/css" href="./templates/welcome-home.css">
+	<link rel="stylesheet" type="text/css" href="./templates/commentary.css">
+	<link rel="stylesheet" type="text/css" href="./commentaries/commentaries-custom.css">
 
 	<!-- Self -->
 	<link rel="stylesheet" type="text/css" href="./style.css">
@@ -72,7 +74,8 @@
 
 
 				<div id="cndce-commentary-iframe-container" class="cndce-iframe-scroll-container">
-					<iframe id="cndce-commentary-iframe"></iframe>
+					<!-- <iframe id="cndce-commentary-iframe"></iframe> -->
+					<?php include('./templates/commentary.php') ?>
 										
 				</div>
 			</div>

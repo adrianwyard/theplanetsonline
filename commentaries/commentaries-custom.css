@@ -1,16 +1,15 @@
-
-#extsrc {
+.cndce-template[data-template="commentary"] #extsrc {
 	font-size: 10pt;
 	padding-left: 5px;
 	color: #999999
 	}
 	
 
-p {
+.cndce-template[data-template="commentary"] p {
 	margin: 3px 3px 5px 10px
 }
 
-h1 {
+.cndce-template[data-template="commentary"] h1 {
 	color: black;
 	font-size: 12pt;
 	background: #E4E4E4;
@@ -31,152 +30,152 @@ h1 {
 }
 */
 
-h1.com0 {
+.cndce-template[data-template="commentary"] h1.com0 {
 	font-weight: bold;
 	background:#E4E4E4
 }
 
-a.com0 {
+.cndce-template[data-template="commentary"] a.com0 {
 	cursor: pointer;
 	background:#E4E4E4;
 	padding-left: 3px;
 	padding-right: 3px
 }
 
-h1.com1 {
+.cndce-template[data-template="commentary"] h1.com1 {
 	background:#DDDDDD;
 }
 
-	a.music {
+	.cndce-template[data-template="commentary"] a.music {
 		cursor: pointer;
 		background:#DDDDDD;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com2 {
+.cndce-template[data-template="commentary"] h1.com2 {
 	background:#EFEFE0
 }
 
-	a.science {
+	.cndce-template[data-template="commentary"] a.science {
 		cursor: pointer;
 		background:#EFEFE0;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com3 {
+.cndce-template[data-template="commentary"] h1.com3 {
 	background:#EFEFE0
 }
 
-	a.science-sources {
+	.cndce-template[data-template="commentary"] a.science-sources {
 		cursor: pointer;
 		background:#EFEFE0;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com4 {
+.cndce-template[data-template="commentary"] h1.com4 {
 	background:#EFEFE0
 }
 
-	a.tech {
+	.cndce-template[data-template="commentary"] a.tech {
 		cursor: pointer;
 		background:#EFEFE0;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com5 {
+.cndce-template[data-template="commentary"] h1.com5 {
 	background:#EFEFE0
 }
 
-	a.scientists {
+	.cndce-template[data-template="commentary"] a.scientists {
 		cursor: pointer;
 		background:#EFEFE0;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com6 {
+.cndce-template[data-template="commentary"] h1.com6 {
 	background:#DDDDDD
 }
 
-	a.musiccomp {
+	.cndce-template[data-template="commentary"] a.musiccomp {
 		cursor: pointer;
 		background:#DDDDDD;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com7 {
+.cndce-template[data-template="commentary"] h1.com7 {
 	background:#DDDDDD
 }
 
-	a.musicperf {
+	.cndce-template[data-template="commentary"] a.musicperf {
 		cursor: pointer;
 		background:#DDDDDD;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com8 {
+.cndce-template[data-template="commentary"] h1.com8 {
 	background:#EFE6E0
 }
 
-	a.perftech {
+	.cndce-template[data-template="commentary"] a.perftech {
 		cursor: pointer;
 		background:#EFE6E0;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com9 {
+.cndce-template[data-template="commentary"] h1.com9 {
 	background:#EFE6E0
 }
 
-	a.visuals {
+	.cndce-template[data-template="commentary"] a.visuals {
 		cursor: pointer;
 		background:#EFE6E0;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com10 {
+.cndce-template[data-template="commentary"] h1.com10 {
 	background:#DDDEFF;
 }
 
-	a.trivia {
+	.cndce-template[data-template="commentary"] a.trivia {
 		cursor: pointer;
 		background:#DDDEFF;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-h1.com11 {
+.cndce-template[data-template="commentary"] h1.com11 {
 	background:#E7FFFF
 }
 
-	a.kids {
+	.cndce-template[data-template="commentary"] a.kids {
 		cursor: pointer;
 		background:#E7FFFF;
 		padding-left: 3px;
 		padding-right: 3px
 	}
 
-a.extsrc {
+.cndce-template[data-template="commentary"] a.extsrc {
 	cursor: pointer;
 	color: #FF0000
 	/* not used */
 }
 
-a.invis:hover {
+.cndce-template[data-template="commentary"] a.invis:hover {
 	color: black;
 	cursor: text;
 	text-decoration: none
 }
 
-h2 {
+.cndce-template[data-template="commentary"] h2 {
 	color: black;
 	font-size: 12pt;
 	font-weight: bold;
@@ -185,32 +184,32 @@ h2 {
 	margin-top: 2px
 }
 
-a:link {
+.cndce-template[data-template="commentary"] a:link {
 	cursor: pointer;
 	color:#777750;
 	text-decoration: none
 }
 
-a:hover {
+.cndce-template[data-template="commentary"] a:hover {
 	cursor: pointer;
 	color:#777750;
 	text-decoration: underline
 }
 
-a:visited {
+.cndce-template[data-template="commentary"] a:visited {
 	cursor: pointer;
 	color:#777750;
 	text-decoration: none
 }
 
-a[trefimg] {
+.cndce-template[data-template="commentary"] a[trefimg] {
 	width: 14px;
 	height: 12px;
 	vertical-align: baseline;
 }
 
 
-a[tref]{
+.cndce-template[data-template="commentary"] a[tref]{
 	color: #999999;
 	cursor: pointer;
 	font-size: 10pt;
@@ -218,7 +217,7 @@ a[tref]{
 	text-decoration: none;
 }
 
-a[tref]:hover{
+.cndce-template[data-template="commentary"] a[tref]:hover{
 	color: #999999;
 	cursor: pointer;
 	font-size: 10pt;

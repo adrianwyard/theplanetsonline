@@ -1,0 +1,52 @@
+.cndce-template[data-template="commentary"] {
+    font-family: Lato, sans-serif;
+    font-size: 10pt;
+    color: black;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.cndce-template[data-template="commentary"] .hidden {
+    display: none
+}
+
+.cndce-template[data-template="commentary"] commentary {
+    margin: 0 0;
+    display: block;
+    overflow: hidden;
+    -webkit-transition: all .5s cubic-bezier(.42, 0, .16, 1.66);
+    -o-transition: all .5s cubic-bezier(.42, 0, .16, 1.66);
+    -moz-transition: all .5s cubic-bezier(.42, 0, .16, 1.66);
+    transition: all .5s cubic-bezier(.42, 0, .16, 1.66)
+}
+
+.cndce-template[data-template="commentary"] commentary h1{
+    -webkit-transition: background 0.7s ease-in-out;
+    -o-transition: background 0.7s ease-in-out;
+    -moz-transition: background 0.7s ease-in-out;
+    transition: background 0.7s ease-in-out;   
+}
+
+.cndce-template[data-template="commentary"] commentary.active {
+    display: block
+}
+
+.cndce-template[data-template="commentary"] commentary.hidden {
+    display: block !important;
+    height: 0 !important;
+    opacity: 0;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out
+}
+
+.cndce-template[data-template="commentary"] commentary.active.highlight h1{
+    background: #f3fb53;
+    color: black;
+}
+
+.cndce-template[data-template="commentary"] commentary.active.highlight h1 a{
+    color: black;
+}

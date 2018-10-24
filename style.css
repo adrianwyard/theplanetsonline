@@ -377,6 +377,7 @@ body{
 	background: #e4e4e4;
 	color: white;
 	position: relative;
+	overflow: hidden;
 }
 
 
@@ -427,6 +428,10 @@ body{
 	font-weight: bold;
 	letter-spacing: 1px;
 	font-family: monospace;
+}
+
+#cndce-container #cndce-commentary-iframe-container{
+	overflow: hidden;
 }
 
 

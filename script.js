@@ -12,11 +12,6 @@ $(document).ready(function () {
 	var cndceSettings;
 	var activePlayer = undefined;
 
-	var $commentaries;
-	var $commentariesHtml;
-	var $commentariesTotalSpan;
-	var $commentariesActiveSpan;
-	var $commentariesTagsSpan;
 
 	var $currentCommentary;
 
@@ -72,8 +67,15 @@ $(document).ready(function () {
 
 
 	var $commentariesSection = $('#cndce-commentary-section');
-	var $commentariesIframe = $('#cndce-commentary-iframe', $commentariesSection);
+	// var $commentariesIframe = $('#cndce-commentary-iframe', $commentariesSection);
 	var $commentariesScrollContainer = $('#cndce-commentary-iframe-container', $commentariesSection);
+
+	var $commentaries;
+	var $commentariesHtml = $('.cndce-template[data-template="commentary"]', $commentariesSection);
+
+	var $commentariesTotalSpan = $('#welcome-commentary .commentary-type-total', $commentariesHtml);
+	var $commentariesActiveSpan = $('#welcome-commentary .commentary-type-active', $commentariesHtml);
+	var $commentariesTagsSpan = $('#welcome-commentary .commentary-type-tags', $commentariesHtml);
 
 
 
@@ -172,6 +174,8 @@ $(document).ready(function () {
 
 	function isCommentaryInCookie(type){
 		var commentaryCookie = getLocalStorage('cndceCommentaries');
+
+
 		return commentaryCookie.indexOf(type) != -1
 	}
 
@@ -242,16 +246,6 @@ $(document).ready(function () {
 		}
 
 		return result;
-	}
-
-	function getCommentaryScrollable() {
-		var $scrollable = $commentariesHtml.find('body, html');
-
-		if ($commentariesIframe.height() > $commentariesSection.height()) {
-			$scrollable = $commentariesScrollContainer;
-		}
-
-		return $scrollable;
 	}
 
 
@@ -411,6 +405,9 @@ $(document).ready(function () {
 				cndceSettings.commentaries[i].$inputBox = $commentaryOption.add($iframeBrowserCommentaryOption);
 
 
+				$inputCommentaryOption.data('$copy', $iframeBrowserInputCommentaryOption);
+				$iframeBrowserInputCommentaryOption.data('$copy', $inputCommentaryOption);
+
 
 
 
@@ -426,19 +423,10 @@ $(document).ready(function () {
 						|| (commentaryCookie.length == 0 && isCommentaryDefaultEnabled(cndceSettings.commentaries[i]))))
 				) {
 					// loadCommentaries(cndceSettings.commentaries[i]);
-					$inputCommentaryOption.prop('checked', true);
+					$inputCommentaryOption.add($iframeBrowserInputCommentaryOption).prop('checked', true);
+
+					$inputCommentaryOption.add($iframeBrowserInputCommentaryOption).trigger('change');
 					;
-
-					$.when($inputCommentaryOption.trigger('change')).done(function () {
-						// Reload commentary scrolltop
-						var $scrollable = getCommentaryScrollable();
-						var commentaryScrollCookie = getCookie('cndceCommentariesScroll');
-
-
-						$scrollable.scrollTop(commentaryScrollCookie);
-
-					})
-
 				}
 			}
 
@@ -465,6 +453,27 @@ $(document).ready(function () {
 	}
 
 
+	function initCommentaryTemplate(){
+
+		$commentaries = $('commentary', $commentariesHtml);
+
+		$commentaries.each(function (e) {
+			initCommentary($(this));
+		})
+
+		// $commentariesActiveSpan.text(0);
+		$commentariesActiveSpan.text($('input:checked', $optionsCommentaries).length);
+
+		$commentariesTotalSpan.text(cndceSettings.commentaries.length - 1);
+
+
+		initCommentaries();
+
+
+
+	}
+
+
 	function loadCommentaries(commentary) {
 		if (commentary == undefined)
 			return false;
@@ -488,73 +497,66 @@ $(document).ready(function () {
 		if (commentary.$inputBox != undefined)
 			$('input', commentary.$inputBox).prop('checked', true);
 
-		// Load base commentary on iframe
-		if ($commentariesIframe.attr('src') == undefined) {
-			$commentariesIframe.attr('src', commentaryUrl);
 
 
-			// Add additional commentaries to base
-		} else {
-			$.ajax({
-				url: commentaryUrl,
-				dataType: 'html',
-				success: function (doc) {
-					var $newCommentaries = $(doc).filter('commentary');
+		$.ajax({
+			url: commentaryUrl,
+			dataType: 'html',
+			success: function (doc) {
+				var $newCommentaries = $(doc).filter('commentary');
 
 
-					$newCommentaries.each(function () {
-						var $newCommentary = $(this);
-						initCommentary($newCommentary, commentary.type);
+				$newCommentaries.each(function () {
+					var $newCommentary = $(this);
+					initCommentary($newCommentary, commentary.type);
 
 
-						// For first commentary
-						if ($commentaries == undefined || $commentaries.length == 0) {
-							$('body', $commentariesHtml).append($newCommentary);
+					// For first commentary
+					// if ($commentaries == undefined || $commentaries.length == 0) {
+					// 	$('body', $commentariesHtml).append($newCommentary);
+
+					// 	$commentaries = $('commentary', $commentariesHtml);
+					// }
+
+
+					// TODO: Clean implementation. Sort commentary by time
+					$commentaries.each(function (i) {
+						$commentary = $(this);
+
+						if (parseInt($commentary.attr('data-time-sec')) > parseInt($newCommentary.attr('data-time-sec'))) {
+
+							$commentary.before($newCommentary);
+
+							// $newCommentary.css('height', $newCommentary.height());
+							// console.log('FIST',$newCommentary.height());
+
 
 							$commentaries = $('commentary', $commentariesHtml);
+
+
+							return false;
 						}
 
+						if (i == $commentaries.length - 1) {
+							$commentary.after($newCommentary);
 
-						// TODO: Clean implementation
-						$commentaries.each(function (i) {
-							$commentary = $(this);
+							// $newCommentary.css('height', 'auto');
+							// console.log('SECOND',$newCommentary.height(), $newCommentary.outerHeight(), $newCommentary[0].outerHeight);
+							// $newCommentary.css('height', $newCommentary.height());
 
-							if (parseInt($commentary.attr('data-time-sec')) > parseInt($newCommentary.attr('data-time-sec'))) {
-
-								$commentary.before($newCommentary);
-
-								// $newCommentary.css('height', $newCommentary.height());
-								// console.log('FIST',$newCommentary.height());
+							$commentaries = $('commentary', $commentariesHtml);
 
 
-								$commentaries = $('commentary', $commentariesHtml);
+							return false;
+						}
 
-
-								return false;
-							}
-
-							if (i == $commentaries.length - 1) {
-								$commentary.after($newCommentary);
-
-								// $newCommentary.css('height', 'auto');
-								// console.log('SECOND',$newCommentary.height(), $newCommentary.outerHeight(), $newCommentary[0].outerHeight);
-								// $newCommentary.css('height', $newCommentary.height());
-
-								$commentaries = $('commentary', $commentariesHtml);
-
-
-								return false;
-							}
-
-						})
 					})
+				})
 
 
 
-				}
-			});
-
-		}
+			}
+		});
 
 
 	}
@@ -582,13 +584,7 @@ $(document).ready(function () {
 		$commentaries.removeClass('active');
 		$commentary.addClass('active');
 
-		$commentariesHtml.scrollTop($commentary.offset().top);
-
-
-		var $scrollable = getCommentaryScrollable();
-
-		// alert($scrollable.attr('id'));
-		$scrollable.animate({ scrollTop: $commentary.offset().top }, 300);
+		$commentariesHtml.animate({ scrollTop: $commentariesHtml.scrollTop() + $commentary.position().top }, 300);
 
 
 		if ($commentary.attr('iframe') != undefined) {
@@ -829,7 +825,9 @@ $(document).ready(function () {
 	function onYouTubeIframeAPIReady() {
 		initVideos();
 
-		$commentariesIframe.attr('src', cndceSettings.commentariesBaseUrl);
+		initCommentaryTemplate();
+
+		// $commentariesIframe.attr('src', cndceSettings.commentariesBaseUrl);
 
 	}
 
@@ -909,6 +907,18 @@ $(document).ready(function () {
 	}
 
 	// Events
+
+	// Link Event
+	$cndceContainer.add($optionsContainer).on('click', 'a[target="tpo"]', function(){
+		$cndceContainer.removeClass('options-shown');
+
+		// If on mobile, open on a new tab as well
+		if (isLayoutMobile()) {
+			window.open($(this).attr('href'));
+		}
+
+	})
+
 
 	$iframeBrowserIconButton.click(function(e){
 		$cndceContainer.addClass('options-shown');
@@ -1006,8 +1016,12 @@ $(document).ready(function () {
 
 		}
 
+		// Update value of copy
+		$this.data('$copy').prop('checked', $this.prop('checked'));
 
 		$commentariesActiveSpan.text($('input:checked', $optionsCommentaries).length);
+
+
 
 		// Cookies
 		// document.cookie = 'cndceCommentaries=' + commentaryCookie.toString();
@@ -1322,108 +1336,54 @@ $(document).ready(function () {
 
 
 
+	// Commentary Events
+	$commentariesHtml.on('click', 'a', function (e) {
+		var $this = $(this);
 
+		// href
+		if ($this.attr('href') != undefined) {
+			if ($this.attr('target') == undefined)
+				$this.attr('target', 'tpo');
 
-	// Commentaries Iframe Load Event
-	$commentariesIframe.on('load', function () {
-		if (cndceSettings == undefined)
-			return;
+			if ($this.attr('target') == 'tpo') {
+				if ($this.attr('iframe-preview') == 'true') {
+					setBrowserPage($this.attr('href'), $this.attr('iframe-preview'), true);
+					e.preventDefault();
+				} else
+					setBrowserPage($this.attr('href'), $this.attr('iframe-preview'), false);
 
-
-
-
-		if (!$cndceContainer.hasClass('cndce-commentary-loaded')) {
-
-			$cndceContainer.addClass('cndce-commentary-loaded');
-
-			$commentariesHtml = $($commentariesIframe[0].contentWindow.document);
-
-		} else {
-			$newCommentariesHtml = $($commentariesIframe[0].contentWindow.document);
-
-			$('body', $newCommentariesHtml).html($('body', $commentariesHtml).children());
-
-			$commentariesHtml = $newCommentariesHtml;
+			}
 
 		}
 
+		// tref
+		if ($this.attr('tref') != undefined) {
+			var timeSeconds = getTimeStringToSeconds($this.attr('tref'));
+			// console.log('original value===>', timeSeconds);
+			// console.log('value=====>', getTimeStringToSeconds($this.data("value")));
+			if (timeSeconds === false)
+				timeSeconds = $this.attr('tref');
+		//AW Added +1 to following as temp fix to iOS issue
+			timeSeconds++;
+			playerSeekTo(timeSeconds, true);
+		}
 
-		$commentaries = $('commentary', $commentariesHtml);
-
-		$commentaries.each(function (e) {
-			initCommentary($(this));
-		})
-
-		$commentariesTotalSpan = $('#welcome-commentary .commentary-type-total', $commentariesHtml);
-		$commentariesActiveSpan = $('#welcome-commentary .commentary-type-active', $commentariesHtml);
-		$commentariesTagsSpan = $('#welcome-commentary .commentary-type-tags', $commentariesHtml);
-
-
-		// $commentariesActiveSpan.text(0);
-		$commentariesActiveSpan.text($('input:checked', $optionsCommentaries).length);
-
-		$commentariesTotalSpan.text(cndceSettings.commentaries.length - 1);
-
-
-		initCommentaries();
+		// if($this.attr('target') == 'tpo')
+		// e.preventDefault();
+	})
 
 
-
-		// Commentary Events
-		$commentariesHtml.on('click', 'a', function (e) {
-			var $this = $(this);
-
-			// href
-			if ($this.attr('href') != undefined) {
-				if ($this.attr('target') == undefined)
-					$this.attr('target', 'tpo');
-
-				if ($this.attr('target') == 'tpo') {
-					if ($this.attr('iframe-preview') == 'true') {
-						setBrowserPage($this.attr('href'), $this.attr('iframe-preview'), true);
-						e.preventDefault();
-					} else
-						setBrowserPage($this.attr('href'), $this.attr('iframe-preview'), false);
+	// Open Options Box
+	$commentariesHtml.on('click', '.cndce-open-options', function (e) {
+		$iframeBrowserOptionsButton.click();
+	})
 
 
-					// If on mobile, open on a new tab as well
-					if (isLayoutMobile()) {
-						window.open($this.attr('href'));
-					}
-				}
-
-			}
-
-			// tref
-			if ($this.attr('tref') != undefined) {
-				var timeSeconds = getTimeStringToSeconds($this.attr('tref'));
-				// console.log('original value===>', timeSeconds);
-				// console.log('value=====>', getTimeStringToSeconds($this.data("value")));
-				if (timeSeconds === false)
-					timeSeconds = $this.attr('tref');
-			//AW Added +1 to following as temp fix to iOS issue
-				timeSeconds++;
-				playerSeekTo(timeSeconds, true);
-			}
-
-			// if($this.attr('target') == 'tpo')
-			// e.preventDefault();
-		})
-
-
-		// Open Options Box
-		$commentariesHtml.on('click', '.cndce-open-options', function (e) {
-			$iframeBrowserOptionsButton.click();
-		})
-
-
-		// Commentaries Scroll Event
-		$commentariesHtml.add($commentariesScrollContainer).scroll(function (e) {
-			document.cookie = "cndceCommentariesScroll=" + $(this).scrollTop();
-			document.cookie = "cndceCommentariesScrollHeight=" + $(this)[0].scrollHeight;
-		})
-
-	});
+	// Commentaries Scroll Event
+	$commentariesHtml.add($commentariesScrollContainer).scroll(function (e) {
+		document.cookie = "cndceCommentariesScroll=" + $(this).scrollTop();
+		document.cookie = "cndceCommentariesScrollHeight=" + $(this)[0].scrollHeight;
+	})
 
 
 
@@ -1435,10 +1395,7 @@ $(document).ready(function () {
 	})
 
 
-	// Link Event
-	$cndceContainer.on('click', 'a[target="tpo"]', function(){
-		$cndceContainer.removeClass('options-shown');
-	})
+	
 
 
 	// Restore previous size
