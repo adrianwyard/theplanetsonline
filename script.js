@@ -574,7 +574,6 @@ $(document).ready(function () {
 
 				// Remove options page
 				if(!isLayoutMobile()){
-					console.log('test remove');
 					$cndceContainer.removeClass('options-shown');
 				}
 			}
@@ -878,8 +877,10 @@ $(document).ready(function () {
 
 	// Events
 
-	$iframeBrowserIconButton.click(function(){
+	$iframeBrowserIconButton.click(function(e){
+		console.log('test home');
 		$cndceContainer.addClass('options-shown');
+		e.stopPropagation();
 	})
 
 
@@ -893,6 +894,7 @@ $(document).ready(function () {
 		// if(isLayoutMobile())
 			activePlayer.pauseVideo();
 
+		console.log('test option');
 		$cndceContainer.toggleClass('options-shown');
 		e.stopPropagation();
 	})
