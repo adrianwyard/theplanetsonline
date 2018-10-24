@@ -97,6 +97,7 @@ $(document).ready(function () {
 	var getParamConfig;
 
 
+
 	function isLayoutMobile() {
 		return $body.width() <= 768;
 	}
@@ -165,6 +166,20 @@ $(document).ready(function () {
 	}
 
 
+	function isCommentaryInGetParam(type){
+		return getParamCommentaries.indexOf(type) != -1
+	}
+
+	function isCommentaryInCookie(type){
+		var commentaryCookie = getLocalStorage('cndceCommentaries');
+		return commentaryCookie.indexOf(type) != -1
+	}
+
+	function isCommentaryDefaultEnabled(commentary){
+		return commentary.defaultEnabled != undefined && commentary.defaultEnabled;
+	}
+
+
 	function playerSeekTo(sec, forcePlay) {
 		// activePlayer.playVideo();
 		// activePlayer.pauseVideo();
@@ -202,6 +217,19 @@ $(document).ready(function () {
 			}
 		}
 		return "";
+	}
+
+
+	function getLocalStorage(name){
+		var localStorage = window.localStorage.getItem(name);
+
+		if (localStorage == undefined || localStorage == '') {
+			localStorage = [];
+		} else {
+			localStorage = localStorage.split(',');
+		}
+
+		return localStorage;
 	}
 
 	function getParameter(parameterName) {
@@ -320,12 +348,7 @@ $(document).ready(function () {
 
 	function initCommentaries() {
 
-		var commentaryCookie = window.localStorage.getItem('cndceCommentaries');
-		if (commentaryCookie == undefined || commentaryCookie == '') {
-			commentaryCookie = [];
-		} else {
-			commentaryCookie = commentaryCookie.split(',');
-		}
+		var commentaryCookie = getLocalStorage('cndceCommentaries');
 
 
 		for (var i = 1; i < cndceSettings.commentaries.length; i++) {
@@ -395,9 +418,12 @@ $(document).ready(function () {
 
 
 
+
 				// Load Cookie and Get Parameter
-				if (getParamCommentaries.indexOf(cndceSettings.commentaries[i].type) != -1
-					|| (getParamCommentaries.length == 0 && commentaryCookie.indexOf(cndceSettings.commentaries[i].type) != -1)
+				var commentaryType = cndceSettings.commentaries[i].type;
+				if ( isCommentaryInGetParam(commentaryType)
+					|| (getParamCommentaries.length == 0 && (isCommentaryInCookie(commentaryType) 
+						|| (commentaryCookie.length == 0 && isCommentaryDefaultEnabled(cndceSettings.commentaries[i]))))
 				) {
 					// loadCommentaries(cndceSettings.commentaries[i]);
 					$inputCommentaryOption.prop('checked', true);
@@ -940,13 +966,11 @@ $(document).ready(function () {
 		var $commentariesChange = $commentaries.filter('[type="' + $this.attr('data-commentary-type') + '"]');
 
 
-		var commentaryCookie = window.localStorage.getItem('cndceCommentaries');
-		if (commentaryCookie == undefined || commentaryCookie == '') {
-			commentaryCookie = [];
-		} else {
-			commentaryCookie = commentaryCookie.split(',');
-		}
-		console.log('data--->', commentaryCookie)
+		var commentaryCookie = getLocalStorage('cndceCommentaries');
+
+
+		// MESSAGE (Remove once read): Please make sure to remove your testing scripts. It clutters the console
+		// console.log('data--->', commentaryCookie)
 
 
 		var commentaryType = $this.attr('data-commentary-type');

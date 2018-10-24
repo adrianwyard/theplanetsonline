@@ -43,13 +43,15 @@
 			"url": "/com-music.html",
 			"name": "About the Music",
 			"description": "the composer's background and his inspiration for The Planets",
-			"type": "music"
+			"type": "music",
+			"defaultEnabled": true
 		},
 		{
 			"url": "/com-science.html",
 			"name": "About the(real) Planets",
 			"description": "an introduction to the planets in our solar system",
-			"type": "science"
+			"type": "science",
+			"defaultEnabled": true
 		},
 		{
 			"url": "/com-sources.html",
