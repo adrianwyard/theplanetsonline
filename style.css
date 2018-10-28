@@ -105,6 +105,7 @@ body{
 
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
 
 	display: -webkit-box;
 	display: -webkit-flex;
