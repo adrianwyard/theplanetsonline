@@ -910,11 +910,13 @@ $(document).ready(function () {
 
 	// Link Event
 	$cndceContainer.add($optionsContainer).on('click', 'a[target="tpo"]', function(){
+		var $this = $(this);
+
 		$cndceContainer.removeClass('options-shown');
 
 		// If on mobile, open on a new tab as well
 		if (isLayoutMobile()) {
-			window.open($(this).attr('href'));
+			window.open($this.attr('href'));
 		}
 
 	})
@@ -1030,7 +1032,9 @@ $(document).ready(function () {
 	})
 
 	$('.ok', $optionsContainer).click(function (e) {
+		console.log(this);
 		$cndceContainer.removeClass('options-shown');
+		console.log('ok dclicked');
 
 	})
 
@@ -1376,6 +1380,7 @@ $(document).ready(function () {
 	// Open Options Box
 	$commentariesHtml.on('click', '.cndce-open-options', function (e) {
 		$iframeBrowserOptionsButton.click();
+		e.stopPropagation();
 	})
 
 
