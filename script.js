@@ -780,8 +780,6 @@ $(document).ready(function () {
 			})
 
 
-			console.log('within relayout');
-
 
 			// Not Within Smart Relayout Bounds
 		} else {
@@ -935,10 +933,15 @@ $(document).ready(function () {
 	})
 
 	$iframeBrowserOptionsButton.click(function (e) {
-		// if(isLayoutMobile())
-			activePlayer.pauseVideo();
 
-		$cndceContainer.toggleClass('options-shown');
+		if($cndceContainer.hasClass('options-shown'))
+			return;
+
+		// if(isLayoutMobile())
+		activePlayer.pauseVideo();
+
+		$iframeBrowserAddressInput.val('');
+		$cndceContainer.addClass('options-shown');
 		e.stopPropagation();
 	})
 
