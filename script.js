@@ -358,9 +358,11 @@ $(document).ready(function () {
 
 				$tag.addClass(cndceSettings.commentaries[i].type);
 				$tag.addClass('hidden');
-				$tag.addClass('cndce-open-options');
+				$tag.addClass('cndce-open-options cndce-open-commentaries');
 				$tag.text(cndceSettings.commentaries[i].name);
-				$tag.css({ 'margin-right': '3px' });
+				$tag.css({
+					'background': cndceSettings.commentaries[i].color
+				});
 
 				$commentariesTagsSpan.append($tag)
 
@@ -368,9 +370,14 @@ $(document).ready(function () {
 
 				// Add commentary to option - Options Window
 				var $commentaryOption = $optionsCommentaryTemplate.clone(true);
-				$('.cndce-options-commentary-name', $commentaryOption).text(cndceSettings.commentaries[i].name);
-				$('.cndce-options-commentary-description', $commentaryOption).text(cndceSettings.commentaries[i].description);
+				var $iframeBrowserCommentaryOption = $iframeBrowserOptionsCommentaryTemplate.clone(true);
 
+
+				var $commentaryOptions = $commentaryOption.add($iframeBrowserCommentaryOption);
+
+
+				$('.cndce-options-commentary-name', $commentaryOptions).text(cndceSettings.commentaries[i].name);
+				$('.cndce-options-commentary-description', $commentaryOptions).text(cndceSettings.commentaries[i].description);
 
 				if(cndceSettings.commentaries[i].description == ''){
 					$('.cndce-options-commentary-dash', $commentaryOption).css({
@@ -379,37 +386,24 @@ $(document).ready(function () {
 
 				}
 
+				$commentaryOptions.css({
+					background: cndceSettings.commentaries[i].color
+				})
 
-
-				var $inputCommentaryOption = $('input', $commentaryOption);
+				var $inputCommentaryOption = $('input', $commentaryOptions);
 
 				$inputCommentaryOption.data('icommentary', i);
 				$inputCommentaryOption.attr('data-commentary-type', cndceSettings.commentaries[i].type);
 
 
+
+
 				$optionsCommentaries.append($commentaryOption);
-
-
-				// Add commentary to option - Options Browser Window
-				var $iframeBrowserCommentaryOption = $iframeBrowserOptionsCommentaryTemplate.clone(true);
-				$('.cndce-options-commentary-name', $iframeBrowserCommentaryOption).text(cndceSettings.commentaries[i].name);
-				$('.cndce-options-commentary-description', $iframeBrowserCommentaryOption).text(cndceSettings.commentaries[i].description);
-
-				var $iframeBrowserInputCommentaryOption = $('input', $iframeBrowserCommentaryOption);
-
-				$iframeBrowserInputCommentaryOption.data('icommentary', i);
-				$iframeBrowserInputCommentaryOption.attr('data-commentary-type', cndceSettings.commentaries[i].type);
-
-
 				$iframeBrowserOptionsCommentaries.append($iframeBrowserCommentaryOption);
 
 
-
-				cndceSettings.commentaries[i].$inputBox = $commentaryOption.add($iframeBrowserCommentaryOption);
-
-
-				$inputCommentaryOption.data('$copy', $iframeBrowserInputCommentaryOption);
-				$iframeBrowserInputCommentaryOption.data('$copy', $inputCommentaryOption);
+				cndceSettings.commentaries[i].$inputBox = $commentaryOptions;
+				$inputCommentaryOption.data('$copy', $inputCommentaryOption);
 
 
 
@@ -426,9 +420,9 @@ $(document).ready(function () {
 						|| (commentaryCookie.length == 0 && isCommentaryDefaultEnabled(cndceSettings.commentaries[i]))))
 				) {
 					// loadCommentaries(cndceSettings.commentaries[i]);
-					$inputCommentaryOption.add($iframeBrowserInputCommentaryOption).prop('checked', true);
+					$inputCommentaryOption.prop('checked', true);
 
-					$inputCommentaryOption.add($iframeBrowserInputCommentaryOption).trigger('change');
+					$inputCommentaryOption.trigger('change');
 					;
 				}
 			}
@@ -447,12 +441,22 @@ $(document).ready(function () {
 
 
 	function initCommentary($commentary, type) {
+
 		var timeSeconds = getTimeStringToSeconds($commentary.attr('time'));
 
-		$commentary.attr('data-time-sec', timeSeconds);
 
-		if (type != undefined)
+		$commentary.attr('data-time-sec', timeSeconds);
+		
+
+		if (type != undefined){
 			$commentary.attr('type', type);
+
+			var settings = findCommentarySettingByType(type);
+			$commentary.css({
+				background: settings.color
+			})
+
+		}
 	}
 
 
@@ -674,6 +678,8 @@ $(document).ready(function () {
 			activePlayer.playVideo();
 		}
 	}
+
+
 
 
 
