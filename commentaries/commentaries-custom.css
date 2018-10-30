@@ -4,7 +4,8 @@
 	color: #999999
 	}
 	
-.cndce-template[data-template="commentary"] .cndce-open-options {
+.cndce-template[data-template="commentary"] .cndce-open-options ,
+.cndce-template[data-template="commentary"] .cndce-open-home {
     color: #777750;
 
 	}

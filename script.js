@@ -1431,6 +1431,10 @@ $(document).ready(function () {
 		$iframeBrowserOptionsButton.click();
 		e.stopPropagation();
 	})
+	$commentariesHtml.on('click', '.cndce-open-home', function (e) {
+		$iframeBrowserIconButton.click();
+		e.stopPropagation();
+	})
 
 
 	// Commentaries Scroll Event
