@@ -922,6 +922,16 @@ $(document).ready(function () {
 		}, 500);
 	}
 
+	function scrollOptionsTo(scrollTopOptions, scrollTopBrowser){
+		$optionsScrollable.animate({
+			scrollTop: scrollTopOptions
+		}, 1000);
+
+		$iframeBrowserScrollContainer.animate({
+			scrollTop: scrollTopBrowser
+		}, 1000)
+	}
+
 	// Events
 
 	// Link Event
@@ -940,6 +950,8 @@ $(document).ready(function () {
 
 	$iframeBrowserIconButton.click(function(e){
 		$cndceContainer.addClass('options-shown');
+		scrollOptionsTo(0, 0);
+
 		e.stopPropagation();
 	})
 
@@ -953,20 +965,14 @@ $(document).ready(function () {
 	$iframeBrowserOptionsButton.click(function (e) {
 
 		// Scroll
-		$optionsScrollable.animate({
-			scrollTop: $optionsCommentaries.position().top - 24
-		}, 1000);
-
-		$iframeBrowserScrollContainer.animate({
-			scrollTop: $iframeBrowserOptionsCommentaries.position().top - 24
-		})
+		scrollOptionsTo($optionsCommentaries.position().top - 24, $iframeBrowserOptionsCommentaries.position().top - 24);
 
 
 
 
 
 		if($cndceContainer.hasClass('options-shown')){
-			mockRefresh($iframeBrowserOptionsTemplate);
+			// mockRefresh($iframeBrowserOptionsTemplate);
 
 			return;
 		}
