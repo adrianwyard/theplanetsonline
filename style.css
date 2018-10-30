@@ -402,6 +402,7 @@ body{
 	height: unset;
 	margin-top: 7px;
 	height: 0;
+	overflow: auto;
 }
 
 
