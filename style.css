@@ -313,7 +313,10 @@ body{
 	/*transition: flex-basis 0.05s ease-in-out;*/
 }
 
+
+
 #cndce-container.cndce-relayout #cndce-video-information{
+	overflow: initial;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
@@ -388,7 +391,7 @@ body{
 	background: #e4e4e4;
 	color: white;
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 
@@ -397,6 +400,7 @@ body{
 	width: 100%;
 	height: unset;
 	margin-top: 7px;
+	height: 0;
 }
 
 
