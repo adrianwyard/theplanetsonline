@@ -133,7 +133,7 @@ body{
 	border: 1px solid #d4d4d4;
 	/*max-width: 430px;*/
 	width: 650px;
-	max-height: 80vh;
+	max-height: 100vh;
 	text-align: center;
 
 	display: none;
@@ -258,7 +258,7 @@ body{
 	}
 
 	#cndce-container #cndce-options-container{
-		width: 90vw;
+		width: 100vw;
 		max-width: unset;
 
 		display: -webkit-box;
