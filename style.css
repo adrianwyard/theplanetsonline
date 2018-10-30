@@ -122,7 +122,7 @@ body{
 
 
 #cndce-container #cndce-options-container{
-	position: absolute;
+	position: fixed;
 	left: 50%;
 	top: 45%;
 	z-index: -1;
@@ -133,7 +133,7 @@ body{
 	border: 1px solid #d4d4d4;
 	/*max-width: 430px;*/
 	width: 650px;
-	max-height: 100vh;
+	max-height: 100%;
 	text-align: center;
 
 	display: none;
@@ -263,7 +263,8 @@ body{
 	}
 
 	#cndce-container #cndce-options-container{
-		width: 100vw;
+		width: 100%;
+		height: 100%;
 		max-width: unset;
 
 		display: -webkit-box;
