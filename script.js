@@ -55,6 +55,7 @@ $(document).ready(function () {
 
 
 	var $iframeBrowserOptions = $('#cndce-browser-options', $iframeSection);
+	var $iframeBrowserOptionsTemplate = $('.cndce-template[data-template="welcome-home"]', $iframeBrowserOptions);
 
 	var $iframeBrowserOptionsVideos = $('.cndce-options-videos', $iframeBrowserOptions);
 	var $iframeBrowserOptionsCommentaries = $('.cndce-options-commentaries tbody', $iframeBrowserOptions);
@@ -906,6 +907,15 @@ $(document).ready(function () {
 			setPlayerProgressInterval();
 	}
 
+
+	function mockRefresh($el){
+		$el.addClass('refresh');
+
+		setTimeout(function(){
+			$el.removeClass('refresh');
+		}, 500);
+	}
+
 	// Events
 
 	// Link Event
@@ -949,8 +959,11 @@ $(document).ready(function () {
 
 
 
-		if($cndceContainer.hasClass('options-shown'))
+		if($cndceContainer.hasClass('options-shown')){
+			mockRefresh($iframeBrowserOptionsTemplate);
+
 			return;
+		}
 
 		// if(isLayoutMobile())
 		activePlayer.pauseVideo();
