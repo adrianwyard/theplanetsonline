@@ -757,6 +757,7 @@ body{
 	height: 100%;
 	padding: 0;
 	float: right;
+    white-space: nowrap;	
 }
 
 #cndce-container .cndce-browser-option{
