@@ -137,6 +137,10 @@ body{
 	text-align: center;
 
 	display: none;
+	
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
 
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
