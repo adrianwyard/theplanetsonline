@@ -44,63 +44,73 @@
 			"name": "About the Music",
 			"description": "The composer's background and his inspiration",
 			"type": "music",
-			"defaultEnabled": true
+			"defaultEnabled": true,
+			"color": "#DDDDDD"
 		},
 		{
 			"url": "/com-science.html",
 			"name": "About the Planets",
 			"description": "An introduction to the (real) planets in our solar system",
 			"type": "science",
-			"defaultEnabled": true
+			"defaultEnabled": true,
+			"color": "#EFEFE0"
 		},
 		{
 			"url": "/com-sources.html",
 			"name": "Science Sources",
 			"description": "Links to NASA, ESA, etc. showing the original images",
-			"type": "science-sources"
+			"type": "science-sources",
+			"color": "#EFEFE0"
 		},
 		{
 			"url": "/com-tech.html",
 			"name": "Space Missions",
 			"description": "About the spacecraft, telescopes, landers & rovers",
-			"type": "tech"
+			"type": "tech",
+			"color": "#EFEFE0"
 		},
 		{
 			"url": "/com-people.html",
 			"name": "Meet the Scientists",
 			"description": "Hear from the astronomers and technicians who made the images",
-			"type": "scientists"
+			"type": "scientists",
+			"color": "#EFEFE0"
 		},
 		{
 			"url": "/com-comp.html",
 			"name": "Music Composition",
 			"description": "Learn about Holst's techniques and innovations",
-			"type": "musiccomp"
+			"type": "musiccomp",
+			"color": "#DDDDDD"
 		},
 		{
 			"url": "/com-perftech.html",
 			"name": "Performance Technology",
 			"description": "How the visuals were performed live",
-			"type": "perftech"
+			"type": "perftech",
+			"color": "#EFE6E0"
 		},
 		{
 			"url": "/com-visuals.html",
 			"name": "Visual Story-telling",
 			"description": "How the visuals were created and then choreographed",
-			"type": "visuals"
+			"type": "visuals",
+			"color": "#EFE6E0"
 		},
 		{
 			"url": "/com-trivia.html",
 			"name": "Trivia",
 			"description": "Fun facts. Also learn where 'artistic' images replaced real ones",
-			"type": "trivia"
+			"type": "trivia",
+			"color": "#DDDEFF"
 		},
 					
 		{
 			"url": "/com-kids.html",
 			"name": "Just for Kids",
 			"description": "",
-			"type": "kids"
+			"type": "kids",
+			"color": "#E7FFFF"
 		}
 
 	]
