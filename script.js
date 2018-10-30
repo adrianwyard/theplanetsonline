@@ -23,6 +23,7 @@ $(document).ready(function () {
 
 
 	var $optionsContainer = $('#cndce-options-container');
+	var $optionsScrollable = $('.cndce-options-scrollable', $optionsContainer);
 	var $optionsVideos = $('.cndce-options-videos', $optionsContainer);
 	var $optionsCommentaries = $('.cndce-options-commentaries', $optionsContainer);
 	var $optionsVideoTemplate = $('.cndce-options-video.template', $optionsVideos).clone(true);
@@ -42,6 +43,7 @@ $(document).ready(function () {
 
 	var $iframeSection = $('#cndce-iframe-section');
 	var $iframeBrowserContainer = $('#cndce-browser-container', $iframeSection);
+	var $iframeBrowserScrollContainer = $('#cndce-browser-iframe-container', $iframeSection);
 	var $iframeBrowserAddress = $('.cndce-browser-address', $iframeSection);
 	var $iframeBrowserAddressInput = $('input', $iframeBrowserAddress);
 	var $iframeBrowserTab = $('.cndce-browser-tab.active', $iframeSection)
@@ -934,6 +936,19 @@ $(document).ready(function () {
 
 	$iframeBrowserOptionsButton.click(function (e) {
 
+		// Scroll
+		$optionsScrollable.animate({
+			scrollTop: $optionsCommentaries.position().top - 24
+		}, 1000);
+
+		$iframeBrowserScrollContainer.animate({
+			scrollTop: $iframeBrowserOptionsCommentaries.position().top - 24
+		})
+
+
+
+
+
 		if($cndceContainer.hasClass('options-shown'))
 			return;
 
@@ -943,6 +958,12 @@ $(document).ready(function () {
 		$iframeBrowserAddressInput.val('');
 		$cndceContainer.addClass('options-shown');
 		e.stopPropagation();
+
+
+
+
+
+
 	})
 
 

@@ -208,6 +208,7 @@ body{
 	padding: 15px 10px;
 	/*overflow: auto;*/
 	text-align: left;
+	position: relative;
 }
 
 #cndce-container #cndce-options-container .cndce-options-body b{
