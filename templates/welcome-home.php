@@ -14,9 +14,10 @@
 					<label>
 						<input type="checkbox">
 						<span class="cndce-options-commentary-name"></span>
+						<span class="cndce-options-commentary-description"></span>
 					</label>
 				</th>
-				<td>
+				<td class="cndce-mobile-hidden">
 					<span class="cndce-options-commentary-description"></span>
 				</td>
 			</tr>
