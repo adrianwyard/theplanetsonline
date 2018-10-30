@@ -147,11 +147,14 @@
 }
 
 @media only screen and (max-width: 768px){
-	.cndce-template[data-template="welcome-home"] table.cndce-options-commentaries th .cndce-options-commentary-description{
-		display: block;
-	}
-
 	.cndce-template[data-template="welcome-home"] .cndce-mobile-hidden{
 		display: none;
+	}
+	.cndce-template[data-template="welcome-home"] table.cndce-options-commentaries{
+		width: 100%;
+	}
+
+	.cndce-template[data-template="welcome-home"] table.cndce-options-commentaries th .cndce-options-commentary-description{
+		display: block;
 	}
 }
