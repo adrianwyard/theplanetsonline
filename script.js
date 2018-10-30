@@ -949,6 +949,11 @@ $(document).ready(function () {
 
 
 	$iframeBrowserIconButton.click(function(e){
+		if($cndceContainer.hasClass('options-shown') && $iframeBrowserScrollContainer.scrollTop() == 0){
+			mockRefresh($iframeBrowserOptionsTemplate);
+			return;
+		}
+
 		$cndceContainer.addClass('options-shown');
 		scrollOptionsTo(0, 0);
 
