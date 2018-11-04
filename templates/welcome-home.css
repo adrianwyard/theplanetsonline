@@ -1,3 +1,7 @@
+.cndce-template[data-template="welcome-home"]{
+	background: white;
+}
+
 .cndce-template[data-template="welcome-home"].refresh{
 	position: relative;
 }
