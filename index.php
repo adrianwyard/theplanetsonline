@@ -16,7 +16,8 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
 
 	<!-- Font -->
-	<link href="https://fonts.googleaapis.com/css?family=Lato:300,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
+	
 
 	<!-- Templates -->
 	<link rel="stylesheet" type="text/css" href="./templates/welcome-home.css">
