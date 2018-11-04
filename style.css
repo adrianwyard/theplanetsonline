@@ -392,7 +392,7 @@ body{
 	background: #e4e4e4;
 	color: white;
 	position: relative;
-	/*overflow: hidden;*/
+	overflow: auto;
 }
 
 
