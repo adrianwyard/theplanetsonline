@@ -35,6 +35,10 @@
 .cndce-template[data-template="commentary"] commentary.hidden {
     display: block !important;
     height: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     opacity: 0;
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
