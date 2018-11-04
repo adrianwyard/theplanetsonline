@@ -879,12 +879,16 @@ body{
 	position: relative;
 }
 
-#cndce-container #cndce-browser-container iframe{
+#cndce-container #cndce-browser-container #cndce-browser-iframe{
 	width: 10px !important;
 	min-width: 100%;
 	min-height: 100%;
 	overflow: visible;
 	border: none;
+}
+
+#cndce-container.options-shown #cndce-browser-container #cndce-browser-iframe{
+	display: none;
 }
 
 #cndce-container #cndce-browser-container #cndce-browser-options{
