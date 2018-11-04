@@ -102,6 +102,10 @@ $(document).ready(function () {
 	var getParamConfig;
 
 
+	// CommentaryCookie
+	var hasCommentaryCookie;
+
+
 
 	function isLayoutMobile() {
 		return $body.width() <= 768;
@@ -230,11 +234,23 @@ $(document).ready(function () {
 	function getLocalStorage(name){
 		var localStorage = window.localStorage.getItem(name);
 
+		// Commentary cookie
+		if(name == 'cndceCommentaries' && hasCommentaryCookie == undefined){
+			if(localStorage == undefined)
+				hasCommentaryCookie = false;
+			else
+				hasCommentaryCookie = true;
+
+			console.log('cookieee', hasCommentaryCookie);
+			
+		}
+
 		if (localStorage == undefined || localStorage == '') {
 			localStorage = [];
 		} else {
 			localStorage = localStorage.split(',');
 		}
+
 
 		return localStorage;
 	}
@@ -416,8 +432,8 @@ $(document).ready(function () {
 				// Load Cookie and Get Parameter
 				var commentaryType = cndceSettings.commentaries[i].type;
 				if ( isCommentaryInGetParam(commentaryType)
-					|| (getParamCommentaries.length == 0 && (isCommentaryInCookie(commentaryType) 
-						|| (commentaryCookie.length == 0 && isCommentaryDefaultEnabled(cndceSettings.commentaries[i]))))
+					|| (getParamCommentaries.length == 0 && (isCommentaryInCookie(commentaryType)
+						|| (!hasCommentaryCookie && isCommentaryDefaultEnabled(cndceSettings.commentaries[i]))))
 				) {
 					// loadCommentaries(cndceSettings.commentaries[i]);
 					$inputCommentaryOption.prop('checked', true);
@@ -432,9 +448,6 @@ $(document).ready(function () {
 
 		// First commentary available by default
 		loadCommentaries(cndceSettings.commentaries[0]);
-
-
-
 
 
 	}
