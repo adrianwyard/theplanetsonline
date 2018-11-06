@@ -9,6 +9,7 @@ body{
 	font-weight: lighter;
 	background: #f1f1f1;
 	min-width: 300px;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
 	/*background: blue;*/
 }
 
@@ -572,7 +573,6 @@ body{
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: flex;
-
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
