@@ -106,9 +106,6 @@ $(document).ready(function () {
 	var hasCommentaryCookie;
 
 
-	var newTab;
-
-
 
 	function isLayoutMobile() {
 		return $body.width() <= 768;
@@ -951,22 +948,16 @@ $(document).ready(function () {
 	// Events
 
 	// Link Event
-	$cndceContainer.add($optionsContainer).on('click', 'a[target="tpo"]', function(){
+	$cndceContainer.add($optionsContainer).on('click', 'a[target="tpo"]', function(e){
 		var $this = $(this);
 
 		$cndceContainer.removeClass('options-shown');
 
 		// If on mobile, open on a new tab as well
 		if (isLayoutMobile()) {
-			if(newTab == undefined || newTab.closed){
-				newTab = window.open($this.attr('href'));		
-			}else{
-				// newTab.close();
-				// newTab = window.open($this.attr('href'));			
+			window.open($this.attr('href'));
 
-				newTab.location = $this.attr('href');
-				newTab.focus();
-			}
+			e.preventDefault();
 		}
 
 	})
