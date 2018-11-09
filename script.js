@@ -959,12 +959,13 @@ $(document).ready(function () {
 		// If on mobile, open on a new tab as well
 		if (isLayoutMobile()) {
 			if(newTab == undefined || newTab.closed){
-				newTab = window.open($this.attr('href'));			
+				newTab = window.open($this.attr('href'));		
 			}else{
-				newTab.close();
-				newTab = window.open($this.attr('href'));			
-				
-				// newTab.location = $this.attr('href');
+				// newTab.close();
+				// newTab = window.open($this.attr('href'));			
+
+				newTab.location = $this.attr('href');
+				newTab.focus();
 			}
 		}
 
