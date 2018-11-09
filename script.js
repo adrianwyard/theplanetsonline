@@ -955,7 +955,11 @@ $(document).ready(function () {
 
 		// If on mobile, open on a new tab as well
 		if (isLayoutMobile()) {
-			window.open($this.attr('href'));
+		var $thisDuplicate = $this.clone(true);
+			
+			$thisDuplicate.attr('target', 'tpoTab');
+
+			$thisDuplicate[0].click();
 
 			e.preventDefault();
 			e.stopPropagation();
