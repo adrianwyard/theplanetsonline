@@ -958,6 +958,7 @@ $(document).ready(function () {
 			window.open($this.attr('href'));
 
 			e.preventDefault();
+			e.stopPropagation();
 		}
 
 	})
