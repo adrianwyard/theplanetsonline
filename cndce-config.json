@@ -70,29 +70,15 @@
 			"color": "#EFEFE0"
 		},
 		{
-			"url": "/com-people.html",
-			"name": "Meet the Scientists",
-			"description": "Hear from the astronomers and technicians who made the images",
-			"type": "scientists",
-			"color": "#EFEFE0"
-		},
-		{
-			"url": "/com-comp.html",
-			"name": "Music Composition",
+			"url": "/com-comp-tmp.html",
+			"name": "Music Composition ",
 			"description": "Learn about Holst's techniques and innovations",
 			"type": "musiccomp",
 			"color": "#DDDDDD"
 		},
 		{
-			"url": "/com-perftech.html",
-			"name": "Performance Technology",
-			"description": "How the visuals were performed live",
-			"type": "perftech",
-			"color": "#EFE6E0"
-		},
-		{
 			"url": "/com-visuals.html",
-			"name": "Visual Story-telling",
+			"name": "Visual Story-telling ",
 			"description": "How the visuals were created and then choreographed",
 			"type": "visuals",
 			"color": "#EFE6E0"
@@ -103,14 +89,6 @@
 			"description": "Fun facts. Also learn where 'artistic' images replaced real ones",
 			"type": "trivia",
 			"color": "#DDDEFF"
-		},
-					
-		{
-			"url": "/com-kids.html",
-			"name": "Just for Kids",
-			"description": "",
-			"type": "kids",
-			"color": "#E7FFFF"
 		}
 
 	]
