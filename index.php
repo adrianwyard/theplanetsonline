@@ -9,7 +9,7 @@
 	  gtag('js', new Date());
 	  gtag('config', 'UA-8129838-4');
 	</script>
-	<title>The Planets Online (test release)</title>
+	<title>The Planets Online</title>
 	<link rel="icon" href="./img/favicon.png">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
