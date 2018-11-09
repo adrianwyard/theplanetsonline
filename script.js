@@ -106,6 +106,9 @@ $(document).ready(function () {
 	var hasCommentaryCookie;
 
 
+	var newTab;
+
+
 
 	function isLayoutMobile() {
 		return $body.width() <= 768;
@@ -955,7 +958,14 @@ $(document).ready(function () {
 
 		// If on mobile, open on a new tab as well
 		if (isLayoutMobile()) {
-			window.open($this.attr('href'));
+			if(newTab == undefined || newTab.closed){
+				newTab = window.open($this.attr('href'));			
+			}else{
+				newTab.close();
+				newTab = window.open($this.attr('href'));			
+				
+				// newTab.location = $this.attr('href');
+			}
 		}
 
 	})
