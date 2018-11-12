@@ -799,24 +799,108 @@ body{
 #cndce-container .cndce-browser-option.cndce-update{
 	margin-right: 25px;
     margin-bottom: 8px;	
+    position: relative;
+    cursor: pointer;
 }
 
-/* AW */
+
 #cndce-container .cndce-browser-option.cndce-update:hover{
-	color: #999999;
-	text-decoration: underline;
+	/*color: #999999;*/
+	/*text-decoration: underline;*/
 }
 
 
 #cndce-container .cndce-browser-option.cndce-update label{
 	vertical-align: bottom;
 	cursor: pointer;
+	display: block;
 }
 
 #cndce-container .cndce-browser-option.cndce-update input{
 	vertical-align: middle;
 	margin: 1px;
 }
+
+#cndce-container .cndce-browser-option.cndce-update .cndce-update-choices{
+	position: absolute;
+	top: 50%;
+	right: 0;
+	background: white;
+	visibility: collapse;
+	opacity: 0;
+	z-index: 0;
+	overflow: hidden;
+
+    -moz-border-radius: 7px;
+         border-radius: 7px;
+    -webkit-box-shadow: 1px 0px 7px 1px rgba(64, 64, 64, 0.12);
+       -moz-box-shadow: 1px 0px 7px 1px rgba(64, 64, 64, 0.12);
+            box-shadow: 1px 0px 7px 1px rgba(64, 64, 64, 0.12);
+	
+
+	-webkit-transform: translate(0, -50%);
+	   -moz-transform: translate(0, -50%);
+	    -ms-transform: translate(0, -50%);
+	     -o-transform: translate(0, -50%);
+	        transform: translate(0, -50%);
+
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+#cndce-container .cndce-browser-option.cndce-update:hover .cndce-update-choices{
+	visibility: visible;
+	opacity: 1;
+	z-index: 150;
+
+}
+
+
+#cndce-container.cndce-relayout .cndce-browser-option.cndce-update .cndce-update-choices{
+	top: 0;
+
+	-webkit-transform: translate(0, 0);
+	   -moz-transform: translate(0, 0);
+	    -ms-transform: translate(0, 0);
+	     -o-transform: translate(0, 0);
+	        transform: translate(0, 0);
+}
+
+#cndce-container .cndce-browser-option.cndce-update .cndce-update-choice{
+	padding: 3px 10px;
+
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+#cndce-container .cndce-browser-option.cndce-update .cndce-update-choice:hover{
+	background: #2a7bff;
+	color: white;
+	font-weight: bold;
+}
+
+#cndce-container .cndce-browser-option.cndce-update .cndce-update-choice input{
+	display: none;
+}
+
+#cndce-container .cndce-browser-option.cndce-update .cndce-update-choice label::before{
+	content: '';
+	vertical-align: bottom;
+	width: 15px;
+	height: 14px;
+	background: url(./img/check.svg);
+	background-size: cover;
+	display: none;
+}
+
+#cndce-container .cndce-browser-option.cndce-update .cndce-update-choice.cndce-checked label::before{
+	display: inline-block;
+}
+
 
 #cndce-container .cndce-browser-option.cndce-icon{
 	height: 100%;
@@ -846,6 +930,7 @@ body{
 	-moz-transition: background 0.3s ease-in-out;
 	transition: background 0.3s ease-in-out;
 }
+
 
 #cndce-container.options-shown .cndce-browser-option.cndce-icon{
 	font-weight: bold;

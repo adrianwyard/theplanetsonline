@@ -98,10 +98,34 @@
 							<div class="addthis_inline_share_toolbox"></div>
 						</div>
 						<div class="cndce-browser-option cndce-update">
-							<label>
-								Update Automatically
-								<input type="checkbox" checked>
-							</label>
+							Update <span class="cndce-update-val">Automatically</span>
+							<div class="cndce-update-choices">
+								<div class="cndce-update-choice">
+									<label>
+										<input type="radio" name="cndce-update-choice" value="every">
+										On Every Link
+									</label>
+								</div>
+								<div class="cndce-update-choice">
+									<label>
+										<input type="radio" name="cndce-update-choice" value="frequently">
+										Frequently
+									</label>
+								</div>
+								<div class="cndce-update-choice">
+									<label>
+										<input type="radio" name="cndce-update-choice" value="automatically">
+										Automatically
+									</label>
+								</div>
+								<div class="cndce-update-choice">
+									<label>
+										<input type="radio" name="cndce-update-choice" value="never">
+										Never
+									</label>
+								</div>
+
+							</div>
 						</div>
 						<div class="cndce-browser-option cndce-icon">
 							<img src="./img/settings-1.svg"> <span>Options</span>

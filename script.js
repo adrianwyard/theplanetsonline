@@ -47,9 +47,14 @@ $(document).ready(function () {
 	var $iframeBrowserAddress = $('.cndce-browser-address', $iframeSection);
 	var $iframeBrowserAddressInput = $('input', $iframeBrowserAddress);
 	var $iframeBrowserTab = $('.cndce-browser-tab.active', $iframeSection)
-	var $iframeUpdateAutomatically = $('.cndce-browser-option.cndce-update input', $iframeSection);
 	var $iframeBrowserOptionsButton = $('.cndce-browser-option.cndce-icon', $iframeSection);
 	var $iframeBrowserIconButton = $('.cndce-browser-icon', $iframeSection);
+
+	var $iframeUpdateContainer = $('.cndce-browser-option.cndce-update', $iframeSection);
+	var $iframeUpdateVal = $('.cndce-update-val', $iframeUpdateContainer);
+	var $iframeUpdateChoice = $('.cndce-update-choice', $iframeUpdateContainer);
+	var $iframeUpdateFrequency = $('input', $iframeUpdateContainer);
+
 
 	var $iframe = $('#cndce-browser-iframe', $iframeSection);
 
@@ -104,6 +109,10 @@ $(document).ready(function () {
 
 	// CommentaryCookie
 	var hasCommentaryCookie;
+
+
+	// Time
+	var iframeLastUpdateTimestamp;
 
 
 
@@ -191,6 +200,30 @@ $(document).ready(function () {
 	}
 
 
+	function isIframeUpdatable(){
+		var updateFrequency = $iframeUpdateFrequency.filter(':checked').val();
+
+		console.log('update check');
+
+		if(updateFrequency == 'never'){
+			return false;
+
+		}else if(updateFrequency == 'every'){
+			return true;
+		}
+
+
+		var timeNow = new Date();
+		var diffMSec = timeNow.getTime() - iframeLastUpdateTimestamp.getTime();
+
+
+		if(diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency])
+			return true;
+
+
+	}
+
+
 	function playerSeekTo(sec, forcePlay) {
 		// activePlayer.playVideo();
 		// activePlayer.pauseVideo();
@@ -199,7 +232,6 @@ $(document).ready(function () {
 
 		if (forcePlay != undefined && forcePlay)
 			activePlayer.playVideo();
-
 
 	}
 
@@ -608,7 +640,7 @@ $(document).ready(function () {
 
 
 		if ($commentary.attr('iframe') != undefined) {
-			if ($iframeUpdateAutomatically.prop('checked')){
+			if (isIframeUpdatable()){
 				setBrowserPage($commentary.attr('iframe'), $commentary.attr('iframe-preview'), true);
 
 				// Remove options page
@@ -955,7 +987,7 @@ $(document).ready(function () {
 
 		// If on mobile, open on a new tab as well
 		if (isLayoutMobile()) {
-		var $thisDuplicate = $this.clone(true);
+			var $thisDuplicate = $this.clone(true);
 			
 			$thisDuplicate.attr('target', 'tpoTab');
 
@@ -1019,13 +1051,24 @@ $(document).ready(function () {
 
 	$iframe.on('load', function (e) {
 		// $('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
+		iframeLastUpdateTimestamp = new Date();
+
+		console.log(iframeLastUpdateTimestamp);
 
 	})
 
 
-	$iframeUpdateAutomatically.change(function () {
-		// document.cookie = 'cndceUpdateAutomatically=' + $iframeUpdateAutomatically.prop('checked');
-		window.localStorage.setItem('cndceUpdateAutomatically', $iframeUpdateAutomatically.prop('checked'));
+	$iframeUpdateFrequency.change(function () {
+		var $this = $(this);
+		var $parent = $this.parents('.cndce-update-choice');
+
+		$iframeUpdateChoice.removeClass('cndce-checked');
+		$parent.addClass('cndce-checked');
+
+		$iframeUpdateVal.text($parent.text());
+
+
+		window.localStorage.setItem('cndceUpdateFrequency', $iframeUpdateFrequency.filter(':checked').val());
 	})
 
 
@@ -1511,8 +1554,17 @@ $(document).ready(function () {
 
 			// Update Automatically Session
 			// var updateAutomatically = getCookie('cndceUpdateAutomatically');
-			var updateAutomatically = window.localStorage.getItem('cndceUpdateAutomatically');
-			$iframeUpdateAutomatically.prop('checked', updateAutomatically == 'true' || updateAutomatically == '');
+			var updateFrequency = window.localStorage.getItem('cndceUpdateFrequency');
+
+			if(updateFrequency == undefined)
+				updateFrequency = 'automatically';
+
+
+			var $iframeUpdateInitial = $iframeUpdateFrequency.filter('[value="' + updateFrequency + '"]');
+
+			$iframeUpdateInitial.prop('checked', true)
+			$iframeUpdateInitial.trigger('change');
+
 
 		}
 	})

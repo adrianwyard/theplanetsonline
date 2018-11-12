@@ -21,6 +21,10 @@
 		"width": 16,
 		"height": 9
 	},
+	"autoUpdateInterval":{
+		"automatically": 4500,
+		"frequently": 2500
+	},
 	"videos": [
 		{
 			"id": "-My0QzrWdSc",
