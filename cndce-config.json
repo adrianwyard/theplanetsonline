@@ -22,8 +22,8 @@
 		"height": 9
 	},
 	"autoUpdateInterval":{
-		"automatically": 45000,
-		"frequently": 25000
+		"automatically": 13000,
+		"frequently": 8000
 	},
 	"videos": [
 		{
