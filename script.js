@@ -1005,6 +1005,8 @@ $(document).ready(function () {
 			return;
 		}
 
+		$iframeBrowserAddressInput.val('');
+		
 		$cndceContainer.addClass('options-shown');
 		scrollOptionsTo(0, 0);
 
