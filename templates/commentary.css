@@ -46,8 +46,8 @@
     transition-timing-function: ease-in-out
 }
 
-.cndce-template[data-template="commentary"] commentary.active.highlight h1{
-    background: #f3fb53;
+.cndce-template[data-template="commentary"] commentary.active.highlight{
+    background: #f3fb53 !important;
     color: black;
 }
 
