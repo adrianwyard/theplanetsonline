@@ -822,12 +822,13 @@ body{
 }
 
 #cndce-container .cndce-browser-option.cndce-update .cndce-update-choices{
-	position: absolute;
+	position: relative;
+	display: inline;
 	top: 50%;
 	right: 0;
 	background: white;
-	visibility: collapse;
-	opacity: 0;
+	/*visibility: collapse;*/
+	/*opacity: 0;*/
 	z-index: 0;
 	overflow: hidden;
 
@@ -850,15 +851,15 @@ body{
 	transition: all 0.3s ease-in-out;
 }
 
-#cndce-container .cndce-browser-option.cndce-update:hover .cndce-update-choices{
+/*#cndce-container .cndce-browser-option.cndce-update:hover .cndce-update-choices{
 	visibility: visible;
 	opacity: 1;
 	z-index: 150;
 
-}
+}*/
 
 
-#cndce-container.cndce-relayout .cndce-browser-option.cndce-update .cndce-update-choices{
+/*#cndce-container.cndce-relayout .cndce-browser-option.cndce-update .cndce-update-choices{
 	top: 0;
 
 	-webkit-transform: translate(0, 0);
@@ -866,7 +867,7 @@ body{
 	    -ms-transform: translate(0, 0);
 	     -o-transform: translate(0, 0);
 	        transform: translate(0, 0);
-}
+}*/
 
 #cndce-container .cndce-browser-option.cndce-update .cndce-update-choice{
 	padding: 3px 10px;

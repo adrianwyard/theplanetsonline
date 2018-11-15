@@ -52,8 +52,8 @@ $(document).ready(function () {
 
 	var $iframeUpdateContainer = $('.cndce-browser-option.cndce-update', $iframeSection);
 	var $iframeUpdateVal = $('.cndce-update-val', $iframeUpdateContainer);
-	var $iframeUpdateChoice = $('.cndce-update-choice', $iframeUpdateContainer);
-	var $iframeUpdateFrequency = $('input', $iframeUpdateContainer);
+	var $iframeUpdateChoice = $('.cndce-update-choices', $iframeUpdateContainer);
+	var $iframeUpdateFrequency = $('select', $iframeUpdateChoice);
 
 
 	var $iframe = $('#cndce-browser-iframe', $iframeSection);
@@ -201,9 +201,8 @@ $(document).ready(function () {
 
 
 	function isIframeUpdatable(){
-		var updateFrequency = $iframeUpdateFrequency.filter(':checked').val();
+		var updateFrequency = $iframeUpdateFrequency.val();
 
-		console.log('update check');
 
 		if(updateFrequency == 'never'){
 			return false;
@@ -1060,15 +1059,15 @@ $(document).ready(function () {
 
 	$iframeUpdateFrequency.change(function () {
 		var $this = $(this);
-		var $parent = $this.parents('.cndce-update-choice');
+		// var $parent = $this.parents('.cndce-update-choice');
 
-		$iframeUpdateChoice.removeClass('cndce-checked');
-		$parent.addClass('cndce-checked');
+		// $iframeUpdateChoice.removeClass('cndce-checked');
+		// $parent.addClass('cndce-checked');
 
-		$iframeUpdateVal.text($parent.text());
+		// $iframeUpdateVal.text($parent.text());
 
 
-		window.localStorage.setItem('cndceUpdateFrequency', $iframeUpdateFrequency.filter(':checked').val());
+		window.localStorage.setItem('cndceUpdateFrequency', $iframeUpdateFrequency.val());
 	})
 
 
@@ -1560,10 +1559,11 @@ $(document).ready(function () {
 				updateFrequency = 'automatically';
 
 
-			var $iframeUpdateInitial = $iframeUpdateFrequency.filter('[value="' + updateFrequency + '"]');
+			$iframeUpdateFrequency.val(updateFrequency);
 
-			$iframeUpdateInitial.prop('checked', true)
-			$iframeUpdateInitial.trigger('change');
+
+
+
 
 
 		}

@@ -98,32 +98,22 @@
 							<div class="addthis_inline_share_toolbox"></div>
 						</div>
 						<div class="cndce-browser-option cndce-update">
-							Update <span class="cndce-update-val">Automatically</span>
+							Update <span class="cndce-update-val" style="display: none"></span>
 							<div class="cndce-update-choices">
-								<div class="cndce-update-choice">
-									<label>
-										<input type="radio" name="cndce-update-choice" value="every">
+								<select>
+									<option class="cndce-update-choice" value="every">
 										On Every Link
-									</label>
-								</div>
-								<div class="cndce-update-choice">
-									<label>
-										<input type="radio" name="cndce-update-choice" value="frequently">
+									</option>
+									<option class="cndce-update-choice" value="frequently">
 										Frequently
-									</label>
-								</div>
-								<div class="cndce-update-choice">
-									<label>
-										<input type="radio" name="cndce-update-choice" value="automatically">
+									</option>
+									<option class="cndce-update-choice" value="automatically">
 										Automatically
-									</label>
-								</div>
-								<div class="cndce-update-choice">
-									<label>
-										<input type="radio" name="cndce-update-choice" value="never">
+									</option>
+									<option class="cndce-update-choice" value="never">
 										Never
-									</label>
-								</div>
+									</option>
+								</select>
 
 							</div>
 						</div>
