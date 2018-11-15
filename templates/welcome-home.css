@@ -79,6 +79,11 @@
 	margin: 0px
 }
 
+.cndce-template[data-template="welcome-home"] table th,
+.cndce-template[data-template="welcome-home"] table td{
+	padding: 3px 5px;
+}
+
 
 .cndce-template[data-template="welcome-home"] .cndce-options-commentary th{
 	text-align: left;
