@@ -46,7 +46,7 @@
 		{
 			"url": "/com-music.html",
 			"name": "About the Music",
-			"description": "The composer's background and his inspiration",
+			"description": "An introduction to the music, its composer, and his inspiration",
 			"type": "music",
 			"defaultEnabled": true,
 			"color": "#DDDDDD"
@@ -76,14 +76,14 @@
 		{
 			"url": "/com-comp-tmp.html",
 			"name": "Music Composition ",
-			"description": "Learn about Holst's techniques and innovations",
+			"description": "Learn about Holst's musical techniques and innovations",
 			"type": "musiccomp",
 			"color": "#DDDDDD"
 		},
 		{
 			"url": "/com-visuals.html",
 			"name": "Visual Story-telling ",
-			"description": "How the visuals were created and then choreographed",
+			"description": "How the visuals were choreographed to accompany the music",
 			"type": "visuals",
 			"color": "#EFE6E0"
 		},
