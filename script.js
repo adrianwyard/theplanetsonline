@@ -966,6 +966,10 @@ $(document).ready(function () {
 		}, 500);
 	}
 
+	function refreshLastUpdateTimestamp(){
+		iframeLastUpdateTimestamp = new Date();
+	}
+
 	function scrollOptionsTo(scrollTopOptions, scrollTopBrowser){
 		$optionsScrollable.animate({
 			scrollTop: scrollTopOptions
@@ -1005,8 +1009,11 @@ $(document).ready(function () {
 			return;
 		}
 
-		$iframeBrowserAddressInput.val('');
+		refreshLastUpdateTimestamp();
 		
+
+		$iframeBrowserAddressInput.val('');
+
 		$cndceContainer.addClass('options-shown');
 		scrollOptionsTo(0, 0);
 
@@ -1026,7 +1033,8 @@ $(document).ready(function () {
 		scrollOptionsTo($optionsCommentaries.position().top - 24, $iframeBrowserOptionsCommentaries.position().top - 24);
 
 
-
+		refreshLastUpdateTimestamp();
+		
 
 
 		if($cndceContainer.hasClass('options-shown')){
@@ -1052,9 +1060,7 @@ $(document).ready(function () {
 
 	$iframe.on('load', function (e) {
 		// $('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
-		iframeLastUpdateTimestamp = new Date();
-
-		console.log(iframeLastUpdateTimestamp);
+		refreshLastUpdateTimestamp();
 
 	})
 
