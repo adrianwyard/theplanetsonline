@@ -112,7 +112,7 @@ $(document).ready(function () {
 
 
 	// Time
-	var iframeLastUpdateTimestamp;
+	var iframeLastUpdateTimestamp = new Date();
 
 
 
