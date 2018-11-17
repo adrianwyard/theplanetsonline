@@ -147,7 +147,8 @@
 					<div id="cndce-browser-options">
 						<?php include('./templates/welcome-home.php') ?>
 					</div>
-					<iframe id="cndce-browser-iframe" name="tpo"></iframe>
+					<?php $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad'); ?>
+					<iframe id="cndce-browser-iframe" name="tpo" <?php if ($isiPad) { ?> scrolling="no" <?php } ?>></iframe>
 					
 				</div>
 			</div>
