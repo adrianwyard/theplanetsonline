@@ -117,6 +117,9 @@ $(document).ready(function () {
 
 
 	function isLayoutMobile() {
+		//AW The following line inexplicably fixes a problem on the Microsoft Edge browser where it incorrectly switches to narrow mode. 
+		//AW This is because on Edge $body.width() is evidently not a reliable value - if you send it to the console you'll see it sometimes drops to 100 for no reason. Reading it into a dummy variable somehow avoids this false reading.
+		var bodyWidthDummyVar = $body.width();
 		return $body.width() <= 768;
 	}
 
