@@ -828,8 +828,8 @@ $(document).ready(function () {
 			})
 
 			$iframeSection.css({
-				'min-height': 'unset',
-				'max-height': 'unset'
+				'min-height': 'inherit',
+				'max-height': 'inherit'
 			})
 
 
