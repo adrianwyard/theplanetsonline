@@ -219,8 +219,12 @@ $(document).ready(function () {
 		var diffMSec = timeNow.getTime() - iframeLastUpdateTimestamp.getTime();
 
 
-		if(diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency])
-			return true;
+		if(!(diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency]))
+			console.log('NOT UPDATABLE. time elapsed: ', diffMSec);
+		else
+			console.log('UPDATABLE. time elapsed: ', diffMSec);
+
+		return diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency]
 
 
 	}
@@ -971,6 +975,7 @@ $(document).ready(function () {
 
 	function refreshLastUpdateTimestamp(){
 		iframeLastUpdateTimestamp = new Date();
+		console.log('timestamp refreshed');
 	}
 
 	function scrollOptionsTo(scrollTopOptions, scrollTopBrowser){
@@ -1039,7 +1044,7 @@ $(document).ready(function () {
 
 
 		activePlayer.pauseVideo();
-		
+
 
 		// Scroll
 		scrollOptionsTo($optionsCommentaries.position().top - 24, $iframeBrowserOptionsCommentaries.position().top - 24);
