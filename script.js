@@ -1007,10 +1007,15 @@ $(document).ready(function () {
 
 
 	$iframeBrowserIconButton.click(function(e){
+		activePlayer.pauseVideo();
+
+
 		if($cndceContainer.hasClass('options-shown') && $iframeBrowserScrollContainer.scrollTop() == 0){
 			mockRefresh($iframeBrowserOptionsTemplate);
 			return;
 		}
+
+
 
 		refreshLastUpdateTimestamp();
 		
@@ -1032,6 +1037,10 @@ $(document).ready(function () {
 
 	$iframeBrowserOptionsButton.click(function (e) {
 
+
+		activePlayer.pauseVideo();
+		
+
 		// Scroll
 		scrollOptionsTo($optionsCommentaries.position().top - 24, $iframeBrowserOptionsCommentaries.position().top - 24);
 
@@ -1046,8 +1055,6 @@ $(document).ready(function () {
 			return;
 		}
 
-		// if(isLayoutMobile())
-		activePlayer.pauseVideo();
 
 		$iframeBrowserAddressInput.val('');
 		$cndceContainer.addClass('options-shown');
