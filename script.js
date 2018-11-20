@@ -113,6 +113,7 @@ $(document).ready(function () {
 
 	// Time
 	var iframeLastUpdateTimestamp = new Date();
+	var iframeLastUpdateTimestampSkip = true;
 
 
 
@@ -219,12 +220,20 @@ $(document).ready(function () {
 		var diffMSec = timeNow.getTime() - iframeLastUpdateTimestamp.getTime();
 
 
-		if(!(diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency]))
-			console.log('NOT UPDATABLE. time elapsed: ', diffMSec);
-		else
-			console.log('UPDATABLE. time elapsed: ', diffMSec);
+		if(!(diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency] || iframeLastUpdateTimestampSkip))
+			
+				console.log('NOT UPDATABLE. time elapsed: ', diffMSec);
+			
+		else{
+			if(!(diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency]) && iframeLastUpdateTimestampSkip){
+				console.log('UPDATABLE (check skipped). time elapsed: ', diffMSec);
+			}else{
+				console.log('UPDATABLE. time elapsed: ', diffMSec, cndceSettings.autoUpdateInterval[updateFrequency], iframeLastUpdateTimestampSkip);
+			}
+		}
 
-		return diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency]
+		return (diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency])
+			|| iframeLastUpdateTimestampSkip;
 
 
 	}
@@ -685,6 +694,8 @@ $(document).ready(function () {
 		$iframeBrowserAddressInput.val(urlText);
 
 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(urlText);
+		refreshLastUpdateTimestamp();
+
 
 	}
 
@@ -902,14 +913,16 @@ $(document).ready(function () {
 			var currTime = parseInt($($commentaries[i]).attr('data-time-sec'));
 
 
-			if (currTime >= time) {
-				if (currTime == time)
-					i++;
+			if (currTime > time) {
+				// if (currTime == time){
+				// 	i++;
+				// }
 				break;
+
 			}
 		}
 
-		$commentary = $($commentaries[i - 1]);
+		$commentary = $($commentaries[i-1]);
 
 		if ($commentary.hasClass('hidden'))
 			return;
@@ -922,7 +935,6 @@ $(document).ready(function () {
 
 			$currentCommentary = $commentary;
 			setCommentaryOnProgress($commentary);
-
 
 		}
 
@@ -956,6 +968,9 @@ $(document).ready(function () {
 
 		if (e.data == YT.PlayerState.PLAYING) {
 			setPlayerProgressInterval();
+
+			iframeLastUpdateTimestampSkip = true;
+			console.log('Skip true');
 		}
 	}
 
@@ -975,6 +990,8 @@ $(document).ready(function () {
 
 	function refreshLastUpdateTimestamp(){
 		iframeLastUpdateTimestamp = new Date();
+		iframeLastUpdateTimestampSkip = false;
+
 		console.log('timestamp refreshed');
 	}
 
@@ -1075,7 +1092,6 @@ $(document).ready(function () {
 
 	$iframe.on('load', function (e) {
 		// $('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
-		refreshLastUpdateTimestamp();
 
 	})
 
@@ -1507,7 +1523,8 @@ $(document).ready(function () {
 			if (timeSeconds === false)
 				timeSeconds = $this.attr('tref');
 		//AW Added +1 to following as temp fix to iOS issue
-			timeSeconds++;
+			// timeSeconds++;
+			setPlayerProgressInterval();
 			playerSeekTo(timeSeconds, true);
 		}
 
