@@ -8,7 +8,7 @@
 			"height": 200
 		},
 		"browserIframe": {
-		 	"width": 910,
+		 	"width": 950,
 		 	"height": 200
 		}
 	},
@@ -20,6 +20,10 @@
 	"videoAspectRatio":{
 		"width": 16,
 		"height": 9
+	},
+	"autoUpdateInterval":{
+		"automatically": 13000,
+		"frequently": 8000
 	},
 	"videos": [
 		{
@@ -47,14 +51,18 @@
 			"url": "/com-test1.html",
 			"name": "Test1",
 			"description": "Test 1 Description",
-			"type": "music"
+			"type": "music",
+			"defaultEnabled": true,
+			"color": "#DDDDDD"
 		},
 		{
 			"url": "/com-test2.html",
 			"name": "Test2",
 			"description": "Test 2 Description",
-			"type": "science"
+			"type": "science",
+			"defaultEnabled": true,
+			"color": "#EFEFE0"
 		}
 
-	]
-}
+		]
+	}
