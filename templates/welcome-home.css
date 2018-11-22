@@ -32,6 +32,7 @@
 }
 
 .cndce-template[data-template="welcome-home"] h2 {
+	color: #555555;
 	margin-top: 6px;
 	margin-bottom: 4px
 }
@@ -41,6 +42,7 @@
 }
 
 .cndce-template[data-template="welcome-home"] h3 {
+	color: #555555;
 	margin-top: 9px;
 	margin-bottom: 4px
 }
