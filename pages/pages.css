@@ -30,7 +30,8 @@ h4 {
 
 p {
 	margin-top: 5px;
-	margin-bottom: 5px
+	margin-bottom: 5px;
+	font-weight: lighter
 }
 
 a:link {
