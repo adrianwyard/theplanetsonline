@@ -7,7 +7,6 @@
 
 
 	<table class="cndce-options-commentaries">
-		<!-- COMMENTARY LIST ENUMERATED HERE-->
 		<tbody>
 			<tr class="cndce-options-commentary template">
 				<th>
@@ -27,7 +26,6 @@
 
 	<h3>Videos</h3>
 	<div class="cndce-options-videos">
-		<!-- VIDEO LIST ENUMERATED HERE -->
 		<div class="cndce-options-video template">
 			<label>
 				<input type="radio" name="cndce-option-video">
@@ -36,7 +34,7 @@
 		</div>
 	</div>
 
-	<p style="margin-top: 10px">About the <a target="tpo" href="./pages/about.html#about">concert</a>, <a target="tpo" href="./pages/about.html#sources">source material</a>, <a target="tpo" href="./pages/about.html#contributors">commentators</a>, and <a target="tpo" href="./pages/about.html#site">web site</a> | <a target="tpo" href="./pages/teachers-guide.html">Teacher's Guide</a></p>
+	<p style="margin-top: 10px">About the <a target="tpo" href="./pages/about.html#about">concert</a>, <a target="tpo" href="./pages/about.html#sources">source material</a>, <a target="tpo" href="./pages/about.html#contributors">commentators</a>, and <a target="tpo" href="./pages/about.html#site">web site</a> | <a target="tpo" href="./pages/guide.html">Educator's Guide</a></p>
 	<p>&nbsp</p>
 	<p>&nbsp</p>
 	<p>&nbsp</p>
