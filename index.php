@@ -14,7 +14,12 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
-
+	<meta property="og:title" content="The Planets Online" />
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra" />
+	<meta property="og:url" content="https://theplanetsonline.com" />
+	<meta property="og:image" content="https://theplanetsonline.com/img/sitethumb.jpg" />
+	
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
 	
