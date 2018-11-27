@@ -1143,7 +1143,7 @@ body{
 }
 
 .cndce-resize.right{
-	right: -20px;
+	right: -10px;
 	top: 0;
 }
 
@@ -1158,7 +1158,7 @@ body{
 }
 
 .cndce-resize[data-resize="x"]{
-	width: 21px;
+	width: 20px;
 	height: 100%;
 	cursor: ew-resize;
 }
