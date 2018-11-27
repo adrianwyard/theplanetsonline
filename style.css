@@ -1158,7 +1158,7 @@ body{
 }
 
 .cndce-resize[data-resize="x"]{
-	width: 30px;
+	width: 21px;
 	height: 100%;
 	cursor: ew-resize;
 }
