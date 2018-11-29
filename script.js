@@ -233,6 +233,11 @@ $(document).ready(function () {
 	function playerSeekTo(sec, forcePlay) {
 		// activePlayer.playVideo();
 		// activePlayer.pauseVideo();
+		//AW-REVIEW When the user clicks a timecode we expire the updateInterval so the page (if any) will load
+ 		var timeNow = new Date();
+		var updateFrequency = $iframeUpdateFrequency.val();
+		var updateInterval = cndceSettings.autoUpdateInterval[updateFrequency];
+		iframeLastUpdateTimestamp = new Date (timeNow - updateInterval);
 		activePlayer.seekTo(sec, true);
 		// activePlayer.pauseVideo();
 
@@ -487,6 +492,11 @@ $(document).ready(function () {
 		// First commentary available by default
 		loadCommentaries(cndceSettings.commentaries[0]);
 
+		//AW-REVIEW On init expire updateInterval so first link loads. This may not be the best place for this.
+		var timeNow = new Date();
+		var updateFrequency = $iframeUpdateFrequency.val();
+		var updateInterval = cndceSettings.autoUpdateInterval[updateFrequency];
+		iframeLastUpdateTimestamp = new Date (timeNow - updateInterval);
 
 	}
 
@@ -683,6 +693,9 @@ $(document).ready(function () {
 			urlText = '';
 
 		$iframeBrowserAddressInput.val(urlText);
+
+		//AW-REVIEW ensure we don't load a new page until after the update interval. This was moved from on.load
+		iframeLastUpdateTimestamp = new Date();
 
 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(urlText);
 
@@ -1001,8 +1014,10 @@ $(document).ready(function () {
 			var $thisDuplicate = $this.clone(true);
 			
 			$thisDuplicate.attr('target', 'tpoTab');
+                        $('body').append($thisDuplicate);
 
 			$thisDuplicate[0].click();
+                        $thisDuplicate.remove();
 
 			e.preventDefault();
 			e.stopPropagation();
@@ -1072,12 +1087,12 @@ $(document).ready(function () {
 
 	})
 
-
-	$iframe.on('load', function (e) {
-		// $('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
-		refreshLastUpdateTimestamp();
-
-	})
+//AW-REVIEW moved to setBrowserPage
+//		$iframe.on('load', function (e) {
+// 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
+//		refreshLastUpdateTimestamp();
+//		console.log('iframe-on-load');
+//	})
 
 
 	$iframeUpdateFrequency.change(function () {
