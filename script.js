@@ -351,7 +351,8 @@ $(document).ready(function () {
 			var playerVars = {
 				'autoplay': 0,
 				'playsinline': 1,
-				'rel': 0
+				'rel': 0,
+				'iv_load_policy': 3
 			};
 
 			var events = {
