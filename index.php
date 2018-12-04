@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8129838-4"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'UA-8129838-4');
-	</script>
-	<title>The Planets Online</title>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-N4DPMC9');</script>
+	<!-- End Google Tag Manager -->
+	<title>The Planets Online - Mars</title>
 	<meta name="description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra">
 	<link rel="icon" href="./img/favicon.png">
 
@@ -20,7 +19,7 @@
 	<meta property="og:description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra" />
 	<meta property="og:url" content="https://theplanetsonline.com" />
 	<meta property="og:image" content="https://theplanetsonline.com/img/sitethumb.jpg" />
-	
+
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
 	
@@ -32,11 +31,21 @@
 
 	<!-- Self -->
 	<link rel="stylesheet" type="text/css" href="./style.css">
-
 </head>
 <body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4DPMC9"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 	<div id="cndce-container" class="cndce-no-tabs">
+		<!-- AW explicitly list all available content and links for search crawlers -->
+		<div id="aw-all-links">
+			<?php include('./commentaries/all-planets.html') ?>
+		</div>
+		<!-- don't show crawler content on load -->
+		<script>document.getElementById('aw-all-links').style.display = 'none';</script>
+		<!-- AW End -->
 
 		<div id="cndce-options-container">
 			<div class="cndce-options-title">
