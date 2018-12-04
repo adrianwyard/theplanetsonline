@@ -8,7 +8,7 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-N4DPMC9');</script>
 	<!-- End Google Tag Manager -->
-	<title>The Planets Online - Mars</title>
+	<title>The Planets Online</title>
 	<meta name="description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra">
 	<link rel="icon" href="./img/favicon.png">
 
