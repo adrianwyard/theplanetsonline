@@ -122,6 +122,15 @@ body{
 }
 
 
+#cndce-container #aw-all-links{
+	position: fixed;
+	left: 50%;
+	top: 45%;
+	z-index: -1;
+	display: none
+}
+
+
 #cndce-container #cndce-options-container{
 	position: fixed;
 	left: 50%;
@@ -169,7 +178,6 @@ body{
 	-moz-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
-
 
 #cndce-container.options-shown #cndce-options-container{
 	opacity: 1;
