@@ -130,7 +130,6 @@ body{
 	display: none
 }
 
-
 #cndce-container #cndce-options-container{
 	position: fixed;
 	left: 50%;
@@ -204,7 +203,7 @@ body{
     letter-spacing: 3px;
     font-size: 90%;
     font-weight: bold;
-    border-bottom: 1px solid #d4d4d41px solid #bbbbbb;
+    border-bottom: 1px solid #d4d4d4;
 }
 
 #cndce-container #cndce-options-container .cndce-browser-top-buttons{
