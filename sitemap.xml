@@ -2,118 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
   <url>
     <loc>https://theplanetsonline.com/</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
   <url>
     <loc>https://theplanetsonline.com/mars.php</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
   <url>
     <loc>https://theplanetsonline.com/venus.php</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
   <url>
     <loc>https://theplanetsonline.com/mercury.php</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
   <url>
     <loc>https://theplanetsonline.com/jupiter.php</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
   <url>
     <loc>https://theplanetsonline.com/saturn.php</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
   <url>
     <loc>https://theplanetsonline.com/uranus.php</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
   <url>
     <loc>https://theplanetsonline.com/neptune.php</loc>
-    <lastmod>2018-12-04</lastmod>
+    <lastmod>2018-12-05</lastmod>
   </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:00:10</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:00:58</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:01:08&amp;commentary=science-sources</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:02:03</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:02:20&amp;commentary=science-sources</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:02:36&amp;commentary=science-sources</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:04:56&amp;commentary=science-sources</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:08:37</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:17:22</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:22:06</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:22:34</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:22:49</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:23:03</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:24:14</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:31:14</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:34:55</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:39:28&amp;commentary=science-sources</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:41:36</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:45:06&amp;commentary=science-sources</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:48:36</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://theplanetsonline.com/?start=00:49:52</loc>
-    <lastmod>2018-12-04</lastmod>
-  </url>
-  </urlset>
+</urlset>
