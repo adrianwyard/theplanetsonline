@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -11,6 +11,7 @@
 	<title>The Planets Online</title>
 	<meta name="description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra">
 	<link rel="icon" href="./img/favicon.png">
+	<link rel="canonical" href="https://theplanetsonline.com">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -43,7 +44,7 @@
 		<div id="aw-all-links">
 			<?php include('./commentaries/all-planets.html') ?>
 		</div>
-		<!-- don't show crawler content on load -->
+		<!-- don't show content that's duplicated for crawlers on load -->
 		<script>document.getElementById('aw-all-links').style.display = 'none';</script>
 		<!-- AW End -->
 
@@ -103,7 +104,7 @@
 
 			<div id="cndce-browser-container">
 				<div class="cndce-browser-top">
-					<img class="cndce-browser-icon" src="./img/home-1.svg">
+					<img class="cndce-browser-icon" src="./img/home-1.svg" alt="Home Button">
 						
 					<div class="cndce-browser-address"><input type="text" disabled></div>
 
@@ -133,7 +134,7 @@
 							</div>
 						</div>
 						<div class="cndce-browser-option cndce-icon">
-							<img src="./img/settings-1.svg"> <span>Options</span>
+							<img src="./img/settings-1.svg" alt="Options Button"> <span>Options</span>
 						</div>
 					</div>
 
