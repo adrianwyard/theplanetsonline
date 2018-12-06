@@ -603,6 +603,7 @@ body{
 
 #cndce-container .cndce-browser-top .cndce-browser-icon{
 	height: 100%;
+	cursor: pointer;
 }
 
 #cndce-container .cndce-browser-top .cndce-browser-address{
