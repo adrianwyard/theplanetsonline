@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-	<p style="margin-top: 10px">About the <a target="tpo" href="./pages/about.html#about">concert</a>, <a target="tpo" href="./pages/about.html#sources">source material</a>, <a target="tpo" href="./pages/about.html#contributors">commentators</a>, and <a target="tpo" href="./pages/about.html#site">web site</a> | <a target="tpo" href="./pages/guide.html#top">Educator's Guide</a></p>
+	<p style="margin-top: 10px">About the <a target="tpo" href="./pages/about.html#about">concert</a>, <a target="tpo" href="./pages/about.html#sources">visuals &amp; sources</a>, <a target="tpo" href="./pages/about.html#contributors">commentators</a>, and <a target="tpo" href="./pages/about.html#site">web site</a> | <a target="tpo" href="./pages/guide.html#top">Educator's Guide</a></p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
