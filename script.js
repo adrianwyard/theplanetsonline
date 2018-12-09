@@ -234,10 +234,7 @@ $(document).ready(function () {
 		// activePlayer.playVideo();
 		// activePlayer.pauseVideo();
 		//AW-REVIEW When the user clicks a timecode we expire the updateInterval so the page (if any) will load
- 		var timeNow = new Date();
-		var updateFrequency = $iframeUpdateFrequency.val();
-		var updateInterval = cndceSettings.autoUpdateInterval[updateFrequency];
-		iframeLastUpdateTimestamp = new Date (timeNow - updateInterval);
+		expireLastUpdateTimestamp();
 		activePlayer.seekTo(sec, true);
 		// activePlayer.pauseVideo();
 
@@ -696,7 +693,7 @@ $(document).ready(function () {
 		$iframeBrowserAddressInput.val(urlText);
 
 		//AW-REVIEW ensure we don't load a new page until after the update interval. This was moved from on.load
-		iframeLastUpdateTimestamp = new Date();
+		expireLastUpdateTimestamp();
 
 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(urlText);
 
@@ -955,11 +952,18 @@ $(document).ready(function () {
 
 		setActivePlayer(cndceSettings.videos[iVideo]);
 
+//AW-REVIEW If there is a start= parameter, expire the interval so iframe pages load, otherwise wait for the udpate interval
 		if (getParamStartTime != undefined && getParamStartTime != ''
 			&& cndceSettings.videos[iVideo].player.playVideo != undefined) {
-
-			cndceSettings.videos[iVideo].player.playVideo();
+			expireLastUpdateTimestamp();
+		} else {
+			refreshLastUpdateTimestamp();
 		}
+//AW End
+
+		cndceSettings.videos[iVideo].player.playVideo();
+
+
 
 	}
 
@@ -990,6 +994,14 @@ $(document).ready(function () {
 	function refreshLastUpdateTimestamp(){
 		iframeLastUpdateTimestamp = new Date();
 		console.log('timestamp refreshed');
+	}
+
+//AW New function to force related pages to load
+	function expireLastUpdateTimestamp(){
+		var timeNow = new Date();
+		var updateFrequency = $iframeUpdateFrequency.val();
+		var updateInterval = cndceSettings.autoUpdateInterval[updateFrequency];
+		iframeLastUpdateTimestamp = new Date (timeNow - updateInterval);
 	}
 
 	function scrollOptionsTo(scrollTopOptions, scrollTopBrowser){
