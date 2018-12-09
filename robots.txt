@@ -1,4 +1,6 @@
 User-agent: *
-Disallow: /pages/
-Disallow: /commentaries/
-Disallow: /templates/
+Noindex: /pages/
+Noindex: /commentaries/
+Noindex: /templates/
+
+Sitemap: https://www.theplanetsonline.com/sitemap.xml
