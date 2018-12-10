@@ -122,6 +122,14 @@ body{
 }
 
 
+#cndce-container #aw-all-links{
+	position: fixed;
+	left: 50%;
+	top: 45%;
+	z-index: -1;
+	display: none
+}
+
 #cndce-container #cndce-options-container{
 	position: fixed;
 	left: 50%;
@@ -170,7 +178,6 @@ body{
 	transition: all 0.3s ease-in-out;
 }
 
-
 #cndce-container.options-shown #cndce-options-container{
 	opacity: 1;
 	z-index: 200;
@@ -196,7 +203,7 @@ body{
     letter-spacing: 3px;
     font-size: 90%;
     font-weight: bold;
-    border-bottom: 1px solid #d4d4d41px solid #bbbbbb;
+    border-bottom: 1px solid #d4d4d4;
 }
 
 #cndce-container #cndce-options-container .cndce-browser-top-buttons{
@@ -596,6 +603,7 @@ body{
 
 #cndce-container .cndce-browser-top .cndce-browser-icon{
 	height: 100%;
+	cursor: pointer;
 }
 
 #cndce-container .cndce-browser-top .cndce-browser-address{

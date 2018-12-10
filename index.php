@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8129838-4"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'UA-8129838-4');
-	</script>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-N4DPMC9');</script>
+	<!-- End Google Tag Manager -->
 	<title>The Planets Online</title>
 	<meta name="description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra">
 	<link rel="icon" href="./img/favicon.png">
+	<link rel="canonical" href="https://theplanetsonline.com">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -20,7 +20,7 @@
 	<meta property="og:description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra" />
 	<meta property="og:url" content="https://theplanetsonline.com" />
 	<meta property="og:image" content="https://theplanetsonline.com/img/sitethumb.jpg" />
-	
+
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
 	
@@ -32,11 +32,21 @@
 
 	<!-- Self -->
 	<link rel="stylesheet" type="text/css" href="./style.css">
-
 </head>
 <body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4DPMC9"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 	<div id="cndce-container" class="cndce-no-tabs">
+		<!-- AW explicitly list all available content and links for search crawlers -->
+		<div id="aw-all-links">
+			<?php include('./commentaries/all-planets.html') ?>
+		</div>
+		<!-- don't show content that's duplicated for crawlers on load -->
+		<script>document.getElementById('aw-all-links').style.display = 'none';</script>
+		<!-- AW End -->
 
 		<div id="cndce-options-container">
 			<div class="cndce-options-title">
@@ -94,7 +104,7 @@
 
 			<div id="cndce-browser-container">
 				<div class="cndce-browser-top">
-					<img class="cndce-browser-icon" src="./img/home-1.svg">
+					<img class="cndce-browser-icon" src="./img/home-1.svg" alt="Home Button">
 						
 					<div class="cndce-browser-address"><input type="text" disabled></div>
 
@@ -124,7 +134,7 @@
 							</div>
 						</div>
 						<div class="cndce-browser-option cndce-icon">
-							<img src="./img/settings-1.svg"> <span>Options</span>
+							<img src="./img/settings-1.svg" alt="Options Button"> <span>Options</span>
 						</div>
 					</div>
 
