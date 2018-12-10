@@ -41,9 +41,11 @@
 
 	<div id="cndce-container" class="cndce-no-tabs">
 		<!-- AW explicitly list all available content and links for search crawlers -->
-		<div id="aw-all-links" style="display: none">
+		<div id="aw-all-links">
 			<?php include('./commentaries/all-planets.html') ?>
 		</div>
+		<!-- don't show content that's duplicated for crawlers on load -->
+		<script>document.getElementById('aw-all-links').style.display = 'none';</script>
 		<!-- AW End -->
 
 		<div id="cndce-options-container">
