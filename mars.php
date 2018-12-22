@@ -190,7 +190,7 @@
 
 	<!-- Self -->
 	<?php $_GET['start'] = '00:00:10' ?>
-	<script type="text/javascript" src="./sript.js"></script>
+	<script type="text/javascript" src="./script.js"></script>
 
 </body>
 </html>
