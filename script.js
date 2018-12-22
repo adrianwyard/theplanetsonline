@@ -349,7 +349,8 @@ $(document).ready(function () {
 				'autoplay': 0,
 				'playsinline': 1,
 				'rel': 0,
-				'iv_load_policy': 3
+				'iv_load_policy': 3,
+				'start': 10
 			};
 
 			var events = {
@@ -693,7 +694,7 @@ $(document).ready(function () {
 		$iframeBrowserAddressInput.val(urlText);
 
 		//AW-REVIEW ensure we don't load a new page until after the update interval. This was moved from on.load
-		expireLastUpdateTimestamp();
+		refreshLastUpdateTimestamp();
 
 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(urlText);
 
