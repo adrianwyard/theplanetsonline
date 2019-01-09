@@ -219,11 +219,6 @@ $(document).ready(function () {
 		var diffMSec = timeNow.getTime() - iframeLastUpdateTimestamp.getTime();
 
 
-		if(!(diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency]))
-			console.log('NOT UPDATABLE. time elapsed: ', diffMSec);
-		else
-			console.log('UPDATABLE. time elapsed: ', diffMSec);
-
 		return diffMSec >= cndceSettings.autoUpdateInterval[updateFrequency]
 
 
@@ -645,6 +640,10 @@ $(document).ready(function () {
 		onPlayerProgressInterval = setInterval(onPlayerProgress, 1000 / activePlayer.getPlaybackRate());
 	}
 
+	function resetPlayerProgressInterval(){
+		setPlayerProgressInterval();
+	}
+
 	function setCommentaryOnProgress($commentary) {
 		$videoCommentary.text($commentary.text());
 
@@ -907,30 +906,39 @@ $(document).ready(function () {
 //AW	console.log(time);
 		var $commentary;
 		// var $commentary = $($commentaries.filter(':not(.hidden)').filter('[data-time-sec=' + time + ']'));
+		var $visibleCommentaries = $commentaries.filter(':not(.hidden)');
 
 		var i;
 
-		for (i = 0; i < $commentaries.length; i++) {
-			var currTime = parseInt($($commentaries[i]).attr('data-time-sec'));
+		for (i = 0; i < $visibleCommentaries.length; i++) {
+			$commentary = $visibleCommentaries.eq(i);
+
+			if(!$commentary.hasClass('hidden')){
+				var currTime = parseInt($commentary.attr('data-time-sec'));
 
 
-			if (currTime >= time) {
-				if (currTime == time)
-					i++;
-				break;
+				if (currTime >= time) {
+					if (currTime == time)
+						i++;
+
+					break;
+				}
 			}
+			
 		}
 
-		$commentary = $($commentaries[i - 1]);
+		$commentary = $visibleCommentaries.eq(i-1);
 
-		if ($commentary.hasClass('hidden'))
-			return;
+		// if ($commentary.hasClass('hidden'))
+		// 	return;
 
+		console.log($commentary);
 
 		if ($commentary.length > 0
 			&& ($commentaries.index($currentCommentary) != $commentaries.index($commentary)
 				|| $currentCommentary == undefined
 			)) {
+
 
 			$currentCommentary = $commentary;
 			setCommentaryOnProgress($commentary);
@@ -994,7 +1002,6 @@ $(document).ready(function () {
 
 	function refreshLastUpdateTimestamp(){
 		iframeLastUpdateTimestamp = new Date();
-		console.log('timestamp refreshed');
 	}
 
 //AW New function to force related pages to load
@@ -1140,7 +1147,7 @@ $(document).ready(function () {
 		document.cookie = 'cndceVideo=' + iVideo;
 	})
 
-	$optionsCommentaries.add($iframeBrowserOptionsCommentaries).on('change', 'input', function () {
+	$optionsCommentaries.add($iframeBrowserOptionsCommentaries).on('change', 'input', function (e) {
 
 		var $this = $(this);
 
@@ -1152,11 +1159,6 @@ $(document).ready(function () {
 
 
 		var commentaryCookie = getLocalStorage('cndceCommentaries');
-
-
-		// MESSAGE (Remove once read): Please make sure to remove your testing scripts. It clutters the console
-		// console.log('data--->', commentaryCookie)
-
 
 		var commentaryType = $this.attr('data-commentary-type');
 
@@ -1196,6 +1198,14 @@ $(document).ready(function () {
 		// Cookies
 		// document.cookie = 'cndceCommentaries=' + commentaryCookie.toString();
 		window.localStorage.setItem('cndceCommentaries', commentaryCookie.toString());
+
+
+		// Scroll commentary list
+		if(e.isTrigger == undefined){
+			resetPlayerProgressInterval();
+			console.log('progress interval');
+		}
+
 
 	})
 
