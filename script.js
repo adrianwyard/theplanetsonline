@@ -275,8 +275,6 @@ $(document).ready(function () {
 				hasCommentaryCookie = false;
 			else
 				hasCommentaryCookie = true;
-
-			console.log('cookieee', hasCommentaryCookie);
 			
 		}
 
@@ -717,7 +715,7 @@ $(document).ready(function () {
 		var currentState = YT.PlayerState.UNSTARTED;
 
 		if (activePlayer != undefined) {
-			console.log('active');
+			// console.log('active');
 			activePlayer.pauseVideo();
 			currentTime = activePlayer.getCurrentTime();
 			currentPlaybackRate = activePlayer.getPlaybackRate();
@@ -931,8 +929,6 @@ $(document).ready(function () {
 
 		// if ($commentary.hasClass('hidden'))
 		// 	return;
-
-		console.log($commentary);
 
 		if ($commentary.length > 0
 			&& ($commentaries.index($currentCommentary) != $commentaries.index($commentary)
@@ -1203,16 +1199,13 @@ $(document).ready(function () {
 		// Scroll commentary list
 		if(e.isTrigger == undefined){
 			resetPlayerProgressInterval();
-			console.log('progress interval');
 		}
 
 
 	})
 
 	$('.ok', $optionsContainer).click(function (e) {
-		console.log(this);
 		$cndceContainer.removeClass('options-shown');
-		console.log('ok dclicked');
 
 	})
 
@@ -1598,7 +1591,6 @@ $(document).ready(function () {
 		url: SETTINGS_URL,
 		dataType: 'json',
 		success: function (settings) {
-			console.log(settings);
 			cndceSettings = settings;
 
 			window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
