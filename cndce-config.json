@@ -12,6 +12,10 @@
 		 	"height": 200
 		}
 	},
+	"startTimes":{
+		"mars.php": "00:10:00",
+		"venus.php": "00:50:00"
+	},
 	"smartRelayout":{
 		"minVideoAspectRatio": 0.5,
 		"maxVideoAspectRatio": 2
@@ -22,7 +26,7 @@
 		"height": 9
 	},
 	"autoUpdateInterval":{
-		"automatically": 12000,
+		"automatically": 13000,
 		"frequently": 8000
 	},
 	"videos": [
@@ -94,6 +98,5 @@
 			"type": "trivia",
 			"color": "#DDDEFF"
 		}
-
 	]
 }
