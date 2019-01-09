@@ -114,6 +114,8 @@ $(document).ready(function () {
 	// Time
 	var iframeLastUpdateTimestamp = new Date();
 
+	var iTpoTab = 0;
+
 
 
 	function isLayoutMobile() {
@@ -1027,14 +1029,21 @@ $(document).ready(function () {
 		$cndceContainer.removeClass('options-shown');
 
 		// If on mobile, open on a new tab as well
+		// Wikipedia fix - clone the link and give it a target
 		if (isLayoutMobile()) {
-			var $thisDuplicate = $this.clone(true);
+			// var $thisDuplicate = $this.clone(true);
 			
-			$thisDuplicate.attr('target', 'tpoTab');
-                        $('body').append($thisDuplicate);
+			// $thisDuplicate.attr('target', 'tpoTab');
+   //          $('body').append($thisDuplicate);
 
-			$thisDuplicate[0].click();
-                        $thisDuplicate.remove();
+			// $thisDuplicate[0].click();
+   //          $thisDuplicate.remove();
+
+
+            var tab = window.open($this.attr('href'), 'tpoTab' + iTpoTab);
+            iTpoTab++;
+            tab.focus();
+
 
 			e.preventDefault();
 			e.stopPropagation();
