@@ -1031,16 +1031,15 @@ $(document).ready(function () {
 		// If on mobile, open on a new tab as well
 		// Wikipedia fix - clone the link and give it a target
 		if (isLayoutMobile()) {
-			// var $thisDuplicate = $this.clone(true);
+			var $thisDuplicate = $this.clone(true);
 			
-			// $thisDuplicate.attr('target', 'tpoTab');
-   //          $('body').append($thisDuplicate);
+			$thisDuplicate.attr('target', 'tpoTab' + iTpoTab);
+            $('body').append($thisDuplicate);
 
-			// $thisDuplicate[0].click();
-   //          $thisDuplicate.remove();
+			$thisDuplicate[0].click();
+            $thisDuplicate.remove();
 
-
-            var tab = window.open($this.attr('href'), '_blank');
+            iTpoTab++;
 
 
 			e.preventDefault();
