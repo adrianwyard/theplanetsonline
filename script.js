@@ -1040,9 +1040,7 @@ $(document).ready(function () {
    //          $thisDuplicate.remove();
 
 
-            var tab = window.open($this.attr('href'), 'tpoTab' + iTpoTab);
-            iTpoTab++;
-            tab.focus();
+            var tab = window.open($this.attr('href'), '_blank');
 
 
 			e.preventDefault();
