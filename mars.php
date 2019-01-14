@@ -41,7 +41,7 @@
 	<div id="cndce-container" class="cndce-no-tabs">
 		<!-- AW explicitly list all available content and links for search crawlers -->
 		<div id="aw-all-links">
-			<?php include('./commentaries/mars.html') ?>
+			<?php include('./seo/mars.html') ?>
 		</div>
 		<!-- don't show content that's duplicated for crawlers on load -->
 		<script>document.getElementById('aw-all-links').style.display = 'none';</script>
