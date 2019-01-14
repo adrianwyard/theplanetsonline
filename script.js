@@ -636,8 +636,13 @@ $(document).ready(function () {
 			clearTimeout(onPlayerProgressInterval);
 		}
 
+		$currentCommentary = undefined;
 		onPlayerProgress();
-		onPlayerProgressInterval = setInterval(onPlayerProgress, 1000 / activePlayer.getPlaybackRate());
+
+		if (activePlayer.getPlayerState() == YT.PlayerState.PLAYING){
+			onPlayerProgressInterval = setInterval(onPlayerProgress, 1000 / activePlayer.getPlaybackRate());
+
+		}
 	}
 
 	function resetPlayerProgressInterval(){
@@ -650,8 +655,12 @@ $(document).ready(function () {
 		$commentaries.removeClass('active');
 		$commentary.addClass('active');
 
-		$commentariesHtml.animate({ scrollTop: $commentariesHtml.scrollTop() + $commentary.position().top }, 300);
+		
+		console.log('changing',$currentCommentary.position().top);
 
+		$commentariesHtml.animate({ scrollTop: $commentariesHtml.scrollTop() + $currentCommentary.position().top }, 300);
+
+		
 
 		if ($commentary.attr('iframe') != undefined) {
 			if (isIframeUpdatable()){
@@ -932,11 +941,14 @@ $(document).ready(function () {
 		// if ($commentary.hasClass('hidden'))
 		// 	return;
 
+		console.log('pre', $currentCommentary, $commentary);
+
 		if ($commentary.length > 0
 			&& ($commentaries.index($currentCommentary) != $commentaries.index($commentary)
 				|| $currentCommentary == undefined
 			)) {
 
+			console.log('changed', $commentary.position().top);
 
 			$currentCommentary = $commentary;
 			setCommentaryOnProgress($commentary);
@@ -975,18 +987,11 @@ $(document).ready(function () {
 	}
 
 	function onPlayerStateChange(e) {
-		if (onPlayerProgressInterval != undefined) {
-			clearTimeout(onPlayerProgressInterval);
-		}
-
-		if (e.data == YT.PlayerState.PLAYING) {
-			setPlayerProgressInterval();
-		}
+		resetPlayerProgressInterval();
 	}
 
 	function onPlayerPlaybackRateChange() {
-		if (activePlayer.getPlayerState() == YT.PlayerState.PLAYING)
-			setPlayerProgressInterval();
+		resetPlayerProgressInterval();
 	}
 
 
@@ -1019,6 +1024,9 @@ $(document).ready(function () {
 			scrollTop: scrollTopBrowser
 		}, 1000)
 	}
+
+
+
 
 	// Events
 
@@ -1551,6 +1559,12 @@ $(document).ready(function () {
 
 		// if($this.attr('target') == 'tpo')
 		// e.preventDefault();
+	})
+
+	$commentariesHtml.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 'commentary', function(){
+		// console.log('transition ended');
+
+		
 	})
 
 
