@@ -14,7 +14,12 @@ commentary {
     -webkit-transition: all .5s cubic-bezier(.42, 0, .16, 1.66);
     -o-transition: all .5s cubic-bezier(.42, 0, .16, 1.66);
     -moz-transition: all .5s cubic-bezier(.42, 0, .16, 1.66);
-    transition: all .5s cubic-bezier(.42, 0, .16, 1.66)
+    transition: all .5s cubic-bezier(.42, 0, .16, 1.66);
+
+    -webkit-transition-property: background color;
+    -o-transition-property: background color;
+    -moz-transition-property: background color;
+    transition-property: background color;
 }
 
 commentary h1{
