@@ -19,11 +19,27 @@ body{
 	display: none !important;
 }
 
+#aw-all-links{
+	position: fixed;
+	top: 100%;
+	height: 0;
+	overflow: hidden;
+	z-index: -1;
+	color: transparent !important;
+}
+
+#aw-all-links *{
+	color: transparent !important;
+}
+
+
+
 #cndce-container{
 	width: 100%;
 	height: 100%;
 	position: relative;
 	overflow: hidden;
+	z-index: 10;
 
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -121,14 +137,6 @@ body{
 	        flex-grow: 1;
 }
 
-
-#cndce-container #aw-all-links{
-	position: fixed;
-	left: 50%;
-	top: 45%;
-	z-index: -1;
-	display: none
-}
 
 #cndce-container #cndce-options-container{
 	position: fixed;

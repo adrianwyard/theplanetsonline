@@ -39,13 +39,7 @@
 	<!-- End Google Tag Manager (noscript) -->
 
 	<div id="cndce-container" class="cndce-no-tabs">
-		<!-- AW explicitly list all available content and links for search crawlers -->
-		<div id="aw-all-links">
-			<?php include('./seo/mars.html') ?>
-		</div>
-		<!-- don't show content that's duplicated for crawlers on load -->
-		<script>document.getElementById('aw-all-links').style.display = 'none';</script>
-		<!-- AW End -->
+		
 
 		<div id="cndce-options-container">
 			<div class="cndce-options-title">
@@ -173,7 +167,13 @@
 	</div>
 
 
-	
+	<!-- AW explicitly list all available content and links for search crawlers -->
+	<div id="aw-all-links">
+		<?php include('./seo/mars.html') ?>
+	</div>
+	<!-- don't show content that's duplicated for crawlers on load -->
+	<script>document.getElementById('aw-all-links').style.display = 'none';</script>
+	<!-- AW End -->	
 
 
 
@@ -189,7 +189,6 @@
 
 
 	<!-- Self -->
-	<?php $_GET['start'] = '00:00:10' ?>
 	<script type="text/javascript" src="./script.js"></script>
 
 </body>
