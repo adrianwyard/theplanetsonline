@@ -461,11 +461,6 @@ $(document).ready(function () {
 
 
 
-				// console.log('option storage=======>', $optionsCommentaries);
-
-
-
-
 				// Load Cookie and Get Parameter
 				var commentaryType = cndceSettings.commentaries[i].type;
 				if ( isCommentaryInGetParam(commentaryType)
@@ -590,7 +585,6 @@ $(document).ready(function () {
 							$commentary.before($newCommentary);
 
 							// $newCommentary.css('height', $newCommentary.height());
-							// console.log('FIST',$newCommentary.height());
 
 
 							$commentaries = $('commentary', $commentariesHtml);
@@ -603,7 +597,6 @@ $(document).ready(function () {
 							$commentary.after($newCommentary);
 
 							// $newCommentary.css('height', 'auto');
-							// console.log('SECOND',$newCommentary.height(), $newCommentary.outerHeight(), $newCommentary[0].outerHeight);
 							// $newCommentary.css('height', $newCommentary.height());
 
 							$commentaries = $('commentary', $commentariesHtml);
@@ -655,8 +648,6 @@ $(document).ready(function () {
 		$commentaries.removeClass('active');
 		$commentary.addClass('active');
 
-		
-		console.log('changing',$currentCommentary.position().top);
 
 		$commentariesHtml.animate({ scrollTop: $commentariesHtml.scrollTop() + $currentCommentary.position().top }, 300);
 
@@ -680,8 +671,6 @@ $(document).ready(function () {
 		setTimeout(function () {
 			$commentary.removeClass('highlight');
 		}, 750);
-
-		// console.log($commentary);
 
 	}
 
@@ -726,7 +715,6 @@ $(document).ready(function () {
 		var currentState = YT.PlayerState.UNSTARTED;
 
 		if (activePlayer != undefined) {
-			// console.log('active');
 			activePlayer.pauseVideo();
 			currentTime = activePlayer.getCurrentTime();
 			currentPlaybackRate = activePlayer.getPlaybackRate();
@@ -912,7 +900,6 @@ $(document).ready(function () {
 	function onPlayerProgress() {
 		var time = parseInt(activePlayer.getCurrentTime());
 //AW 	On iOS the following console output shows the time is 1 second prior to what's expected when a tref link is clicked:		
-//AW	console.log(time);
 		var $commentary;
 		// var $commentary = $($commentaries.filter(':not(.hidden)').filter('[data-time-sec=' + time + ']'));
 		var $visibleCommentaries = $commentaries.filter(':not(.hidden)');
@@ -941,14 +928,10 @@ $(document).ready(function () {
 		// if ($commentary.hasClass('hidden'))
 		// 	return;
 
-		console.log('pre', $currentCommentary, $commentary);
-
 		if ($commentary.length > 0
 			&& ($commentaries.index($currentCommentary) != $commentaries.index($commentary)
 				|| $currentCommentary == undefined
 			)) {
-
-			console.log('changed', $commentary.position().top);
 
 			$currentCommentary = $commentary;
 			setCommentaryOnProgress($commentary);
@@ -1122,7 +1105,6 @@ $(document).ready(function () {
 //		$iframe.on('load', function (e) {
 // 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
 //		refreshLastUpdateTimestamp();
-//		console.log('iframe-on-load');
 //	})
 
 
@@ -1548,8 +1530,7 @@ $(document).ready(function () {
 		// tref
 		if ($this.attr('tref') != undefined) {
 			var timeSeconds = getTimeStringToSeconds($this.attr('tref'));
-			// console.log('original value===>', timeSeconds);
-			// console.log('value=====>', getTimeStringToSeconds($this.data("value")));
+
 			if (timeSeconds === false)
 				timeSeconds = $this.attr('tref');
 		//AW Added +1 to following as temp fix to iOS issue
@@ -1559,12 +1540,6 @@ $(document).ready(function () {
 
 		// if($this.attr('target') == 'tpo')
 		// e.preventDefault();
-	})
-
-	$commentariesHtml.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 'commentary', function(){
-		// console.log('transition ended');
-
-		
 	})
 
 
