@@ -97,7 +97,10 @@
 
 			<div id="cndce-browser-container">
 				<div class="cndce-browser-top">
-					<img class="cndce-browser-icon" src="./img/home-1.svg" alt="Home Button">
+					<a href="./">
+						<img class="cndce-browser-icon" src="./img/home-1.svg" alt="Home Button">
+					</a>
+					
 						
 					<div class="cndce-browser-address"><input type="text" disabled></div>
 
