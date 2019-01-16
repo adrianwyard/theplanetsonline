@@ -152,6 +152,9 @@
 .cndce-template[data-template="welcome-home"] tr.com11 {
 	background:#E7FFFF
 }
+.cndce-template[data-template="welcome-home"] tr.com12 {
+	background:#DDF0DD
+}
 
 .cndce-template[data-template="welcome-home"] table.cndce-options-commentaries th .cndce-options-commentary-description{
 	display: none;
