@@ -79,7 +79,7 @@
 
 
 .cndce-template[data-template="commentary"] a[tref]{
-	color: #999999;
+	color: #000000;
 	cursor: pointer;
 	font-size: 10pt;
 	margin-right: 5px;
@@ -87,7 +87,7 @@
 }
 
 .cndce-template[data-template="commentary"] a[tref]:hover{
-	color: #999999;
+	color: #000000;
 	cursor: pointer;
 	font-size: 10pt;
 	margin-right: 5px;
@@ -95,8 +95,7 @@
 }
 
 .cndce-template[data-template="commentary"] a.float{
-	color: #BB00BB;
+	color: #BBBBBB;
 	font-size: 10pt;
-	margin-right: 5px;
-	visibility: hidden;
+	margin-right: 5px
 }
