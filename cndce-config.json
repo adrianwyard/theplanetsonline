@@ -12,9 +12,15 @@
 		 	"height": 200
 		}
 	},
-	"startTimes":{
+		"startTimes":{
+		"index.php": "00:10:00",
 		"mars.php": "00:10:00",
-		"venus.php": "00:50:00"
+		"venus.php": "00:08:37",
+		"mercury.php": "00:17:22",
+		"jupiter.php": "00:22:06",
+		"saturn.php": "00:31:14",
+		"uranus.php": "00:41:36",
+		"neptune.php": "00:48:36"
 	},
 	"smartRelayout":{
 		"minVideoAspectRatio": 0.5,
@@ -26,7 +32,7 @@
 		"height": 9
 	},
 	"autoUpdateInterval":{
-		"automatically": 13000,
+		"automatically": 12000,
 		"frequently": 8000
 	},
 	"videos": [
@@ -97,6 +103,14 @@
 			"description": "Fun facts. Also learn where 'artistic' images replaced real ones",
 			"type": "trivia",
 			"color": "#DDDEFF"
+		},
+		{
+			"url": "/com-info.html",
+			"name": "Tips & Info",
+			"description": "About this web site and the performance",
+			"type": "info",
+			"defaultEnabled": true,
+			"color": "#DDF0DD"
 		}
 	]
 }
