@@ -669,6 +669,8 @@ $(document).ready(function () {
 			$commentary.removeClass('highlight');
 		}, 750);
 
+		console.log($commentary);
+
 	}
 
 	function setBrowserPage(url, isPreview, setIframeSrc) {
@@ -921,7 +923,11 @@ $(document).ready(function () {
 			
 		}
 
-		$commentary = $visibleCommentaries.eq(i-1);
+
+		if(i != 0)
+			$commentary = $visibleCommentaries.eq(i-1);
+
+
 
 		// if ($commentary.hasClass('hidden'))
 		// 	return;
