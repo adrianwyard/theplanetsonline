@@ -19,19 +19,6 @@ body{
 	display: none !important;
 }
 
-#aw-all-links{
-	position: fixed;
-	top: 100%;
-	height: 0;
-	overflow: hidden;
-	z-index: -1;
-	color: transparent !important;
-}
-
-#aw-all-links *{
-	color: transparent !important;
-}
-
 
 
 #cndce-container{

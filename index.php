@@ -32,6 +32,23 @@
 
 	<!-- Self -->
 	<link rel="stylesheet" type="text/css" href="./style.css">
+		
+	<style type="text/css">
+		#aw-all-links{
+			position: fixed;
+			top: 100%;
+			height: 0;
+			overflow: hidden;
+			z-index: -1;
+			color: transparent !important;
+		}
+
+		#aw-all-links *{
+			color: transparent !important;
+		}
+
+
+	</style>
 </head>
 <body>
 	<!-- Google Tag Manager (noscript) -->
