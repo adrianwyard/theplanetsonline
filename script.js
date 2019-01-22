@@ -482,10 +482,7 @@ $(document).ready(function () {
 		loadCommentaries(cndceSettings.commentaries[0]);
 
 		//AW-REVIEW On init expire updateInterval so first link loads. This may not be the best place for this.
-		var timeNow = new Date();
-		var updateFrequency = $iframeUpdateFrequency.val();
-		var updateInterval = cndceSettings.autoUpdateInterval[updateFrequency];
-		iframeLastUpdateTimestamp = new Date (timeNow - updateInterval);
+		expireLastUpdateTimestamp();
 
 	}
 
@@ -691,6 +688,7 @@ $(document).ready(function () {
 		$iframeBrowserAddressInput.val(urlText);
 
 		//AW-REVIEW ensure we don't load a new page until after the update interval. This was moved from on.load
+		// CNDCE COMMENT: Hmm. I'm not sure I get what you mean, but the difference of putting this here and in on.load is on.load will refresh the timestamp in ALL instances where the iframe has loaded (which includes clicking on links from the loaded page). setBrowserPage() is only called to load the first iframe page. The issue with on.load is that it will not call until the page has actually finished loading, thus the timestamp doesn't get updated until then which might be suboptimal for slow networks. I'm assuming this is what you mean in your description? In that case, I see no issue with having them both here and on.load()
 		refreshLastUpdateTimestamp();
 
 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(urlText);
@@ -1190,6 +1188,10 @@ $(document).ready(function () {
 		// Cookies
 		// document.cookie = 'cndceCommentaries=' + commentaryCookie.toString();
 		window.localStorage.setItem('cndceCommentaries', commentaryCookie.toString());
+
+
+		// Refresh Update timespan
+		refreshLastUpdateTimestamp();
 
 
 		// Scroll commentary list
