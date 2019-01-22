@@ -669,8 +669,6 @@ $(document).ready(function () {
 			$commentary.removeClass('highlight');
 		}, 750);
 
-		console.log($commentary);
-
 	}
 
 	function setBrowserPage(url, isPreview, setIframeSrc) {
