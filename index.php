@@ -1,3 +1,9 @@
+<?php 
+	require_once('functions.php') ;
+
+	$isPlanet = is_planet($_GET['planet']);
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -8,10 +14,22 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-N4DPMC9');</script>
 	<!-- End Google Tag Manager -->
+
+
+	<?php
+		if($isPlanet){
+			include('./headers/header-' . $_GET['planet'] . '.php');
+		}else{
+			include('./headers/header-index.php');
+		}
+	?>
+
 	<title>The Planets Online</title>
 	<meta name="description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra">
-	<link rel="icon" href="./img/favicon.png">
 	<link rel="canonical" href="https://theplanetsonline.com">
+
+
+	<link rel="icon" href="./img/favicon.png">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" >
@@ -188,10 +206,10 @@
 	<!-- AW explicitly list all available content and links for search crawlers -->
 	<div id="aw-all-links">
 		<?php
-			if(isset($_GET['planet'])){
-				include('./seo/' . $_GET['planet'] . '.html');
+			if($isPlanet){
+				include('./seo/seo-' . $_GET['planet'] . '.php');
 			}else{
-				include('./seo/all-planets.html');
+				include('./seo/sea-index.php');
 			}
 
 		?>

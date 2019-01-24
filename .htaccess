@@ -14,6 +14,7 @@ Header unset Content-Security-Policy
 
 Header unset X-Frame-Options
 
+
 RewriteRule  ^assets/(.*) https://www.jpl.nasa.gov/assets/$1 [NC]
 
 RewriteRule  ^videos/(.*) https://www.jpl.nasa.gov/videos/$1 [NC]
@@ -35,3 +36,10 @@ RewriteRule  ^shared_assets/(.*) https://nasa3d.arc.nasa.gov/shared_assets/$1 [N
 
 RewriteRule  ^jpl/(.*) https://vestatrek.jpl.nasa.gov/jpl/$1 [NC]
 RewriteRule  ^vis/(.*) https://svs.gsfc.nasa.gov/vis/$1 [NC]
+
+
+
+#URL rename for planets
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^mars$ %2index.php?planet=mars
