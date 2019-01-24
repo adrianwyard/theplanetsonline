@@ -1,7 +1,10 @@
 <?php 
 	require_once('functions.php') ;
 
-	$isPlanet = is_planet($_GET['planet']);
+	if(isset($_GET['planet']))
+		$isPlanet = is_planet($_GET['planet']);
+	else
+		$isPlanet = false;
 ?>
 
 <!DOCTYPE html>
@@ -141,7 +144,14 @@
 
 			<div id="cndce-browser-container">
 				<div class="cndce-browser-top">
-					<img class="cndce-browser-icon" src="./img/home-1.svg" alt="Home Button">
+
+					<?php if($isPlanet): ?>
+						<a href="./">
+							<img class="cndce-browser-icon" src="./img/home-1.svg" alt="Home Button">
+						</a>
+					<?php else: ?>
+						<img class="cndce-browser-icon" src="./img/home-1.svg" alt="Home Button">
+					<?php endif; ?>
 						
 					<div class="cndce-browser-address"><input type="text" disabled></div>
 
