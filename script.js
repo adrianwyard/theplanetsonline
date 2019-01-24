@@ -230,7 +230,7 @@ $(document).ready(function () {
 	function playerSeekTo(sec, forcePlay) {
 		// activePlayer.playVideo();
 		// activePlayer.pauseVideo();
-		//AW-REVIEW When the user clicks a timecode we expire the updateInterval so the page (if any) will load
+		//When the user clicks a timecode we expire the updateInterval so the page (if any) will load
 		expireLastUpdateTimestamp();
 		activePlayer.seekTo(sec, true);
 		// activePlayer.pauseVideo();
@@ -489,7 +489,7 @@ $(document).ready(function () {
 		// First commentary available by default
 		loadCommentaries(cndceSettings.commentaries[0]);
 
-		//AW-REVIEW On init expire updateInterval so first link loads. This may not be the best place for this.
+		//On init expire updateInterval so first link loads. This may not be the best place for this.
 		expireLastUpdateTimestamp();
 
 	}
@@ -638,7 +638,7 @@ $(document).ready(function () {
 	function setPlayerProgressInterval() {
 		if(activePlayer == undefined)
 			return;
-		
+
 		if (onPlayerProgressInterval != undefined) {
 			clearTimeout(onPlayerProgressInterval);
 		}
@@ -704,8 +704,7 @@ $(document).ready(function () {
 
 		$iframeBrowserAddressInput.val(urlText);
 
-		//AW-REVIEW ensure we don't load a new page until after the update interval. This was moved from on.load
-		// CNDCE COMMENT: Hmm. I'm not sure I get what you mean, but the difference of putting this here and in on.load is on.load will refresh the timestamp in ALL instances where the iframe has loaded (which includes clicking on links from the loaded page). setBrowserPage() is only called to load the first iframe page. The issue with on.load is that it will not call until the page has actually finished loading, thus the timestamp doesn't get updated until then which might be suboptimal for slow networks. I'm assuming this is what you mean in your description? In that case, I see no issue with having them both here and on.load()
+		//Ensure we don't load a new page until after the update interval.
 		refreshLastUpdateTimestamp();
 
 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(urlText);
@@ -973,14 +972,14 @@ $(document).ready(function () {
 
 		setActivePlayer(cndceSettings.videos[iVideo]);
 
-//AW-REVIEW If there is a start= parameter, expire the interval so iframe pages load, otherwise wait for the udpate interval
+		//If there is a start= parameter, expire the interval so iframe pages load, otherwise wait for the udpate interval
 		if (getParamStartTime != undefined && getParamStartTime != ''
 			&& cndceSettings.videos[iVideo].player.playVideo != undefined) {
 			expireLastUpdateTimestamp();
 		} else {
 			refreshLastUpdateTimestamp();
 		}
-//AW End
+
 
 		cndceSettings.videos[iVideo].player.playVideo();
 
@@ -1120,11 +1119,11 @@ $(document).ready(function () {
 
 	})
 
-//AW-REVIEW moved to setBrowserPage
-//		$iframe.on('load', function (e) {
-// 		$('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
-//		refreshLastUpdateTimestamp();
-//	})
+
+	$iframe.on('load', function (e) {
+		// $('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
+		refreshLastUpdateTimestamp();
+	})
 
 
 	$iframeUpdateFrequency.change(function () {
