@@ -365,7 +365,7 @@ $(document).ready(function () {
 
 
 			playerVars.start = getTimeStringToSeconds(startTime);
-			
+
 
 
 			var videoPlayer = new YT.Player(videoID, {
@@ -636,6 +636,9 @@ $(document).ready(function () {
 	}
 
 	function setPlayerProgressInterval() {
+		if(activePlayer == undefined)
+			return;
+		
 		if (onPlayerProgressInterval != undefined) {
 			clearTimeout(onPlayerProgressInterval);
 		}
@@ -909,7 +912,7 @@ $(document).ready(function () {
 
 	}
 
-	function onPlayerProgress() {
+	function onPlayerProgress() {	
 		var time = parseInt(activePlayer.getCurrentTime());
 //AW 	On iOS the following console output shows the time is 1 second prior to what's expected when a tref link is clicked:		
 		var $commentary;
