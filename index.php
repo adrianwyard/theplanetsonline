@@ -27,11 +27,7 @@
 		}
 	?>
 
-	<title>The Planets Online</title>
-	<meta name="description" content="'The Planets Online' is a fun way to learn about the planets, science, music, and much more - all while accompanied by an orchestra">
-	<link rel="canonical" href="https://theplanetsonline.com">
-
-
+	
 	<link rel="icon" href="./img/favicon.png">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
