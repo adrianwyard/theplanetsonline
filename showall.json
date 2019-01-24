@@ -1,4 +1,4 @@
-{
+	{
 	"minSizes":{
 		"video": {
 			"width": 300
@@ -13,14 +13,14 @@
 		}
 	},
 	"startTimes":{
-		"index.php": "00:10:00",
-		"mars.php": "00:10:00",
-		"venus.php": "00:08:37",
-		"mercury.php": "00:17:22",
-		"jupiter.php": "00:22:06",
-		"saturn.php": "00:31:14",
-		"uranus.php": "00:41:36",
-		"neptune.php": "00:48:36"
+		"index": "00:00:10",
+		"mars": "00:00:10",
+		"venus": "00:08:37",
+		"mercury": "00:17:22",
+		"jupiter": "00:22:06",
+		"saturn": "00:31:14",
+		"uranus": "00:41:36",
+		"neptune": "00:48:36"
 	},
 	"smartRelayout":{
 		"minVideoAspectRatio": 0.5,
@@ -144,5 +144,12 @@
 		}
 	]
 }
+
+
+
+
+
+
+
 
 
