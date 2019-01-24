@@ -51,6 +51,8 @@
 	</style>
 </head>
 <body>
+	<?php echo $_GET['planet'] ?>
+
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4DPMC9"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -186,7 +188,14 @@
 
 	<!-- AW explicitly list all available content and links for search crawlers -->
 	<div id="aw-all-links">
-		<?php include('./seo/all-planets.html') ?>
+		<?php
+			if(isset($_GET['planet'])){
+				include('./seo/' . $_GET['planet'] . '.html');
+			}else{
+				include('./seo/all-planets.html');
+			}
+
+		?>
 	</div>
 	<!-- don't show content that's duplicated for crawlers on load -->
 	<script>document.getElementById('aw-all-links').style.display = 'none';</script>
