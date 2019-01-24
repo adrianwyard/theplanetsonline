@@ -603,6 +603,12 @@ $(document).ready(function () {
 						}
 
 					})
+
+				}).promise().done(function(){
+
+					// Scroll to the current commentary
+					resetPlayerProgressInterval();
+							
 				})
 
 
