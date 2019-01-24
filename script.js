@@ -354,11 +354,19 @@ $(document).ready(function () {
 				'onPlaybackRateChange': onPlayerPlaybackRateChange
 			};
 
-			// Add start time if get param exists
-			if (getParamStartTime != undefined && getParamStartTime != '') {
-				playerVars.start = getTimeStringToSeconds(getParamStartTime);
-				// playerVars.autoplay = 1;
+
+			// Add start time if get param or planet exists
+			var startTime = cndceSettings['startTimes'][cndcePlanet]
+
+
+			if(getParamStartTime != undefined && getParamStartTime != ''){
+				startTime = getParamStartTime;
 			}
+
+
+			playerVars.start = getTimeStringToSeconds(startTime);
+			
+
 
 			var videoPlayer = new YT.Player(videoID, {
 				videoId: cndceSettings.videos[i].id,

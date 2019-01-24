@@ -67,6 +67,14 @@
 
 
 	</style>
+
+	<script type="text/javascript">
+		<?php if($isPlanet): ?>
+			var cndcePlanet = '<?php echo $_GET['planet'] ?>';
+		<?php else: ?>
+			var cndcePlanet = 'index';
+		<?php endif; ?>
+	</script>
 </head>
 <body>
 
