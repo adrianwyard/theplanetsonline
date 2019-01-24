@@ -40,6 +40,32 @@ RewriteRule  ^vis/(.*) https://svs.gsfc.nasa.gov/vis/$1 [NC]
 
 
 #URL rename for planets
+
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
-RewriteRule ^mars$ %2index.php?planet=mars
+RewriteRule ^jupiter$ %2index.php?planet=jupiter [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^mercury$ %2index.php?planet=mercury [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^neptune$ %2index.php?planet=neptune [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^saturn$ %2index.php?planet=saturn [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^uranus$ %2index.php?planet=uranus [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^mars$ %2index.php?planet=mars [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^venus$ %2index.php?planet=venus [L]
