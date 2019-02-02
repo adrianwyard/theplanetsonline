@@ -223,7 +223,7 @@
 			if($isPlanet){
 				include('./seo/seo-' . $_GET['planet'] . '.php');
 			}else{
-				include('./seo/sea-index.php');
+				include('./seo/seo-index.php');
 			}
 
 		?>
