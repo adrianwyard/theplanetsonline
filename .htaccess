@@ -1,46 +1,10 @@
 RewriteEngine On
-
 RewriteBase /
-
-#redirect to non www
-RewriteCond %{HTTP_HOST} ^www\.(.*)
-RewriteRule ^.*$ https://%1/$1 [R=301,L]
-
-#redirect to https
-RewriteCond %{ENV:HTTPS} off [NC]
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
 Header unset Content-Security-Policy
-
 Header unset X-Frame-Options
 
 
-RewriteRule  ^assets/(.*) https://www.jpl.nasa.gov/assets/$1 [NC]
-
-RewriteRule  ^videos/(.*) https://www.jpl.nasa.gov/videos/$1 [NC]
-
-RewriteRule  ^spaceimages/(.*) https://www.jpl.nasa.gov/spaceimages/$1 [NC]
-
-RewriteRule  ^images/wallpaper/(.*) https://www.jpl.nasa.gov/spaceimages/images/wallpaper/$1 [NC]
-RewriteRule  ^images/(.*)  https://photojournal.jpl.nasa.gov/images/$1 [NC]
-
-RewriteRule  ^system/(.*) https://saturn.jpl.nasa.gov/system/$1 [NC]
-
-RewriteRule  ^feature/(.*) https://www.nasa.gov/feature/$1 [NC]
-
-RewriteRule  ^sites/(.*) https://www.nasa.gov/sites/$1 [NC]
-
-RewriteRule  ^image-feature/(.*) https://www.nasa.gov/image-feature/$1 [NC]
-
-RewriteRule  ^shared_assets/(.*) https://nasa3d.arc.nasa.gov/shared_assets/$1 [NC]
-
-RewriteRule  ^jpl/(.*) https://vestatrek.jpl.nasa.gov/jpl/$1 [NC]
-RewriteRule  ^vis/(.*) https://svs.gsfc.nasa.gov/vis/$1 [NC]
-
-
-
 #URL rename for planets
-
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
@@ -69,3 +33,25 @@ RewriteRule ^mars$ %2index.php?planet=mars [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
 RewriteRule ^venus$ %2index.php?planet=venus [L]
+
+#redirect to non www
+RewriteCond %{HTTP_HOST} ^www\.(.*)
+RewriteRule ^.*$ https://%1/$1 [R=301,L]
+
+#redirect to https
+RewriteCond %{ENV:HTTPS} off [NC]
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+#external site fixes for preview.php
+RewriteRule  ^assets/(.*) https://www.jpl.nasa.gov/assets/$1 [NC]
+RewriteRule  ^videos/(.*) https://www.jpl.nasa.gov/videos/$1 [NC]
+RewriteRule  ^spaceimages/(.*) https://www.jpl.nasa.gov/spaceimages/$1 [NC]
+RewriteRule  ^images/wallpaper/(.*) https://www.jpl.nasa.gov/spaceimages/images/wallpaper/$1 [NC]
+RewriteRule  ^images/(.*)  https://photojournal.jpl.nasa.gov/images/$1 [NC]
+RewriteRule  ^system/(.*) https://saturn.jpl.nasa.gov/system/$1 [NC]
+RewriteRule  ^feature/(.*) https://www.nasa.gov/feature/$1 [NC]
+RewriteRule  ^sites/(.*) https://www.nasa.gov/sites/$1 [NC]
+RewriteRule  ^image-feature/(.*) https://www.nasa.gov/image-feature/$1 [NC]
+RewriteRule  ^shared_assets/(.*) https://nasa3d.arc.nasa.gov/shared_assets/$1 [NC]
+RewriteRule  ^jpl/(.*) https://vestatrek.jpl.nasa.gov/jpl/$1 [NC]
+RewriteRule  ^vis/(.*) https://svs.gsfc.nasa.gov/vis/$1 [NC]
