@@ -1123,7 +1123,20 @@ $(document).ready(function () {
 	$iframe.on('load', function (e) {
 		// $('.cndce-browser-tab-text', $iframeBrowserTab).text(this.contentDocument.title);
 		refreshLastUpdateTimestamp();
+
+
+
+		$iframeBrowserScrollContainer.scrollTop(50)
+
+		$iframeBrowserScrollContainer.click(function(){
+			$iframeBrowserScrollContainer.scrollTop($iframeBrowserScrollContainer.scrollTop() + 10);
+
+		})
+
+
 	})
+
+
 
 
 	$iframeUpdateFrequency.change(function () {
@@ -1368,27 +1381,35 @@ $(document).ready(function () {
 		if (isLayoutRelayout()) {
 
 
+			// Only if commentary iframe is no longer within minimum height
 			if (!isCommentaryIframeWithinMinHeight()) {
 				$commentariesSection.css({
 					'max-height': cndceSettings.minSizes.commentIframe.height + 'px'
 				});
+
+
+
 
 				$videoSection.css({
 					'min-height': '',
 					'max-height': ''
 				})
 
+
 				// Reassign min/max
 				$videoSection.css({
-					'min-width': $videoSection.width() + 'px',
-					'max-width': $videoSection.width() + 'px'
+					'min-height': $videoSection.height() + 'px',
+					'max-height': $videoSection.height() + 'px'
 				})
+				
+
+				resizeVideoY();
+
+
 
 				$commentariesSection.css({
 					'max-height': ''
 				});
-
-				resizeVideoY();
 
 				// Trigger Smart Relayout
 				doSmartRelayout();
