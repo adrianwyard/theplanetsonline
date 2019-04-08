@@ -1104,7 +1104,7 @@ body{
 		display: none;
 	}
 
-	#cndce-container #cndce-browser-container #cndce-browser-iframe-container{
+	#cndce-container.mobile-layout #cndce-browser-container #cndce-browser-iframe-container{
 	
 		display: none;
 	}
