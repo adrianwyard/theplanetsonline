@@ -1103,6 +1103,12 @@ body{
 		display: none;
 	}
 
+	#cndce-container #cndce-browser-container #cndce-browser-iframe-container{
+	
+		display: none;
+	}
+
+
 	#cndce-container.mobile-layout #cndce-iframe-section iframe,
 	#cndce-container.mobile-layout #cndce-iframe-section .cndce-browser-tabs{
 		display: none;
@@ -1127,7 +1133,7 @@ body{
 	}
 
 	#cndce-container.mobile-layout #cndce-iframe-section .cndce-browser-options{
-		padding: 10px 0px;
+		/*padding: 10px 0px;*/
 	    text-align: right;
 	    -webkit-box-flex: 1;
 	    -webkit-flex-grow: 1;
