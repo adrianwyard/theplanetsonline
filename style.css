@@ -921,7 +921,8 @@ body{
 	width: 15px;
 	height: 14px;
 	background: url(./img/check.svg);
-	background-size: cover;
+	-moz-background-size: cover;
+	     background-size: cover;
 	display: none;
 }
 
@@ -1166,6 +1167,14 @@ body{
 	#cndce-container.mobile-layout #cndce-iframe-section .cndce-browser-option.cndce-share{
 		display: none;
 	}
+
+	#cndce-container.mobile-layout #cndce-iframe-section .cndce-browser-options{
+		-webkit-box-flex: 0;
+		-webkit-flex-grow: 0;
+		   -moz-box-flex: 0;
+		    -ms-flex-positive: 0;
+		        flex-grow: 0;
+	}
 }
 
 
@@ -1220,7 +1229,11 @@ body{
     }
     
     #cndce-container.mobile-layout #cndce-iframe-section{
-        flex: none;
+        -webkit-box-flex: 0;
+        -webkit-flex: none;
+           -moz-box-flex: 0;
+            -ms-flex: none;
+                flex: none;
         height: 34px;
     }
     
